@@ -12,9 +12,9 @@
         <div class = "container">
           <a class = "brand" href = "#">RAD/UFU</a>
           <ul class = "nav pull-right">
-            <li><a href = "#">Relatório</a></li>
-            <li><a href = "#">Ajuda</a></li>
-            <li><a href = "#">Sair</a></li>
+            <li><a href = "#"> <i class="icon-info-sign"></i> Relatório </a></li>
+            <li><a href = "#"> <i class="icon-question-sign"></i> Ajuda</a></li>
+            <li><a href = "#"> <i class="icon-share"></i> Sair</a></li>
             </ul>
         </div>
       </div>
