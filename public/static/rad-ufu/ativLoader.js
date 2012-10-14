@@ -15,7 +15,8 @@ $('#items a').click(function (e) {
     
     error: function(jqXHR, textStatus){
       $(this).html('');
-      errorReporter.report('No momento não é possível carregar as atividades, tente mais tarde');
+      errorReporter.report(jqXHR, 'No momento não é possível carregar' +
+       ' as atividades, tente mais tarde');
     }
   });
 });

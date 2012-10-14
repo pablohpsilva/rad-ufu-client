@@ -36,7 +36,7 @@ class AtividadeController {
       );
 
     $renderer = new Renderer();
-    $renderer->render('atividade_ensino', 
+    $renderer->render('atividade', 
       array(
         'atividades' => array($a1,$a2,$a3)
         )
@@ -60,15 +60,14 @@ class AtividadeController {
       ,'13/10/2012'
       ,'14/10/2012'
       );
-
+    */
     $renderer = new Renderer();
-    $renderer->render('atividade_orientacao', 
+    $renderer->render('atividade', 
       array(
-        'atividades' => array($a1,$a2)
+        'atividades' => array()
         )
       );
-     */
-    echo 'No momento não existem atividades de orientação';
+
   }
 
 }

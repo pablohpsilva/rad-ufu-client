@@ -1,12 +1,15 @@
 var errorReporter = (function(){
-  var report = function(msg){
+  var report = function(jqXHR, msg){
     
-    var template = 
+    var template =
       '<div class = "row">' +
-        '<div class = "alert alert-error span6 offset3">' +
+        '<div class = "alert alert-error alert-block span6 offset3">' +
           '<button type = "button" class = "close" data-dismiss = "alert" >' +
             '×' +
-          '</button>' + msg +
+          '</button>' +
+          '<p align = "center">' +
+            '<strong>Erro ' + jqXHR.status + ':</strong> ' + msg +
+          '</p>' +
         '</div>' +
       '</div>';
 

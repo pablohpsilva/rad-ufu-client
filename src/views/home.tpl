@@ -1,5 +1,5 @@
 {extends file = 'layout.tpl'}
-{block name=titulo} Items de Ensino {/block}
+{block name=titulo} Atividades Realizadas {/block}
 {block name=conteudo}
   <ul class = "nav nav-tabs" id = "items">
       <li class = "active" ><a href="ensino" data-toggle = "tab">Ensino</a></li>
@@ -9,14 +9,14 @@
   	  <li><a href="extensao" data-toggle = "tab">Extensão</a></li>
   	  <li><a href="administracao" data-toggle = "tab">Administração</a></li>
   	  <li><a href="outras" data-toggle = "tab">Outras</a></li>
- </ul>
- <div id = "error-wrapper"></div>
- <div id="tabela-atividades-wrapper"></div>
+  </ul>
+  <div id = "error-wrapper"></div>
+  <div id="tabela-atividades-wrapper"></div>
 {/block}
 {block name=scripts}
-<script type="text/javascript" src="static/rad-ufu/errorReporter.js"></script>
-<script type="text/javascript" src="static/rad-ufu/ativLoader.js"></script>
-<script type="text/javascript">
-  $('#items a:first').click();
-</script>
+  <script type="text/javascript" src="static/rad-ufu/errorReporter.js"></script>
+  <script type="text/javascript" src="static/rad-ufu/ativLoader.js"></script>
+  <script type="text/javascript">
+    $('#items a:first').click();
+  </script>
 {/block}
