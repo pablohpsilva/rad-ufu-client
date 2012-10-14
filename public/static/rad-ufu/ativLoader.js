@@ -3,7 +3,7 @@ $('#items a').click(function (e) {
   atividade = $(this).attr('href');
   $.ajax({
 
-    url: "atividades.php?",
+    url: "getAtividades.php?",
     context: $('#tabela-atividades-wrapper'),
     data: {t : atividade},
     type: "GET",

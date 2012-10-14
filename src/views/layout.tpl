@@ -10,8 +10,9 @@
     <div class = "navbar navbar-fixed-top">
       <div class = "navbar-inner">
         <div class = "container">
-          <a class = "brand" href = "#">RAD/UFU</a>
+          <a class = "brand" href = "home.php">RAD/UFU</a>
           <ul class = "nav pull-right">
+            <li><a href = "atividades.php"> <i class="icon-list"></i> Atividades </a></li>
             <li><a href = "#"> <i class="icon-info-sign"></i> Relatório </a></li>
             <li><a href = "#"> <i class="icon-question-sign"></i> Ajuda</a></li>
             <li><a href = "#"> <i class="icon-share"></i> Sair</a></li>

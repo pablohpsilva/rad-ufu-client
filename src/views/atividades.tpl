@@ -1,22 +1,22 @@
-{if empty($atividades)}
-  <div class = "row">
-    <div class = "alert alert-block span6 offset3">
-      <p align = "center">Não existem atividades deste tipo cadastradas</p>
-    </div>
-  </div>
-{else}
-  <table class = "table table-hover">
-    <thead>
-      <tr>
-        <th>Item</th> <th>Descrição</th> <th>Pontos</th> <th>Periodo</th>
-      </tr>
-    </thead>
-    <tbody>
-  	{foreach $atividades as $atividade}
-  	  <tr>
-  	      <td>{$atividade->item_n}</td> <td>{$atividade->descricao}</td> <td>{$atividade->pontuacao}</td> <td>{$atividade->data_inicio} - {$atividade->data_fim}</td>
-  	  </tr>
-  	{/foreach}
-    </tbody>
-  </table>
-{/if}
+{extends file = 'layout.tpl'}
+{block name=titulo} Atividades Realizadas {/block}
+{block name=conteudo}
+  <ul class = "nav nav-tabs" id = "items">
+      <li class = "active" ><a href="ensino" data-toggle = "tab">Ensino</a></li>
+  	  <li><a href="orientacao" data-toggle = "tab">Orientação</a></li>
+  	  <li><a href="producao" data-toggle = "tab">Produção</a></li>
+  	  <li><a href="pesquisa" data-toggle = "tab">Pesquisa</a></li>
+  	  <li><a href="extensao" data-toggle = "tab">Extensão</a></li>
+  	  <li><a href="administracao" data-toggle = "tab">Administração</a></li>
+  	  <li><a href="outras" data-toggle = "tab">Outras</a></li>
+  </ul>
+  <div id = "error-wrapper"></div>
+  <div id="tabela-atividades-wrapper"></div>
+{/block}
+{block name=scripts}
+  <script type="text/javascript" src="static/rad-ufu/errorReporter.js"></script>
+  <script type="text/javascript" src="static/rad-ufu/ativLoader.js"></script>
+  <script type="text/javascript">
+    $('#items a:first').click();
+  </script>
+{/block}

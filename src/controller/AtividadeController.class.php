@@ -36,7 +36,7 @@ class AtividadeController {
       );
 
     $renderer = new Renderer();
-    $renderer->render('atividades', 
+    $renderer->render('tabelaDeAtividades', 
       array(
         'atividades' => array($a1,$a2,$a3)
         )
@@ -62,7 +62,7 @@ class AtividadeController {
       );
     */
     $renderer = new Renderer();
-    $renderer->render('atividades', 
+    $renderer->render('tabelaDeAtividades', 
       array(
         'atividades' => array()
         )
