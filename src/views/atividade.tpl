@@ -9,7 +9,7 @@
   <tbody>
   	{foreach $atividades as $atividade}
   	  <tr>
-  	      <td>{$atividade->item_n}</td> <td>{$atividade->descricao|escape:'html'}</td> <td>{$atividade->pontuacao}</td> <td>{$atividade->data_inicio} - {$atividade->data_fim}</td>
+  	      <td>{$atividade->item_n}</td> <td>{$atividade->descricao}</td> <td>{$atividade->pontuacao}</td> <td>{$atividade->data_inicio} - {$atividade->data_fim}</td>
   	  </tr>
   	{/foreach}
   </tbody>
