@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2012-10-13 19:46:11
+<?php /* Smarty version Smarty-3.1.12, created on 2012-10-13 22:04:33
          compiled from "/var/www/rad-ufu/src/views/items-ensino.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20318423705079d28f0b0164-92143784%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,13 +7,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3bfe36967876aa4ba0966459d44b3e484516fa91' => 
     array (
       0 => '/var/www/rad-ufu/src/views/items-ensino.tpl',
-      1 => 1350168364,
+      1 => 1350176672,
       2 => 'file',
     ),
     'c878dab7329ecdc79416d4decc91a0134320985d' => 
     array (
       0 => '/var/www/rad-ufu/src/views/layout.tpl',
-      1 => 1350168369,
+      1 => 1350171893,
       2 => 'file',
     ),
   ),
@@ -39,9 +39,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class = "container">
           <a class = "brand" href = "#">RAD/UFU</a>
           <ul class = "nav pull-right">
-            <li><a href = "#">Relatório</a></li>
-            <li><a href = "#">Ajuda</a></li>
-            <li><a href = "#">Sair</a></li>
+            <li><a href = "#"> <i class="icon-info-sign"></i> Relatório </a></li>
+            <li><a href = "#"> <i class="icon-question-sign"></i> Ajuda</a></li>
+            <li><a href = "#"> <i class="icon-share"></i> Sair</a></li>
             </ul>
         </div>
       </div>
@@ -49,13 +49,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
    <div class = "container" style = "padding-top: 10px;">
      
   <ul class = "nav nav-tabs" id = "items">
-  	<li class = "active" ><a href="#ensino" data-toggle = "tab">Ensino</a></li>
-  	<li><a href="#orientacao" data-toggle = "tab">Orientação</a></li>
-  	<li><a href="#producao" data-toggle = "tab">Produção</a></li>
-  	<li><a href="#pesquisa" data-toggle = "tab">Pesquisa</a></li>
-  	<li><a href="#extensao" data-toggle = "tab">Extensão</a></li>
-  	<li><a href="#administracao" data-toggle = "tab">Administração</a></li>
-  	<li><a href="#outras" data-toggle = "tab">Outras</a></li>
+  	<li class = "active" ><a href="#ensino" data-toggle = "tab" tab = "ensino">Ensino</a></li>
+  	<li><a href="#orientacao" data-toggle = "tab" tab = "orientacao">Orientação</a></li>
+  	<li><a href="#producao" data-toggle = "tab" tab = "producao">Produção</a></li>
+  	<li><a href="#pesquisa" data-toggle = "tab" tab = "pesquisa">Pesquisa</a></li>
+  	<li><a href="#extensao" data-toggle = "tab" tab = "extensao">Extensão</a></li>
+  	<li><a href="#administracao" data-toggle = "tab" tab = "adm">Administração</a></li>
+  	<li><a href="#outras" data-toggle = "tab" tab = "outras">Outras</a></li>
   </ul>
 
   <div class = "tab-content">
@@ -72,5 +72,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
    <script type = "text/javascript" src = "static/lib/jquery/jquery-1.8.1.min.js"></script>
    <script type = "text/javascript" src = "static/lib/bootstrap/js/bootstrap.min.js"></script>
    
+  <script type="text/javascript">
+    $('a[data-toggle="tab"]').on('show', function (e) {
+      console.log(e.target);
+    })
+  </script>
+
   </body>
-</html><?php }} ?>
+</html>
+<?php }} ?>
