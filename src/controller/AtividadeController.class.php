@@ -22,7 +22,32 @@ class AtividadeController {
       );
 
     $renderer = new Renderer();
-    $renderer->render('atividade', 
+    $renderer->render('atividade_ensino', 
+      array(
+        'atividades' => array($a1,$a2)
+        )
+      );
+  }
+
+  function listaTodasAtividadesOrientacao() {
+    $a1 = new Atividade(
+      '11'
+      ,'Orientação de alunos de graduação em Estágio Supervisionado'
+      ,'4'
+      ,'13/10/2012'
+      ,'14/10/2012'
+      );
+
+    $a2 = new Atividade(
+      '12'
+      ,'Orientação de aluno PET'
+      ,'8'
+      ,'13/10/2012'
+      ,'14/10/2012'
+      );
+
+    $renderer = new Renderer();
+    $renderer->render('atividade_orientacao', 
       array(
         'atividades' => array($a1,$a2)
         )

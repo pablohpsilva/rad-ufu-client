@@ -2,14 +2,14 @@
 {block name=titulo} Items de Ensino {/block}
 {block name=conteudo}
   <ul class = "nav nav-tabs" id = "items">
-  	{block name=active-tab}
-      <li class = "active" ><a href="atividades.php?t=ensino" data-toggle = "tab">Ensino</a></li>
-  	  <li><a href="#orientacao" data-toggle = "tab">Orientação</a></li>
-  	  <li><a href="#producao" data-toggle = "tab">Produção</a></li>
-  	  <li><a href="#pesquisa" data-toggle = "tab">Pesquisa</a></li>
-  	  <li><a href="#extensao" data-toggle = "tab">Extensão</a></li>
-  	  <li><a href="#administracao" data-toggle = "tab">Administração</a></li>
-  	  <li><a href="#outras" data-toggle = "tab" tab = "outras">Outras</a></li>
+  	{block name=active_tab}
+      <li class = "active" ><a href="?t=ensino">Ensino</a></li>
+  	  <li><a href="?t=orientacao">Orientação</a></li>
+  	  <li><a href="?t=producao">Produção</a></li>
+  	  <li><a href="?t=pesquisa">Pesquisa</a></li>
+  	  <li><a href="?t=extensao">Extensão</a></li>
+  	  <li><a href="?t=administracao">Administração</a></li>
+  	  <li><a href="?t=outras">Outras</a></li>
     {/block}
   </ul>
   {block name=tabela}{/block}
