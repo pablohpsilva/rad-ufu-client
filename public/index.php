@@ -1,5 +1,3 @@
 <?php
-  require_once(__DIR__.'/../src/renderer/Renderer.class.php');
-  $r = new Renderer();
-  $r->render('layout');
+ echo '<center>login ou redirect to <a href="home.php">home<a></center>';
 ?>

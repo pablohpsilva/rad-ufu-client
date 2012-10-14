@@ -42,8 +42,9 @@ class AtividadeController {
         )
       );
   }
-/*
+
   function listaTodasAtividadesOrientacao() {
+    /*
     $a1 = new Atividade(
       '11'
       ,'Orientação de alunos de graduação em Estágio Supervisionado'
@@ -66,7 +67,9 @@ class AtividadeController {
         'atividades' => array($a1,$a2)
         )
       );
+     */
+    echo 'No momento não existem atividades de orientação';
   }
- */
+
 }
 ?>

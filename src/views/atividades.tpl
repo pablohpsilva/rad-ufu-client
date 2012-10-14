@@ -2,25 +2,21 @@
 {block name=titulo} Items de Ensino {/block}
 {block name=conteudo}
   <ul class = "nav nav-tabs" id = "items">
-  	{block name=active_tab}
-      <li class = "active" ><a href="?t=ensino">Ensino</a></li>
-  	  <li><a href="?t=orientacao">Orientação</a></li>
-  	  <li><a href="?t=producao">Produção</a></li>
-  	  <li><a href="?t=pesquisa">Pesquisa</a></li>
-  	  <li><a href="?t=extensao">Extensão</a></li>
-  	  <li><a href="?t=administracao">Administração</a></li>
-  	  <li><a href="?t=outras">Outras</a></li>
-    {/block}
-  </ul>
-  {block name=tabela}{/block}
-{*
-  <div class = "tab-content">
-  	<div class = "tab-pane active" id = "ensino">{block name=atividades_ensino}{/block}</div>
-  	<div class = "tab-pane" id = "orientacao">ajax_geraview_atividades_orientacao</div>
-  	<div class = "tab-pane" id = "producao">ajax_geraview_atividades_producao</div>
-  	<div class = "tab-pane" id = "pesquisa">ajax_geraview_atividades_pesquisa</div>
-  	<div class = "tab-pane" id = "extensao">ajax_geraview_atividades_extensao</div>
-  	<div class = "tab-pane" id = "administracao">ajax_geraview_atividades_administracao</div>
-  	<div class = "tab-pane" id = "outras">ajax_geraview_atividades_outras</div>
-  </div> *}
+      <li class = "active" ><a href="ensino" data-toggle = "tab">Ensino</a></li>
+  	  <li><a href="orientacao" data-toggle = "tab">Orientação</a></li>
+  	  <li><a href="producao" data-toggle = "tab">Produção</a></li>
+  	  <li><a href="pesquisa" data-toggle = "tab">Pesquisa</a></li>
+  	  <li><a href="extensao" data-toggle = "tab">Extensão</a></li>
+  	  <li><a href="administracao" data-toggle = "tab">Administração</a></li>
+  	  <li><a href="outras" data-toggle = "tab">Outras</a></li>
+ </ul>
+ <div id = "error-wrapper"></div>
+ <div id="tabela-atividades-wrapper"></div>
+{/block}
+{block name=scripts}
+<script type="text/javascript" src="static/rad-ufu/errorReporter.js"></script>
+<script type="text/javascript" src="static/rad-ufu/ativLoader.js"></script>
+<script type="text/javascript">
+  $('#items a:first').click();
+</script>
 {/block}

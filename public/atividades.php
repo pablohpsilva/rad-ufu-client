@@ -6,16 +6,17 @@
   		case 'ensino':
   			$controller->listaTodasAtividadesEnsino();
   			break;
-/*
+
       case 'orientacao':
         $controller->listaTodasAtividadesOrientacao();
         break;
- */  		
+  		
   		default:
   			header("HTTP/1.0 404 Not Found");
   			break;
   	}
   } else {
-  	$controller->listaTodasAtividadesEnsino();
+  	header("HTTP/1.0 404 Not Found");
+    exit();
   }
 ?>

@@ -1,5 +1,5 @@
-{extends file = 'atividades.tpl'}
-{block name=tabela}
+{*extends file = 'atividades.tpl'*}
+{*block name=tabela*}
 <table class = "table table-hover">
   <thead>
     <tr>
@@ -14,4 +14,4 @@
   	{/foreach}
   </tbody>
 </table>
-{/block}
+{*/block*}
