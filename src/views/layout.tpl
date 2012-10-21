@@ -20,7 +20,7 @@
             <li><a href = "atividades.php"> <i class="icon-list"></i> Atividades </a></li>
             <li><a href = "relatorio.php"> <i class="icon-info-sign"></i> Relatório </a></li>
             <li><a href = "ajuda.php"> <i class="icon-question-sign"></i> Ajuda</a></li>
-            <li><a href = "#"> <i class="icon-share"></i> Sair</a></li>
+            <li><a href = "sair.php"> <i class="icon-share"></i> Sair</a></li>
             </ul>
           </div>
           </div>
