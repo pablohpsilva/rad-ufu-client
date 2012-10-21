@@ -15,11 +15,11 @@
         <div class = "container">
           <div class="row">
             <div class="span10 offset1">
-          <a class = "brand" href = "home.php">RAD/UFU</a>
+          <a class = "brand" href = "inicio.php">RAD/UFU</a>
           <ul class = "nav pull-right">
             <li><a href = "atividades.php"> <i class="icon-list"></i> Atividades </a></li>
-            <li><a href = "#"> <i class="icon-info-sign"></i> Relatório </a></li>
-            <li><a href = "#"> <i class="icon-question-sign"></i> Ajuda</a></li>
+            <li><a href = "relatorio.php"> <i class="icon-info-sign"></i> Relatório </a></li>
+            <li><a href = "ajuda.php"> <i class="icon-question-sign"></i> Ajuda</a></li>
             <li><a href = "#"> <i class="icon-share"></i> Sair</a></li>
             </ul>
           </div>
@@ -31,6 +31,7 @@
    <div class = "container" style = "padding-top: 10px;">
     <div class="row">
       <div class="span10 offset1">
+        {block name=navigation}{/block}
         {block name=conteudo}Hello Smarty!{/block}        
       </div>
     </div>

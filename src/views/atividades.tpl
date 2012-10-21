@@ -1,5 +1,11 @@
 {extends file = 'layout.tpl'}
 {block name=titulo} Atividades Realizadas {/block}
+{block name=navigation}
+  <ul class="breadcrumb">
+    <li><a href="inicio.php">Início</a> <span class="divider">></span></li>
+        <li class="active">Atividades</li>
+   </ul>
+{/block}
 {block name=conteudo}
   <ul class = "nav nav-tabs" id = "items">
       <li class = "active" ><a href="ensino" data-toggle = "tab">Ensino</a></li>
@@ -17,6 +23,7 @@
   <script type="text/javascript" src="static/rad-ufu/errorReporter.js"></script>
   <script type="text/javascript" src="static/rad-ufu/ativLoader.js"></script>
   <script type="text/javascript">
+    //dispara ajax para atividades de ensino
     $('#items a:first').click();
   </script>
 {/block}
