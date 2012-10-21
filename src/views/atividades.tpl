@@ -7,6 +7,16 @@
    </ul>
 {/block}
 {block name=conteudo}
+  <div class="btn-group pull-right">
+      <button class="btn" data-placement="top" rel="tooltip" 
+        data-original-title="Inserir Nova atividade">
+          <i class="icon-plus"></i>
+      </button>
+      <button class="btn disabled" data-placement="top" rel="tooltip"
+        data-original-title="Remover atividade">
+          <i class="icon-minus"></i>
+      </button>
+  </div>
   <ul class = "nav nav-tabs" id = "items">
       <li class = "active" ><a href="ensino" data-toggle = "tab">Ensino</a></li>
   	  <li><a href="orientacao" data-toggle = "tab">Orientação</a></li>
@@ -25,5 +35,6 @@
   <script type="text/javascript">
     //dispara ajax para atividades de ensino
     $('#items a:first').click();
+    $('[rel=tooltip]').tooltip();
   </script>
 {/block}
