@@ -1,3 +1,3 @@
 <?php
- echo '<center>login ou redirect to <a href="home.php">home<a></center>';
+ echo '<center>login ou redirect to <a href="inicio.php">home<a></center>';
 ?>
