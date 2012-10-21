@@ -9,7 +9,7 @@
 {block name=conteudo}
   <div class="btn-group pull-right">
       <button class="btn" data-placement="top" rel="tooltip" 
-        data-original-title="Inserir Nova atividade">
+        data-original-title="Inserir atividade">
           <i class="icon-plus"></i>
       </button>
       <button class="btn disabled" data-placement="top" rel="tooltip"
