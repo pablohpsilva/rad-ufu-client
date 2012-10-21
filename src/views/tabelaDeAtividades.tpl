@@ -1,9 +1,11 @@
 {if empty($atividades)}
-  <div class = "row">
-    <div class = "alert alert-block span6 offset3">
+  {*
+   * renderiza aviso
+   * (as mensagens de erro são geradas pelo errorReporter.js)
+   *}
+    <div class = "alert alert-block span5 offset2">
       <p align = "center">Não existem atividades deste tipo cadastradas</p>
     </div>
-  </div>
 {else}
   <table class = "table table-hover">
     <thead>

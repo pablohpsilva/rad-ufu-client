@@ -30,6 +30,8 @@ class Renderer {
       $this->_smarty->assign($key, $value);  
     }  
   
+    /*clear the cache*/
+    $this->_smarty->clearAllCache();
     $this->_smarty->display($template . '.tpl');  
   }  
 }
