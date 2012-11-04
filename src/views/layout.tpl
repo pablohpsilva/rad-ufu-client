@@ -32,7 +32,7 @@
     <div class="row">
       <div class="span10 offset1">
         {block name=navigation}{/block}
-        {block name=conteudo}Hello Smarty!{/block}        
+        {block name=conteudo} Hello Smarty! {/block}        
       </div>
     </div>
   </div>

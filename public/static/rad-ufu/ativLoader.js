@@ -1,6 +1,9 @@
 $('#items a').click(function (e) {
+  
   e.preventDefault();
+  
   atividade = $(this).attr('href');
+  
   $.ajax({
 
     url: "getAtividades.php?",
