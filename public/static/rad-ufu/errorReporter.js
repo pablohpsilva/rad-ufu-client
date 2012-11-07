@@ -14,7 +14,7 @@ var errorReporter = (function(){
             '×' +
           '</button>' +
           '<p align = "center">' +
-            '<strong>Erro ' + jqXHR.status + ':</strong> ' + msg +
+            '<strong>- Erro ' + jqXHR.status + ' -</strong><br/> ' + msg +
           '</p>' +
         '</div>';
 
