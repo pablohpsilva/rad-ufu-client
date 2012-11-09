@@ -38,7 +38,7 @@
     </form>
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn" onclick="$('#NovaAtividadeModal').modal('hide');">Cancela</a>
-    <a href="#" class="btn btn-primary" onclick="App.novaAtividade();">Ok</a>
+    <a href="#" class="btn" data-dismiss="modal">Cancela</a>
+    <a href="#" class="btn btn-primary" id="novaAtividade">Ok</a>
   </div>
 </div>

@@ -1,7 +1,6 @@
 $(function(){
-  var App = {};
 
-  App.Atividade = Backbone.Model.extend({
+  Atividade = Backbone.Model.extend({
 
     defaults : {
       item_n      : 0
@@ -17,7 +16,7 @@ $(function(){
 
   });
 
-  App.AtividadeView = Backbone.View.extend({
+  AtividadeView = Backbone.View.extend({
 
     tagName : "tr",
 
@@ -35,11 +34,11 @@ $(function(){
 
   });
 
-  App.Atividades = Backbone.Collection.extend({
-    model : App.Atividade
+  Atividades = Backbone.Collection.extend({
+    model : Atividade
   });
 
-  App.AtividadesView = Backbone.View.extend({
+  AtividadesView = Backbone.View.extend({
 
     el : $("#tabela-atividades"),
     
@@ -57,10 +56,10 @@ $(function(){
 
       //cria uma sub-view 'Atividade' para cada el da collection
       this.collection.each(function(atividadeDeEnsino) {
-        this._atividadeViews.push(new App.AtividadeView({
+        this._atividadeViews.push(new AtividadeView({
           model : atividadeDeEnsino
         }));
-      }, this);/*this is for binding*/
+      }, this);/* this is for binding */
 
       if(!($.isEmptyObject(this._atividadeViews))) {
         //append cada sub-view 'Atividade' ao elemento da view
@@ -85,14 +84,14 @@ $(function(){
         $(this.$el).empty();
       }
       
-      aV = new App.AtividadeView({model : Atividade});
+      aV = new AtividadeView({model : Atividade});
       this._atividadeViews.push(aV);
       $(this.$el).append(aV.render().$el);
     }
 
   });
 
-  var a2 = new App.Atividade({
+  var a2 = new Atividade({
     item_n : 5
    ,descricao : "Aula teórica para turmas com mais de 45 alunos na disciplina INF13"
    ,pontuacao : 4
@@ -100,8 +99,8 @@ $(function(){
    ,data_fim : "14/10/2012"
   });
 
-  App.atividades = new App.Atividades([
-    new App.Atividade({
+  atividades = new Atividades([
+    new Atividade({
       item_n : 1
      ,descricao : "Disciplina INF13: Organização de Computadores 2"
      ,pontuacao : 4
@@ -111,25 +110,31 @@ $(function(){
     a2
   ]);
 
-  var empty =  new App.Atividades();
+  var empty =  new Atividades();
 
-  App.showMe = new App.AtividadesView({collection:App.atividades});
-  App.showMe.render();
+  showMe = new AtividadesView({collection:atividades});
+  showMe.render();
 
-  App.novaAtividade = function() {
+  var novaAtividade = function() {
     var atividade;
 
-    atividade = new App.Atividade({
+    atividade = new Atividade({
       item_n : $("#itemN").val()
      ,descricao : $("#descricao").val()
      ,data_inicio : $("#dataInicio").val()
      ,data_fim : $("#dataFim").val()
     });
 
-    App.atividades.add(atividade);
+    atividades.add(atividade);
 
     $("#NovaAtividadeModal").modal("hide");
   };
 
-  window.App = App;
+  $("#novaAtividade").click(function(e) {
+    e.preventDefault();
+
+    novaAtividade();
+
+  });
+
 });
