@@ -4,8 +4,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>{block name=titulo}Rad-UFU{/block}</title>
-    <link rel="stylesheet" href="static/lib/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/lib/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="static/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="static/lib/bootstrap/css/bootstrap-responsive.css">
+    {block name=styles}{/block}
   </head>
   
   <body style = "padding-top: 40px;">
@@ -28,7 +29,7 @@
       </div>
    </div>
    
-   <div class = "container" style = "padding-top: 10px;">
+   <div class = "container">
     <div class="row">
       <div class="span10 offset1">
         {block name=navigation}{/block}
