@@ -10,10 +10,12 @@ ul[id="items"] {
 	border-bottom: 3px solid #D3D3D3;
 }
 
+/* Mensagens de alerta*/
 div[class="alert alert-block span5 offset2"] {
 	margin-top: 10px;
 }
 
+/* Mensagens de erro */
 div[class="alert alert-error alert-block span5 offset2"] {
 	margin-top: 10px;
 }
