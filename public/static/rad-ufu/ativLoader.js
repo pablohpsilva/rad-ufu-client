@@ -7,6 +7,7 @@ $('#items a').click(function (e) {
   $.ajax({
 
     url: "getAtividades.php?",
+    //o this passa a ser o context
     context: $('#tabela-atividades-wrapper'),
     data: {t : atividade},
     type: "GET",
