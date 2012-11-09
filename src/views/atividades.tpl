@@ -2,7 +2,7 @@
 {block name=titulo} Atividades Realizadas {/block}
 
 {block name=styles}
-  <link rel="stylesheet" href="static/rad-ufu/style/atividades.css">
+  <link rel="stylesheet" href="static/rad-ufu/css/atividades.css">
 {/block}
 
 {block name=navigation}
@@ -10,7 +10,7 @@
   <ul class="breadcrumb">
     <li><a href="inicio.php">Início</a> <span class="divider">></span></li>
         <li class="active">Atividades</li>
-   </ul>
+  </ul>
 {/block}
 
 {block name=conteudo}
@@ -45,12 +45,14 @@
 {/block}
 
 {block name=scripts}
-  <script type="text/javascript" src="static/rad-ufu/errorReporter.js"></script>
-  <script type="text/javascript" src="static/rad-ufu/ativLoader.js"></script>
+  <script type="text/javascript" src="static/rad-ufu/js/errorReporter.js"></script>
+  <script type="text/javascript" src="static/rad-ufu/js/ativLoader.js"></script>
   <script type="text/javascript">
-    //dispara ajax para atividades de ensino
+    
+    /* dispara ajax para atividades de ensino */
     $('#items a:first').click();
-    //inicializa tooltips
+    
+    /* inicializa tooltips */
     $('[rel=tooltip]').tooltip();
   </script>
 {/block}
