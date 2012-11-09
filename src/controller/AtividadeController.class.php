@@ -38,7 +38,7 @@ class AtividadeController {
     $renderer = new Renderer();
     $renderer->render('tabelaDeAtividades', 
       array(
-        'atividades' => array($a1,$a2,$a3)
+        'atividades' => array($a1,$a2,$a3,$a1,$a2,$a3,$a1,$a2,$a3,$a1,$a2,$a3,$a1,$a2,$a3,$a1,$a2,$a3,$a1,$a2,$a3,$a1,$a2,$a3)
         )
       );
   }
