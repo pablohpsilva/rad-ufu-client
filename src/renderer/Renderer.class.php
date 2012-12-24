@@ -32,7 +32,7 @@ class Renderer {
   
     /*clear the cache*/
     $this->_smarty->clearAllCache();
-    $this->_smarty->display($template . '.tpl');  
+    $this->_smarty->display($template . '.tpl');
   }  
 }
 ?>

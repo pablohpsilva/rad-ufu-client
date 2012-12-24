@@ -56,7 +56,7 @@ $(function(){
 
       //cria uma sub-view 'Atividade' para cada el da collection
       this.collection.each(function(atividadeDeEnsino) {
-        this._atividadeViews.push(new AtividadeView({
+        this._atividadeViews.push(new AtividadeView( {
           model : atividadeDeEnsino
         }));
       }, this);/* this is for binding */
