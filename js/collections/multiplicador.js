@@ -6,7 +6,7 @@ define([
     ], function(Backbone, Multiplicador) {
 
         var MultiplicadorCollection = Backbone.Collection.extend({
-            model : Multiplicador;
+            model : Multiplicador
         });
 
         return MultiplicadorCollection;
