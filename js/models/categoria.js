@@ -7,12 +7,14 @@ define([
         var Categoria = Backbone.Model.extend({
 
             defaults : {
+                //id
                 nome : ""
             },
 
             validate : function(attrs) {
-                if(attrs.nome === "")
-                    return "O nome da categoria não pode ser vazio!";
+
+                if(!attrs.nome)
+                    return "nome não atribuído a categoria";
             }
 
         });
