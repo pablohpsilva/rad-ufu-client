@@ -16,7 +16,7 @@ define([
                 tipo         : null
             },
 
-            initialise : function() {
+            initialize : function() {
                 this.set("comprovantes", new ComprovanteCollection());
                 this.get("comprovantes").localStorage = new Backbone.LocalStorage("atividades/" + this.id + "/comprovantes");
                 this.get("comprovantes").fetch();
