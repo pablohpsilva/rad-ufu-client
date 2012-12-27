@@ -13,13 +13,13 @@ define([
                 inicio       : null,
                 fim          : null,
                 comprovantes : null,
-                tipo         : null,
+                tipo         : null
             },
 
             initialise : function() {
-                this.comprovantes = new ComprovanteCollection();
-                this.comprovantes.localStorage = new Backbone.LocalStorage("atividades/" + this.id + "/comprovantes");
-                this.comprovantes.fetch();
+                this.set("comprovantes", new ComprovanteCollection());
+                this.get("comprovantes").localStorage = new Backbone.LocalStorage("atividades/" + this.id + "/comprovantes");
+                this.get("comprovantes").fetch();
             },
 
             validate : function(attrs) {

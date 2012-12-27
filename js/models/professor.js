@@ -17,9 +17,9 @@ define([
             },
 
             initialize : function() {
-                this.atividades = new AtividadeCollection();
-                this.atividades.localStorage = new Backbone.LocalStorage("professores/" + this.id + "/atividades");
-                this.atividades.fetch();
+                this.set("atividades", new AtividadeCollection());
+                this.get("atividades").localStorage = new Backbone.LocalStorage("professores/" + this.id + "/atividades");
+                this.get("atividades").fetch();
             },
 
             validate : function(attrs) {

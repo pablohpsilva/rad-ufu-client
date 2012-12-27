@@ -19,9 +19,9 @@ define([
             },
 
             initialize : function() {
-                this.multiplicadores = new MultiplicadorCollection();
-                this.multiplicadores.localStorage = new Backbone.LocalStorage("tipos/" + this.id + "/multiplicadores");
-                this.multiplicadores.fetch();
+                this.set("multiplicadores", new MultiplicadorCollection());
+                this.get("multiplicadores").localStorage = new Backbone.LocalStorage("tipos/" + this.id + "/multiplicadores");
+                this.get("multiplicadores").fetch();
             },
 
             validate : function(attrs) {
