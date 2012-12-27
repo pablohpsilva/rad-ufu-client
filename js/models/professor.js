@@ -1,6 +1,6 @@
 define([
 
-    "backbone",
+    "backbone.localStorage",
     "collections/atividade"
 
     ], function(Backbone, AtividadeCollection) {
@@ -12,13 +12,13 @@ define([
                 nome       : "",
                 login      : "",
                 senha      : "",
-                siape      : ""
+                siape      : "",
                 atividades : null
             },
 
             initialize : function() {
                 this.atividades = new AtividadeCollection();
-                this.atividades.localStorage("professores/" + this.id + "/atividades");
+                this.atividades.localStorage = new Backbone.LocalStorage("professores/" + this.id + "/atividades");
                 this.atividades.fetch();
             },
 

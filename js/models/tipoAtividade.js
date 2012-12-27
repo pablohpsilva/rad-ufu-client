@@ -1,6 +1,6 @@
 define([
 
-    "backbone",
+    "backbone.localStorage",
     "collections/multiplicador"
 
     ], function(Backbone, MultiplicadorCollection) {
@@ -20,7 +20,7 @@ define([
 
             initialize : function() {
                 this.multiplicadores = new MultiplicadorCollection();
-                this.multiplicadores.localStorage("tipos/" + this.id + "/multiplicadores");
+                this.multiplicadores.localStorage = new Backbone.LocalStorage("tipos/" + this.id + "/multiplicadores");
                 this.multiplicadores.fetch();
             },
 

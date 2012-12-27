@@ -1,6 +1,6 @@
 define([
 
-    "backbone",
+    "backbone.localStorage",
     "collections/comprovante"
 
     ], function(Backbone, ComprovanteCollection) {
@@ -17,7 +17,7 @@ define([
 
             initialise : function() {
                 this.comprovantes = new ComprovanteCollection();
-                this.comprovantes.localStorage("atividades/" + this.id + "/comprovantes");
+                this.comprovantes.localStorage = new Backbone.LocalStorage("atividades/" + this.id + "/comprovantes");
                 this.comprovantes.fetch();
             },
 
