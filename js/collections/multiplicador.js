@@ -1,12 +1,12 @@
 define([
 
     "backbone",
-    "model/comprovante"
+    "models/multiplicador"
 
-    ], function(Backbone, Comprovante) {
+    ], function(Backbone, Multiplicador) {
 
         var MultiplicadorCollection = Backbone.Collection.extend({
-            model : Comprovante
+            model : Multiplicador;
         });
 
         return MultiplicadorCollection;
