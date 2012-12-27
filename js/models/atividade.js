@@ -15,9 +15,9 @@ define([
             },
 
             validate : function(attrs){
-                if(!attrs.inicio || !attrs.fim)
+                if(attrs.inicio === null|| attrs.fim === null)
                     return "data de início ou fim não atribuídas a atividade";
-                if(!attrs.comprovante)
+                if(attrs.comprovante === null)
                     return "comprovante não anexado a atividade";
             }
 

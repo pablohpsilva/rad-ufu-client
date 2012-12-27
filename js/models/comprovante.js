@@ -12,7 +12,7 @@ define([
             },
 
             validate : function(attrs) {
-                if(!attrs.arquivo)
+                if(attrs.arquivo === "")
                     return "arquivo não atribuído ao comprovante";
             }
 

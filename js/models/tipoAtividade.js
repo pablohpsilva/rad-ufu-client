@@ -19,13 +19,13 @@ define([
 
             validate : function(attrs) {
 
-                if(!attrs.codigo)
+                if(attrs.codigo === 0)
                     return "código não atribuído ao tipo ou código igual a 0";
-                if(!attrs.categoria)
+                if(attrs.categoria === null)
                     return "categoría não a atribuída ao tipo";
-                if(!attrs.descricao)
+                if(attrs.descricao === "")
                     return "descrição não atribuída ao tipo";
-                if(!attrs.pontuacao)
+                if(attrs.pontuacao === 0)
                     return "pontuação não atribuída ao tipo ou pontuação igual a 0";
 
                 /*

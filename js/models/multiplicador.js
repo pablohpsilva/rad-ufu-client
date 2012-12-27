@@ -15,9 +15,9 @@ define([
 
             validate : function(attrs) {
 
-                if(!attrs.nome)
+                if(attrs.nome === "")
                     return "nome não atribuído ao multiplicador";
-                if(!attrs.valor)
+                if(attrs.valor === 0)
                     return "valor não atribuído ao multiplicador ou valor igaul a 0";
             }
 
