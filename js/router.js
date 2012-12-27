@@ -30,10 +30,9 @@ define([
                     cat;
 
                 categorias.fetch();
-
                 cat = encodeURIComponent(categorias.at(0).get("nome").toLowerCase());
 
-                router.navigate("atividades/" + cat, {trigger:true, replace:true});
+                router.navigate("#/atividades/" + cat, {trigger:true, replace:true});
             });
 
             router.on("route:listarAtividades", function(categoria){

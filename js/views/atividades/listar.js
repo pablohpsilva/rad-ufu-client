@@ -3,10 +3,10 @@ define([
     "jquery",
     "underscore",
     "backbone",
-    "../../../components/require/text!templates/atividades/listar.html",
-    "collections/categoria"
+    "views/categorias/tabs",
+    "../../../components/require/text!templates/atividades/lista.html"
 
-    ], function($, _, Backbone, listarAtividadesTpl, CategoriaCollection) {
+    ], function($, _, Backbone, CategoriasTabsView, listarAtividadesTpl) {
 
         var AtividadesListView = Backbone.View.extend({
 
@@ -14,19 +14,12 @@ define([
 
             render : function(catSelecionada) {
 
-                categorias = new CategoriaCollection();
+                var catTabView = new CategoriasTabsView();
 
-                categorias.fetch();
+                this.$el.html(_.template(listarAtividadesTpl));
 
-                var data = {
-                    categorias  : categorias,
-                    selecionada : decodeURIComponent(catSelecionada)
-                };
-
-                var compiled = _.template(listarAtividadesTpl, data);
-
-                //this.$el.empty();
-                this.$el.html(compiled);
+                catTabView.setElement($("#categorias"));
+                catTabView.render();
 
                 return this;
 
