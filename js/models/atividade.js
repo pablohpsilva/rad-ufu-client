@@ -13,6 +13,7 @@ define([
                 inicio       : null,
                 fim          : null,
                 comprovantes : null,
+                tipo         : null,
             },
 
             initialise : function() {
@@ -26,6 +27,8 @@ define([
                     return "data de início ou fim não atribuídas a atividade";
                 if(attrs.comprovante === null)
                     return "comprovante não anexado a atividade";
+                if(attrs.tipo === null)
+                    return "atividade sem tipo";
             }
 
         });
