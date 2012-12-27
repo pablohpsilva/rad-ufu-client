@@ -1,8 +1,9 @@
 define([
 
-    "backbone"
+    "backbone",
+    "collections/comprovante"
 
-    ], function(Backbone) {
+    ], function(Backbone, ComprovanteCollection) {
 
         var Atividade = Backbone.Model.extend({
 
