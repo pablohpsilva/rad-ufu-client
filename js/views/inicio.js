@@ -9,11 +9,8 @@ define([
 
         var InicioView = Backbone.View.extend({
 
-            el : $("#content"),
-
             render : function() {
 
-                //this.$el.empty();
                 this.$el.html(_.template(inicioTpl));
 
                 return this;

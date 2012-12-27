@@ -41,6 +41,6 @@ require([
         categorias.create({id:3, nome:"Produção"});
         categorias.create({id:4, nome:"Pesquisa"});
 
-        App.init();
+        new App.init();
 
 });

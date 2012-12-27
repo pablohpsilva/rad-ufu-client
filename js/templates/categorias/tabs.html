@@ -1,0 +1,8 @@
+<% _.each(categorias.slice(), function(c) {
+  var cNome = c.get("nome"); %>
+
+  <li <% if (cNome.toLowerCase() === selecionada.toLowerCase()) print('class="active"')%> >
+    <a href="#/atividades/<%= cNome.toLowerCase() %>"> <%= cNome %> </a>
+  </li>
+
+<% });%>

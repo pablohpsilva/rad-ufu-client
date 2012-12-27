@@ -4,14 +4,9 @@ define([
 
     ], function(Router) {
 
-        var init = function() {
-
-            Router.init();
-
-        };
-
         return {
-            init : init
+            init : function() {
+                new Router();
+            }
         };
-
 });

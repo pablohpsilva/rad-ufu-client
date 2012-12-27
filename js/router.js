@@ -1,59 +1,57 @@
 define([
 
     "backbone",
-    "views/atividades/listar",
-    "views/inicio",
-    "collections/categoria"
+    "collections/categoria",
+    "views/app"
 
-    ], function(Backbone, AtividadesListView, InicioView, CategoriaCollection) {
+    ], function(Backbone, CategoriaCollection, AppView) {
 
         var AppRouter = Backbone.Router.extend({
 
+            appView : new AppView(),
+
             routes : {
+
+                "atividades/:categoria" : "atividades",
                 "atividades"            : "primeiraCategoria",
-                "atividades/:categoria" : "listarAtividades",
                 "inicio"                : "paginaInicial",
                 "*actions"              : "defaultAction"
+            },
+
+            initialize : function() {
+
+                this.on("route:atividades", function(categoria){
+                    this.appView.trigger("view:atividades", categoria);
+                });
+
+                /*
+                * Lista as atividades da primeira categoria na collection
+                */
+                this.on("route:primeiraCategoria", function(){
+                    var cat, categorias = new CategoriaCollection();
+
+                    categorias.fetch();
+                    cat = encodeURIComponent(categorias.at(0).get("nome").toLowerCase());
+
+                    this.navigate("#/atividades/" + cat, {trigger:true, replace:true});
+                });
+
+                this.on("route:paginaInicial", function(){
+                    this.appView.trigger("view:inicio");
+                });
+
+                this.on("route:defaultAction", function(actions){
+                    if (!actions) this.navigate("#/inicio");
+
+                    console.log('No route:', actions);
+                });
+
+                this.appView.render();
+                Backbone.history.start();
             }
 
         });
 
-        var init = function() {
-
-            var router = new AppRouter();
-
-            /*
-             * Lista as atividades da primeira categoria na collection
-             */
-            router.on("route:primeiraCategoria", function(){
-                var categorias = new CategoriaCollection(),
-                    cat;
-
-                categorias.fetch();
-                cat = encodeURIComponent(categorias.at(0).get("nome").toLowerCase());
-
-                router.navigate("#/atividades/" + cat, {trigger:true, replace:true});
-            });
-
-            router.on("route:listarAtividades", function(categoria){
-                var view = new AtividadesListView();
-                view.render(categoria);
-            });
-
-            router.on("route:paginaInicial", function(){
-                var view = new InicioView();
-                view.render();
-            })
-
-            router.on("route:defaultAction", function(actions){
-                console.log('No route:', actions);
-            });
-
-            Backbone.history.start();
-        }
-
-        return {
-            init : init
-        };
+        return AppRouter;
 
 });
