@@ -8,11 +8,11 @@ define([
 
             defaults : {
                 //id
-                nome  : "",
-                login : "",
-                senha : "",
-                siape : ""
-                //,atividades?
+                nome       : "",
+                login      : "",
+                senha      : "",
+                siape      : ""
+                atividades : null
             },
 
             validate : function(attrs) {
