@@ -9,11 +9,11 @@ define([
 
             defaults : {
                 //id
-                nome       : "",
-                login      : "",
-                senha      : "",
-                siape      : "",
-                atividades : null
+                nome         : "",
+                login        : "",
+                senha        : "",
+                siape        : "",
+                atividades   : null
             },
 
             initialize : function() {
@@ -34,5 +34,4 @@ define([
         });
 
         return Professor;
-
 });
