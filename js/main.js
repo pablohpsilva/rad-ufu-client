@@ -80,10 +80,9 @@ require([
 
         ativ.get("comprovantes").create({id:1,arquivo:"the X files"});
 
+        oak = new Professor({id:1});
+        oak.get("atividades").add(ativ);
 
-        app = App;
-        app.loggedProf = new Professor({id:1});
-        app.loggedProf.get("atividades").add(ativ);
-        app.init();
+        App.init();
 
 });
