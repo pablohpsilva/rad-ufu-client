@@ -10,7 +10,7 @@ define([
 
         var CategoriaTabsView = Backbone.View.extend({
 
-            collection : new CategoriaCollection(),
+            collection : CategoriaCollection,
 
             render : function(categoria) {
 

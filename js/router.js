@@ -28,7 +28,7 @@ define([
                 * Lista as atividades da primeira categoria na collection
                 */
                 this.on("route:primeiraCategoria", function(){
-                    var cat, categorias = new CategoriaCollection();
+                    var cat, categorias = CategoriaCollection;
 
                     categorias.fetch();
                     cat = encodeURIComponent(categorias.at(0).get("nome").toLowerCase());

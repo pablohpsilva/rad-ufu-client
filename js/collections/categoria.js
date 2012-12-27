@@ -12,6 +12,7 @@ define([
 
         });
 
-        return CategoriaCollection;
+        //singleton
+        return new CategoriaCollection();
 
 });

@@ -35,7 +35,7 @@ require([
 
     ], function(App, CategoriaCollection) {
 
-        categorias = new CategoriaCollection();
+        categorias = CategoriaCollection;
         categorias.create({id:1, nome:"Ensino"});
         categorias.create({id:2, nome:"Orientação"});
         categorias.create({id:3, nome:"Produção"});
