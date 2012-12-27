@@ -4,9 +4,18 @@ define([
 
     ], function(Router) {
 
-        return {
-            init : function() {
-                new Router();
-            }
+        var App = function() {
+
+            return {
+
+                loggedProf : null,
+
+                init : function() {
+                    new Router();
+                }
+            };
         };
+
+        return new App();
+
 });
