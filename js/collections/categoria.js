@@ -1,7 +1,7 @@
 define([
 
     "backbone.localStorage",
-    "../models/categoria"
+    "models/categoria"
 
     ], function(Backbone, Categoria) {
 
