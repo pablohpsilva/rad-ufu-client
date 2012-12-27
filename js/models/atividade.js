@@ -8,13 +8,19 @@ define([
 
             dafaults : {
                 //id
-                descricao   : "",
-                inicio      : null,
-                fim         : null,
-                comprovante : null,
+                descricao    : "",
+                inicio       : null,
+                fim          : null,
+                comprovantes : null,
             },
 
-            validate : function(attrs){
+            initialise : function() {
+                this.comprovantes = new ComprovanteCollection();
+                this.comprovantes.localStorage("atividades/" + this.id + "/comprovantes");
+                this.comprovantes.fetch();
+            },
+
+            validate : function(attrs) {
                 if(attrs.inicio === null|| attrs.fim === null)
                     return "data de início ou fim não atribuídas a atividade";
                 if(attrs.comprovante === null)

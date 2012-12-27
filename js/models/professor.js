@@ -19,7 +19,8 @@ define([
             initialize : function() {
                 this.atividades = new AtividadeCollection();
                 this.atividades.localStorage("professores/" + this.id + "/atividades");
-            }
+                this.atividades.fetch();
+            },
 
             validate : function(attrs) {
 

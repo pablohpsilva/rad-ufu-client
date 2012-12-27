@@ -1,8 +1,9 @@
 define([
 
-    "backbone"
+    "backbone",
+    "collections/multiplicador"
 
-    ], function(Backbone) {
+    ], function(Backbone, MultiplicadorCollection) {
 
         var TipoAtividade = Backbone.Model.extend({
 
@@ -14,7 +15,13 @@ define([
                 pontuacao       : 0,
                 limitePontos    : 999,
                 pontuacaoRef    : 0,
-                multiplicadores : []
+                multiplicadores : null,
+            },
+
+            initialize : function() {
+                this.multiplicadores = new MultiplicadorCollection();
+                this.multiplicadores.localStorage("tipos/" + this.id + "/multiplicadores");
+                this.multiplicadores.fetch();
             },
 
             validate : function(attrs) {
