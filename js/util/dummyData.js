@@ -19,7 +19,7 @@ define([
             id:1,
             codigo:1,
             categoria: categorias.get(1),
-            descricao: "blablabla",
+            descricao: "Sacanear Aluno",
             pontuacao: 2,
             limitePontos: 80,
             pontuacaoRef: 1,
@@ -42,8 +42,8 @@ define([
         var ativ = new Ativ({
             id:1,
             descricao:"",
-            inicio: new Date(),
-            fim: new Date(),
+            inicio: "28/12/2012",
+            fim: "29/12/2012",
             tipo:tipo
         });
 
