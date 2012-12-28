@@ -1,9 +1,8 @@
 define([
 
-    "backbone",
     "models/atividade"
 
-    ], function(Backbone, Atividade) {
+    ], function(Atividade) {
 
         var AtividadeCollection = Backbone.Collection.extend({
             model : Atividade

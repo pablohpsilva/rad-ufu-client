@@ -1,9 +1,8 @@
 define([
 
-    "backbone.localStorage",
     "collections/atividade"
 
-    ], function(Backbone, AtividadeCollection) {
+    ], function(AtividadeCollection) {
 
         var Professor = Backbone.Model.extend({
 

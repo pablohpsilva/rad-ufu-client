@@ -1,11 +1,8 @@
 define([
 
-    "jquery",
-    "underscore",
-    "backbone",
     "views/atividades/entradaTabela",
 
-    ],  function($, _, Backbone, AtividadeView) {
+    ],  function(AtividadeView) {
 
         var AtividadesTabelaView = Backbone.View.extend({
 

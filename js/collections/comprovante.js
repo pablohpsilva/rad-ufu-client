@@ -1,9 +1,8 @@
 define([
 
-    "backbone",
     "models/comprovante"
 
-    ], function(Backbone, Comprovante) {
+    ], function(Comprovante) {
 
         var ComprovanteCollection = Backbone.Collection.extend({
             model : Comprovante

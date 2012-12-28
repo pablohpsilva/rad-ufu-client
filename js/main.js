@@ -8,6 +8,15 @@ require.config({
     },
 
     shim : {
+        "app" : {
+            deps : [
+                "backbone",
+                "backbone.localStorage",
+                "underscore",
+                "jquery"
+            ]
+        },
+
         "backbone.localStorage" : {
             deps    : ["backbone"],
             exports : "Backbone"

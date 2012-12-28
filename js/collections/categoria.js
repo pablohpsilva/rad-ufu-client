@@ -1,9 +1,8 @@
 define([
 
-    "backbone.localStorage",
     "models/categoria"
 
-    ], function(Backbone, Categoria) {
+    ], function(Categoria) {
 
         var CategoriaCollection = Backbone.Collection.extend({
 

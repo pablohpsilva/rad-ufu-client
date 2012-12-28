@@ -1,10 +1,9 @@
 define([
 
-    "backbone",
     "collections/categoria",
     "views/app"
 
-    ], function(Backbone, CategoriaCollection, AppView) {
+    ], function(CategoriaCollection, AppView) {
 
         var AppRouter = Backbone.Router.extend({
 

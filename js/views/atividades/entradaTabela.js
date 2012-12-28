@@ -1,12 +1,9 @@
 define([
 
-    "jquery",
-    "underscore",
-    "backbone",
     "models/atividade",
     "../../../components/require/text!templates/atividades/entradaTabela.html"
 
-    ],  function($, _, Backbone, AtividadeModel, atividadeTpl) {
+    ],  function(AtividadeModel, atividadeTpl) {
 
         var AtividadeEntradaTabelaView = Backbone.View.extend({
 

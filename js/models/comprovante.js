@@ -1,8 +1,4 @@
-define([
-
-    "backbone"
-
-    ], function(Backbone) {
+define(function() {
 
         var Comprovante = Backbone.Model.extend({
 

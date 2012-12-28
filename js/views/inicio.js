@@ -1,11 +1,8 @@
 define([
 
-    "jquery",
-    "underscore",
-    "backbone",
     "../../components/require/text!../templates/inicio.html"
 
-    ], function($, _, Backbone, inicioTpl) {
+    ], function(inicioTpl) {
 
         var InicioView = Backbone.View.extend({
 

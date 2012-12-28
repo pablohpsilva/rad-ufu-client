@@ -1,13 +1,10 @@
 define([
 
-    "jquery",
-    "underscore",
-    "backbone",
     "views/inicio",
     "views/atividades/frame",
     "../../components/require/text!../templates/app.html"
 
-    ], function($, _, Backbone, InicioView, AtividadesFrame, appTpl) {
+    ], function(InicioView, AtividadesFrame, appTpl) {
 
         var AppView = Backbone.View.extend({
 

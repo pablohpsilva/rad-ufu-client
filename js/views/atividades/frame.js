@@ -1,14 +1,11 @@
 define([
 
-    "jquery",
-    "underscore",
-    "backbone",
     "views/categorias/tabs",
     "views/atividades/tabela",
     "util/dummyData",
     "../../../components/require/text!templates/atividades/frame.html"
 
-    ], function($, _, Backbone, CategoriasTabsView, AtividadesTabelaView, ProfOak, atividadesFrameTpl) {
+    ], function(CategoriasTabsView, AtividadesTabelaView, ProfOak, atividadesFrameTpl) {
 
         var AtividadesFrame = Backbone.View.extend({
 

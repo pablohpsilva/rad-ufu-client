@@ -1,9 +1,8 @@
 define([
 
-    "backbone",
     "models/multiplicador"
 
-    ], function(Backbone, Multiplicador) {
+    ], function(Multiplicador) {
 
         var MultiplicadorCollection = Backbone.Collection.extend({
             model : Multiplicador

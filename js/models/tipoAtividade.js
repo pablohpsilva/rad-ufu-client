@@ -1,9 +1,8 @@
 define([
 
-    "backbone.localStorage",
     "collections/multiplicador"
 
-    ], function(Backbone, MultiplicadorCollection) {
+    ], function(MultiplicadorCollection) {
 
         var TipoAtividade = Backbone.Model.extend({
 

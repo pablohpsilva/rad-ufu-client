@@ -1,9 +1,8 @@
 define([
 
-    "backbone.localStorage",
     "collections/comprovante"
 
-    ], function(Backbone, ComprovanteCollection) {
+    ], function(ComprovanteCollection) {
 
         var Atividade = Backbone.Model.extend({
 

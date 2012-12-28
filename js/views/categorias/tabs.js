@@ -1,12 +1,9 @@
 define([
 
-    "jquery",
-    "underscore",
-    "backbone",
     "../../../components/require/text!templates/categorias/tabs.html",
     "collections/categoria"
 
-    ], function($, _, Backbone, tabsCategoriaTpl, CategoriaCollection) {
+    ], function(tabsCategoriaTpl, CategoriaCollection) {
 
         var CategoriaTabsView = Backbone.View.extend({
 
