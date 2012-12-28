@@ -4,21 +4,24 @@ define([
     "underscore",
     "backbone",
     "views/inicio",
-    "views/atividades/main",
+    "views/atividades/frame",
     "../../components/require/text!../templates/app.html"
 
-    ], function($, _, Backbone, InicioView, AtividadesMainView, appTpl) {
+    ], function($, _, Backbone, InicioView, AtividadesFrame, appTpl) {
 
         var AppView = Backbone.View.extend({
 
             el : $("body"),
 
             subViews : {
-                "inicio"     : new InicioView(),
-                "atividades" : new AtividadesMainView()
+                "inicio"     : null,
+                "atividades" : null
             },
 
             initialize : function() {
+
+                this.subViews.inicio     = new InicioView();
+                this.subViews.atividades = new AtividadesFrame();
 
                 this.on("view:inicio", this.renderInicio);
                 this.on("view:atividades", this.renderAtividades);
