@@ -1,37 +1,27 @@
 define([
 
-    "views/categorias/tabs",
-    "views/atividades/tabela",
-    "util/dummyData",
+    "util/evAggregator",
     "../../../components/require/text!templates/atividades/frame.html"
 
-    ], function(CategoriasTabsView, AtividadesTabelaView, ProfOak, atividadesFrameTpl) {
+    ], function(evAggregator, atividadesFrameTpl) {
 
         var AtividadesFrame = Backbone.View.extend({
 
+            aggr : evAggregator,
+
             el : $("#content"),
 
-            subViews : {
-                "tabs"   : null,
-                "tabela" : null
-            },
-
             initialize : function() {
-                this.subViews.tabs   = new CategoriasTabsView(),
-                this.subViews.tabela = new AtividadesTabelaView({collection:ProfOak.get("atividades")})
+
+                this.aggr.on("view:atividades", this.render, this);
             },
 
             render : function(catSelecionada) {
 
                 this.$el.html(_.template(atividadesFrameTpl));
 
-                this.subViews.tabs
-                    .setElement($("#categorias"))
-                    .render(catSelecionada);
-
-                this.subViews.tabela
-                    .setElement($("#atividades"))
-                    .render();
+                this.aggr.trigger("view:atividades:categorias", catSelecionada);
+                this.aggr.trigger("view:atividades:tabela");
 
                 return this;
             }

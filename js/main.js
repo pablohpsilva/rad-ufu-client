@@ -4,6 +4,8 @@ require.config({
         "jquery"       :   "../components/jquery/jquery",
         "underscore"   : "../components/underscore/underscore",
         "backbone"     : "../components/backbone/backbone",
+
+        // temporário
         "backbone.localStorage" : "../components/backbone/backbone.localStorage"
     },
 

@@ -1,13 +1,21 @@
 define([
 
+    "util/evAggregator",
     "../../components/require/text!../templates/inicio.html"
 
-    ], function(inicioTpl) {
+    ], function(evAggregator, inicioTpl) {
 
         var InicioView = Backbone.View.extend({
 
-            render : function() {
+            el : $("#content"),
 
+            aggr : evAggregator,
+
+            initialize : function() {
+                this.aggr.on("view:inicio", this.render, this);
+            },
+
+            render : function() {
                 this.$el.html(_.template(inicioTpl));
 
                 return this;

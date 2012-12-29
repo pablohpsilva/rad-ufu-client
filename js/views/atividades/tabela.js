@@ -1,10 +1,15 @@
 define([
 
-    "views/atividades/entradaTabela",
+    "util/evAggregator",
+    "views/atividades/entradaTabela"
 
-    ],  function(AtividadeView) {
+    ],  function(evAggregator, AtividadeView) {
 
         var AtividadesTabelaView = Backbone.View.extend({
+
+            el : "#atividades",
+
+            aggr : evAggregator,
 
             subViews : {
                 atividades : []
@@ -12,12 +17,17 @@ define([
 
             initialize : function() {
 
+                this.aggr.on("view:atividades:tabela", this.render, this);
+
                 this.collection.on("add", this.addOne);
                 this.collection.on("remove", this.render);
+
 
             },
 
             render : function() {
+                // view dependente de 'views/atividades/frame'
+                this.$el = $("#atividades");
 
                 this.$el.empty();
                 this.subViews.atividades = [];
