@@ -8,4 +8,4 @@ MILESTONES
 
 [*] Criar uma arquitetura para views desacopladas usando Event Aggregator
 [] Deixar views completament independentes umas das outras
-[] Criar uma arquitetura para modelos aninhados considerar Backbone.relational
+[] Criar uma arquitetura para modelos aninhados (considerar Backbone.relational, instance store)
