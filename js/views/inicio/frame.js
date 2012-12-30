@@ -9,10 +9,8 @@ define([
 
             el : $("#content"),
 
-            aggr : evAggregator,
-
             initialize : function() {
-                this.aggr.on("view:inicio", this.render, this);
+                this.listenTo(evAggregator, "view:inicio", this.render);
             },
 
             render : function() {

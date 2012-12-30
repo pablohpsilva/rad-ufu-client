@@ -7,21 +7,19 @@ define([
 
         var AtividadesFrame = Backbone.View.extend({
 
-            aggr : evAggregator,
-
             el : $("#content"),
 
             initialize : function() {
 
-                this.aggr.on("view:atividades", this.render, this);
+                this.listenTo(evAggregator, "view:atividades", this.render);
             },
 
             render : function(catSelecionada) {
 
                 this.$el.html(_.template(atividadesFrameTpl));
 
-                this.aggr.trigger("view:atividades:categorias", catSelecionada);
-                this.aggr.trigger("view:atividades:tabela");
+                evAggregator.trigger("view:atividades:categorias", catSelecionada);
+                evAggregator.trigger("view:atividades:tabela");
 
                 return this;
             }

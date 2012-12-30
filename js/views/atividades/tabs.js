@@ -10,12 +10,10 @@ define([
 
             el : "#categorias",
 
-            aggr : evAggregator,
-
             collection : CategoriaCollection,
 
             initialize : function() {
-                this.aggr.on("view:atividades:categorias", this.render, this);
+                this.listenTo(evAggregator, "view:atividades:categorias", this.render);
             },
 
             render : function(categoria) {

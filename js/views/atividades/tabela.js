@@ -3,13 +3,11 @@ define([
     "util/evAggregator",
     "views/atividades/entradaTabela"
 
-    ],  function(evAggregator, AtividadeView) {
+    ],  function(evAggregator, EntradaTabelaView) {
 
         var AtividadesTabelaView = Backbone.View.extend({
 
             el : "#atividades",
-
-            aggr : evAggregator,
 
             subViews : {
                 atividades : []
@@ -17,7 +15,7 @@ define([
 
             initialize : function() {
 
-                this.aggr.on("view:atividades:tabela", this.render, this);
+                this.listenTo(evAggregator, "view:atividades:tabela", this.render);
 
                 this.collection.on("add", this.addOne);
                 this.collection.on("remove", this.render);
@@ -34,7 +32,7 @@ define([
 
                 this.collection.each(function(atividade){
                     this.subViews.atividades
-                        .push(new AtividadeView( {model : atividade} ));
+                        .push(new EntradaTabelaView( {model : atividade} ));
                 }, this);
 
                 if (!(_.isEmpty(this.subViews.atividades))) {
@@ -57,7 +55,7 @@ define([
                 if (_.isEmpty(this.subViews.atividades))
                     this.$el.empty();
 
-                a = new AtividadeView( {model : atividade} );
+                a = new EntradaTabelaView( {model : atividade} );
                 this.subViews.atividades.push(a);
 
                 this.$el.append(a.render().$el);

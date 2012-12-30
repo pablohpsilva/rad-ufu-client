@@ -7,8 +7,6 @@ define([
 
         var AppRouter = Backbone.Router.extend({
 
-            aggr : evAggregator,
-
             routes : {
 
                 "atividades/:categoria" : "atividades",
@@ -22,12 +20,12 @@ define([
                 // Navbar renderizada apena uma vez, para navbar dinâmica
                 // é só disparar o evento especificando que tipo de navbar
                 // deve ser renderizada
-                this.aggr.trigger("view:navbar");
+                evAggregator.trigger("view:navbar");
 
                 this.on(
                     "route:atividades"
                     ,   function(categoria) {
-                            this.aggr.trigger("view:atividades", categoria);
+                            evAggregator.trigger("view:atividades", categoria);
                 });
 
 
@@ -47,7 +45,7 @@ define([
                 this.on(
                     "route:paginaInicial"
                     ,   function(){
-                            this.aggr.trigger("view:inicio");
+                            evAggregator.trigger("view:inicio");
                 });
 
                 this.on(
