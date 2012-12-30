@@ -3,9 +3,11 @@ rad-ufu
 
 Universidade Federal de Uberlandia
 
-MILESTONES
-----------
+TODO:
+-----
 
-[*] Criar uma arquitetura para views desacopladas usando Event Aggregator
-[] Deixar views completament independentes umas das outras
-[] Criar uma arquitetura para modelos aninhados (considerar Backbone.relational, instance store)
+Views:
+	[*] Criar uma arquitetura para views desacopladas usando Event Aggregator
+	[ ] Destruir corretamente a view anterior a cada mudança 
+Models:
+	[ ] Criar uma arquitetura para modelos aninhados (considerar: Backbone.relational, instance store da soundcloud)
