@@ -29,8 +29,8 @@ define([
                 });
 
 
-                // Lista as atividades da primeira categoria na collection
-
+                // Redireciona para a route de atividades da primeira categoria na
+                // collection de categorias
                 this.on(
                     "route:primeiraCategoria"
                     ,   function() {

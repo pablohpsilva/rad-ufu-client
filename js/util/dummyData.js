@@ -47,10 +47,18 @@ define([
             tipo:tipo
         });
 
+        var ativ2 = new Ativ({
+            id:2,
+            descricao:"descrição diferente",
+            inicio:"30/12/2012",
+            fim:"31/12/2012",
+            tipo:tipo
+        })
+
         ativ.get("comprovantes").create({id:1,arquivo:"the X files"});
 
         oak = new Professor({id:1});
-        oak.get("atividades").add(ativ);
+        oak.get("atividades").add([ativ,ativ2]);
 
         return oak;
 
