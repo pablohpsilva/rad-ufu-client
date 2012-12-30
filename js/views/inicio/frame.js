@@ -1,11 +1,11 @@
 define([
 
     "util/evAggregator",
-    "../../components/require/text!../templates/inicio.html"
+    "../../../components/require/text!../../templates/inicio/frame.html"
 
     ], function(evAggregator, inicioTpl) {
 
-        var InicioView = Backbone.View.extend({
+        var InicioFrame = Backbone.View.extend({
 
             el : $("#content"),
 
@@ -23,6 +23,6 @@ define([
             }
         });
 
-        return InicioView;
+        return InicioFrame;
 
 });

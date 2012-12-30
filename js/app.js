@@ -1,12 +1,12 @@
 define([
 
     "router",
-    "views/navbar",
-    "views/inicio",
+    "views/app/navbar",
+    "views/inicio/frame",
     "views/atividades/frame",
     "views/atividades/entradaTabela",
     "views/atividades/tabela",
-    "views/categorias/tabs",
+    "views/atividades/tabs",
     "util/dummyData"
 
     ], function(

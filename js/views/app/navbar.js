@@ -1,11 +1,13 @@
 define([
 
     "util/evAggregator",
-    "../../components/require/text!../templates/navbar.html"
+    "../../../components/require/text!../../templates/app/navbar.html"
 
     ], function(evAggregator, appTpl) {
 
         var NavbarView = Backbone.View.extend({
+
+            //tagName : "div",
 
             el : $("#navbar"),
 
@@ -17,6 +19,7 @@ define([
 
             render : function() {
                 this.$el.html(_.template(appTpl));
+
                 return this;
 
             },

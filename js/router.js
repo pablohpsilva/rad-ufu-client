@@ -30,9 +30,9 @@ define([
                             this.aggr.trigger("view:atividades", categoria);
                 });
 
-                /*
-                * Lista as atividades da primeira categoria na collection
-                */
+
+                // Lista as atividades da primeira categoria na collection
+
                 this.on(
                     "route:primeiraCategoria"
                     ,   function() {

@@ -1,7 +1,7 @@
 define([
 
     "util/evAggregator",
-    "../../../components/require/text!templates/categorias/tabs.html",
+    "../../../components/require/text!templates/atividades/tabs.html",
     "collections/categoria"
 
     ], function(evAggregator, tabsCategoriaTpl, CategoriaCollection) {
