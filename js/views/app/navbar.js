@@ -9,10 +9,6 @@ define([
 
             el : $("#navbar"),
 
-            initialize : function() {
-                this.listenTo(evAggregator, "view:navbar", this.render);
-            },
-
             render : function() {
                 this.$el.html(_.template(appTpl));
 

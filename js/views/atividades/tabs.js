@@ -12,17 +12,7 @@ define([
 
             collection : CategoriaCollection,
 
-            initialize : function() {
-                this.listenTo(evAggregator, "view:atividades:categorias", this.render);
-            },
-
             render : function(categoria) {
-
-                // esta view depende de 'views/atividades/frame' que cria
-                // o elemento '#categorias', por isso temos que pegar do DOM
-                // embora o Backbone tente fazer isso na hora da instanciação
-
-                this.$el = $("#categorias");
 
                 this.collection.fetch();
 

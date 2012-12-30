@@ -1,13 +1,16 @@
 define([
 
     "util/evAggregator",
-    "views/atividades/entradaTabela"
+    "views/atividades/entradaTabela",
+    "util/dummyData"
 
-    ],  function(evAggregator, EntradaTabelaView) {
+    ],  function(evAggregator, EntradaTabelaView, profOak) {
 
         var AtividadesTabelaView = Backbone.View.extend({
 
             el : "#atividades",
+
+            collection : profOak.get("atividades"),
 
             subViews : {
                 atividades : []
@@ -15,17 +18,14 @@ define([
 
             initialize : function() {
 
-                this.listenTo(evAggregator, "view:atividades:tabela", this.render);
+                this.listenTo(this.collection, "add", this.addOne, this);
+                this.listenTo(this.collection, "remove", this.render, this);
 
-                this.collection.on("add", this.addOne);
-                this.collection.on("remove", this.render);
-
+                this.on("close", this.limpaSubviews, this);
 
             },
 
             render : function() {
-                // view dependente de 'views/atividades/frame'
-                this.$el = $("#atividades");
 
                 this.$el.empty();
                 this.subViews.atividades = [];
@@ -60,6 +60,13 @@ define([
 
                 this.$el.append(a.render().$el);
             },
+
+            limpaSubviews : function() {
+
+                _(this.subViews.atividades).each(function(subview) {
+                    subview.close();
+                });
+            }
 
         });
 

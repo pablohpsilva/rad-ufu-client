@@ -9,15 +9,11 @@ define([
 
             el : $("#content"),
 
-            initialize : function() {
-                this.listenTo(evAggregator, "view:inicio", this.render);
-            },
-
             render : function() {
+
                 this.$el.html(_.template(inicioTpl));
 
                 return this;
-
             }
         });
 

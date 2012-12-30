@@ -1,27 +1,46 @@
 define([
 
     "util/evAggregator",
+    "views/atividades/tabs",
+    "views/atividades/tabela",
     "../../../components/require/text!templates/atividades/frame.html"
 
-    ], function(evAggregator, atividadesFrameTpl) {
+    ], function(evAggregator, Tabs, Tabela, atividadesFrameTpl) {
 
         var AtividadesFrame = Backbone.View.extend({
 
             el : $("#content"),
 
-            initialize : function() {
+            subViews : {
 
-                this.listenTo(evAggregator, "view:atividades", this.render);
+                tabs   : new Tabs(),
+                tabela : new Tabela()
+            },
+
+            initialize : function() {
+                this.on("close", this.limpaSubviews, this);
             },
 
             render : function(catSelecionada) {
 
                 this.$el.html(_.template(atividadesFrameTpl));
 
-                evAggregator.trigger("view:atividades:categorias", catSelecionada);
-                evAggregator.trigger("view:atividades:tabela");
+                this.subViews.tabs
+                    .setElement($("#categorias"))
+                    .render(catSelecionada);
+
+                this.subViews.tabela
+                    .setElement($("#atividades"))
+                    .render();
 
                 return this;
+            },
+
+            limpaSubviews : function() {
+
+                _.each( _(this.subViews).values(), function (subView) {
+                   subView.close();
+                });
             }
 
         });
