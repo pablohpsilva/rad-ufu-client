@@ -9,10 +9,11 @@ define([
 
             routes : {
 
-                "atividades/:categoria" : "atividades",
-                "atividades"            : "primeiraCategoria",
-                "inicio"                : "paginaInicial",
-                "*actions"              : "defaultAction"
+                "atividades/:categoria"           : "atividades",
+                "atividades/:categoria/cadastrar" : "cadastrarAtividade",
+                "atividades"                      : "primeiraCategoria",
+                "inicio"                          : "paginaInicial",
+                "*actions"                        : "defaultAction"
             },
 
             initialize : function() {
@@ -26,6 +27,12 @@ define([
                     "route:atividades"
                     ,   function(categoria) {
                             evAggregator.trigger("view:atividades", categoria);
+                });
+
+                this.on(
+                    "route:cadastrarAtividade"
+                    ,   function(categoria) {
+                            evAggregator.trigger("view:atividades:cadastro", categoria);
                 });
 
 

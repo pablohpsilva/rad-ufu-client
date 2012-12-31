@@ -7,9 +7,10 @@ define([
     "util/evAggregator",
     "views/app/navbar",
     "views/atividades/frame",
+    "views/atividades/cadastro",
     "views/inicio/frame"
 
-    ], function(evAggregator, Navbar, AtividadesFrame, InicioFrame) {
+    ], function(evAggregator, Navbar, AtividadesFrame, CadastroAtividades, InicioFrame) {
 
         var ViewManager = function() {
 
@@ -37,6 +38,13 @@ define([
                 ,   function(categoria) {
                         this.closeCurrent();
                         this.currentView = new AtividadesFrame().render(categoria);
+            }, this);
+
+            evAggregator.on(
+                "view:atividades:cadastro"
+                ,   function(categoria) {
+                        this.closeCurrent();
+                        this.currentView = new CadastroAtividades().render(categoria);
             }, this);
 
             evAggregator.on(

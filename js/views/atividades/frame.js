@@ -23,7 +23,7 @@ define([
 
             render : function(catSelecionada) {
 
-                this.$el.html(_.template(atividadesFrameTpl));
+                this.$el.html(_.template(atividadesFrameTpl, {categoria:catSelecionada}));
 
                 this.subViews.tabs
                     .setElement($("#categorias"))
@@ -33,10 +33,17 @@ define([
                     .setElement($("#atividades"))
                     .render();
 
+                // inicializa o tooltip
+                // $("[rel=\"tooltip\"]").tooltip();
+
                 return this;
             },
 
             limpaSubviews : function() {
+                // bug do bootstrap, o tooltip não é removido depois que se
+                // clica no bt, tooltip podia ser removido se o elemento for
+                // destruído
+                // $("[rel=\"tooltip\"]").tooltip("destroy");
 
                 _.each( _(this.subViews).values(), function (subView) {
                    subView.close();

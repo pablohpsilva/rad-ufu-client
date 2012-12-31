@@ -1,9 +1,10 @@
 require.config({
 
     paths : {
-        "jquery"       :   "../components/jquery/jquery",
+        "jquery"       : "../components/jquery/jquery",
         "underscore"   : "../components/underscore/underscore",
         "backbone"     : "../components/backbone/backbone",
+        "bootstrap"   : "../components/bootstrap/js/bootstrap",
 
         // temporário
         "backbone.localStorage" : "../components/backbone/backbone.localStorage"
@@ -15,8 +16,13 @@ require.config({
                 "backbone",
                 "backbone.localStorage",
                 "underscore",
-                "jquery"
+                "jquery",
+                "bootstrap"
             ]
+        },
+
+        "bootstrap" : {
+            deps : ["jquery"]
         },
 
         "backbone.localStorage" : {
