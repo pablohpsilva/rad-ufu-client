@@ -10,7 +10,9 @@ define([
 
             render : function(categoria) {
 
-                this.$el.html(_.template(cadastroAtivTpl, {categoria:categoria}));
+                this.$el.html(_.template(cadastroAtivTpl, {
+			categoria : decodeURIComponent(categoria)
+		}));
 
                 return this;
 
