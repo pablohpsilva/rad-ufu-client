@@ -30,8 +30,8 @@ define([
                     .render(catSelecionada);
 
                 this.subViews.tabela
-                    .setElement($("#atividades"))
-                    .render();
+                    .setElement($("#tabela"))
+                    .render(catSelecionada);
 
                 // inicializa o tooltip
                 // $("[rel=\"tooltip\"]").tooltip();

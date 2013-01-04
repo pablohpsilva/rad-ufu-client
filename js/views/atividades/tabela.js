@@ -2,13 +2,14 @@ define([
 
     "util/evAggregator",
     "views/atividades/entradaTabela",
-    "util/dummyData"
+    "util/dummyData",
+    "../../../components/require/text!templates/atividades/tabela.html"
 
-    ],  function(evAggregator, EntradaTabelaView, profOak) {
+    ],  function(evAggregator, EntradaTabelaView, profOak, tabelaTpl) {
 
         var AtividadesTabelaView = Backbone.View.extend({
 
-            el : "#atividades",
+            el : "#tabela",
 
             collection : profOak.get("atividades"),
 
@@ -25,20 +26,26 @@ define([
 
             },
 
-            render : function() {
+            render : function(selecionada) {
 
                 this.$el.empty();
                 this.subViews.atividades = [];
 
-                this.collection.each(function(atividade){
-                    this.subViews.atividades
-                        .push(new EntradaTabelaView( {model : atividade} ));
-                }, this);
+                _(this.collection
+                    .filter(function(a){
+                        return a.get("tipo").get("categoria").get("nome").toLowerCase() === selecionada;
+                    }))
+                    .each(function(atividade){
+                        this.subViews.atividades
+                            .push(new EntradaTabelaView( {model : atividade} ));
+                    }, this);
 
                 if (!(_.isEmpty(this.subViews.atividades))) {
 
+                    this.$el.html(_.template(tabelaTpl));
+
                     _(this.subViews.atividades).each(function(view){
-                        this.$el.append(view.render().$el);
+                        this.$el.children("tbody").append(view.render().$el);
                     }, this);
 
                 } else {
