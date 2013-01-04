@@ -18,7 +18,7 @@ define([
 
                 this.$el.html(_.template(tabsCategoriaTpl, {
                     categorias  : this.collection,
-                    selecionada : decodeURIComponent(categoria)
+                    selecionada : categoria
                 }));
 
                 return this;

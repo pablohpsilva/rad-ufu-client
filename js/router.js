@@ -26,12 +26,14 @@ define([
                 this.on(
                     "route:atividades"
                     ,   function(categoria) {
+                            categoria = decodeURIComponent(categoria);
                             evAggregator.trigger("view:atividades", categoria);
                 });
 
                 this.on(
                     "route:cadastrarAtividade"
                     ,   function(categoria) {
+                            categoria = decodeURIComponent(categoria);
                             evAggregator.trigger("view:atividades:cadastro", categoria);
                 });
 
