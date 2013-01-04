@@ -1,11 +1,13 @@
 define([
 
     "collections/categoria",
-    "util/evAggregator",
+    "views/manager"
 
-    ], function(CategoriaCollection, evAggregator) {
+    ], function(CategoriaCollection, ViewManager) {
 
         var AppRouter = Backbone.Router.extend({
+
+            viewManager : new ViewManager(),
 
             routes : {
 
@@ -20,23 +22,20 @@ define([
 
             initialize : function() {
 
-                // Navbar renderizada apena uma vez, para navbar dinâmica
-                // é só disparar o evento especificando que tipo de navbar
-                // deve ser renderizada
-                evAggregator.trigger("view:navbar");
+                this.viewManager.show("navbar", {static:true});
 
                 this.on(
                     "route:atividades"
                     ,   function(categoria) {
                             categoria = decodeURIComponent(categoria);
-                            evAggregator.trigger("view:atividades", categoria);
+                            this.viewManager.show("atividades", {model:categoria});
                 });
 
                 this.on(
                     "route:cadastrarAtividade"
                     ,   function(categoria) {
                             categoria = decodeURIComponent(categoria);
-                            evAggregator.trigger("view:atividades:cadastro", categoria);
+                            this.viewManager.show("atividades:cadastro", {model:categoria});
                 });
 
 
@@ -56,19 +55,19 @@ define([
                 this.on(
                     "route:relatorio"
                     ,   function(){
-                        evAggregator.trigger("view:relatorio");
+                        this.viewManager.show("relatorio");
                 });
 
                 this.on(
                     "route:ajuda"
                     ,   function(){
-                        evAggregator.trigger("view:ajuda");
+                        this.viewManager.show("ajuda");
                 });
 
                 this.on(
                     "route:paginaInicial"
                     ,   function(){
-                            evAggregator.trigger("view:inicio");
+                            this.viewManager.show("inicio");
                 });
 
                 this.on(

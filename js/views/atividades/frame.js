@@ -21,17 +21,17 @@ define([
                 this.on("close", this.limpaSubviews, this);
             },
 
-            render : function(catSelecionada) {
+            render : function() {
 
-                this.$el.html(_.template(atividadesFrameTpl, {categoria:catSelecionada}));
+                this.$el.html(_.template(atividadesFrameTpl, {categoria:this.model}));
 
                 this.subViews.tabs
                     .setElement($("#categorias"))
-                    .render(catSelecionada);
+                    .render(this.model);
 
                 this.subViews.tabela
                     .setElement($("#tabela"))
-                    .render(catSelecionada);
+                    .render(this.model);
 
                 // inicializa o tooltip
                 // $("[rel=\"tooltip\"]").tooltip();

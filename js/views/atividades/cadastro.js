@@ -8,11 +8,9 @@ define([
 
             el : $("#content"),
 
-            render : function(categoria) {
+            render : function() {
 
-                this.$el.html(_.template(cadastroAtivTpl, {
-			categoria : decodeURIComponent(categoria)
-		}));
+                this.$el.html(_.template(cadastroAtivTpl, {categoria:this.model}));
 
                 return this;
 
