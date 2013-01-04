@@ -1,12 +1,15 @@
 require.config({
 
+    // Development: previne contra o cache dos browsers
+    urlArgs : new Date().getTime(),
+
     paths : {
         "jquery"       : "../components/jquery/jquery",
         "underscore"   : "../components/underscore/underscore",
         "backbone"     : "../components/backbone/backbone",
         "bootstrap"   : "../components/bootstrap/js/bootstrap",
 
-        // temporário
+        // Development: armazenagem temporária dos dados
         "backbone.localStorage" : "../components/backbone/backbone.localStorage"
     },
 
