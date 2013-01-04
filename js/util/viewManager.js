@@ -9,9 +9,10 @@ define([
     "views/atividades/frame",
     "views/atividades/cadastro",
     "views/inicio/frame",
-    "views/relatorio/frame"
+    "views/relatorio/frame",
+    "views/ajuda/frame"
 
-    ], function(evAggregator, Navbar, AtividadesFrame, CadastroAtividades, InicioFrame, RelatorioFrame) {
+    ], function(evAggregator, Navbar, AtividadesFrame, CadastroAtividades, InicioFrame, RelatorioFrame, AjudaFrame) {
 
         var ViewManager = function() {
 
@@ -53,6 +54,13 @@ define([
                 ,   function() {
                         this.closeCurrent();
                         this.currentView = new RelatorioFrame().render();
+            }, this);
+
+            evAggregator.on(
+                "view:ajuda"
+                ,   function() {
+                        this.closeCurrent();
+                        this.currentView = new AjudaFrame().render();
             }, this);
 
             evAggregator.on(

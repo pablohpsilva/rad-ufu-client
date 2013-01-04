@@ -13,6 +13,7 @@ define([
                 "atividades/:categoria/cadastrar" : "cadastrarAtividade",
                 "atividades"                      : "primeiraCategoria",
                 "relatorio"                       : "relatorio",
+                "ajuda"                           : "ajuda",
                 "inicio"                          : "paginaInicial",
                 "*actions"                        : "defaultAction"
             },
@@ -56,6 +57,12 @@ define([
                     "route:relatorio"
                     ,   function(){
                         evAggregator.trigger("view:relatorio");
+                });
+
+                this.on(
+                    "route:ajuda"
+                    ,   function(){
+                        evAggregator.trigger("view:ajuda");
                 });
 
                 this.on(
