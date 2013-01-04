@@ -8,9 +8,10 @@ define([
     "views/app/navbar",
     "views/atividades/frame",
     "views/atividades/cadastro",
-    "views/inicio/frame"
+    "views/inicio/frame",
+    "views/relatorio/frame"
 
-    ], function(evAggregator, Navbar, AtividadesFrame, CadastroAtividades, InicioFrame) {
+    ], function(evAggregator, Navbar, AtividadesFrame, CadastroAtividades, InicioFrame, RelatorioFrame) {
 
         var ViewManager = function() {
 
@@ -45,6 +46,13 @@ define([
                 ,   function(categoria) {
                         this.closeCurrent();
                         this.currentView = new CadastroAtividades().render(categoria);
+            }, this);
+
+            evAggregator.on(
+                "view:relatorio"
+                ,   function() {
+                        this.closeCurrent();
+                        this.currentView = new RelatorioFrame().render();
             }, this);
 
             evAggregator.on(

@@ -12,6 +12,7 @@ define([
                 "atividades/:categoria"           : "atividades",
                 "atividades/:categoria/cadastrar" : "cadastrarAtividade",
                 "atividades"                      : "primeiraCategoria",
+                "relatorio"                       : "relatorio",
                 "inicio"                          : "paginaInicial",
                 "*actions"                        : "defaultAction"
             },
@@ -49,6 +50,12 @@ define([
                             cat = encodeURIComponent(categorias.at(0).get("nome").toLowerCase());
 
                             this.navigate("#/atividades/" + cat, {trigger:true, replace:true});
+                });
+
+                this.on(
+                    "route:relatorio"
+                    ,   function(){
+                        evAggregator.trigger("view:relatorio");
                 });
 
                 this.on(
