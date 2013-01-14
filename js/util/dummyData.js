@@ -2,7 +2,7 @@ define([
 
     "collections/categoria",
     "models/professor",
-    "models/tipoAtividade",
+    "models/tipo",
     "models/multiplicador",
     "models/comprovante",
     "models/atividade"

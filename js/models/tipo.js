@@ -4,7 +4,7 @@ define([
 
     ], function(MultiplicadorCollection) {
 
-        var TipoAtividade = Backbone.Model.extend({
+        var Tipo = Backbone.Model.extend({
 
             defaults : {
                 //id
@@ -43,6 +43,6 @@ define([
 
         });
 
-        return TipoAtividade;
+        return Tipo;
 
 });
