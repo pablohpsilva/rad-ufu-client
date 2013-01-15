@@ -25,14 +25,14 @@ define([
 
             // Destrói a view criada anteriormente, renderiza uma nova view e a
             // marca como view atual. As views são instânciadas passando 'options'
-            // como parâmetro. View estáticas (devem ser renderizdas apenas uma
-            // vez) devem fornecer '{static : true}' junto com as outras 'options'
+            // como parâmetro. Views estáticas (devem ser renderizdas apenas uma
+            // vez) devem fornecer '{once : true}' junto com as outras 'options'
             show : function(view, options) {
 
                 var args = (!options) ? {} : options;
 
-                if (args.static) {
-                    this.factory.create(view, _.omit(args, 'static')).render(); return;
+                if (args.once) {
+                    this.factory.create(view, _.omit(args, 'once')).render(); return;
                 }
 
                 if (this.currentView) this.currentView.close();

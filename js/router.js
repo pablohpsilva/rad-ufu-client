@@ -22,7 +22,7 @@ define([
 
             initialize : function() {
 
-                this.viewManager.show("navbar", {static:true});
+                this.viewManager.show("navbar", {once:true});
 
                 this.on(
                     "route:atividades"
