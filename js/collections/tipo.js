@@ -8,5 +8,5 @@ define([
             model : Tipo
         });
 
-        return TipoCollection;
+        return new TipoCollection();
 });
