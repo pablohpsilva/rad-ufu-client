@@ -2,7 +2,7 @@ define([
 
     "views/app/navbar",
     "views/atividades/frame",
-    "views/atividades/cadastro",
+    "views/atividades/cadastro/frame",
     "views/inicio/frame",
     "views/relatorio/frame",
     "views/ajuda/frame"

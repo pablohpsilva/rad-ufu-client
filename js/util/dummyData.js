@@ -1,13 +1,14 @@
 define([
 
     "collections/categoria",
+    "collections/tipo",
     "models/professor",
     "models/tipo",
     "models/multiplicador",
     "models/comprovante",
     "models/atividade"
 
-    ],  function(categoriaCollection, Professor, Tipo, Mult, Comp, Ativ) {
+    ],  function(categoriaCollection, tipoCollection, Professor, Tipo, Mult, Comp, Ativ) {
 
         var categorias = categoriaCollection;
         categorias.create({id:1, nome:"Ensino"});
@@ -30,6 +31,8 @@ define([
             limitePontos: 80,
             pontuacaoRef: 1,
         });
+
+        tipoCollection.add(ensino1);
 
         ensino1.get("multiplicadores").create({
             id:1,

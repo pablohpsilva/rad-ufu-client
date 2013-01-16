@@ -1,0 +1,18 @@
+<div class="control-group">
+  <label class="control-label" for="cat">Categoria</label>
+  <div class="controls">
+    <select id="categoria-selector">
+
+      <% _.each(categorias, function(c) {
+        var nome = c.nome.toLowerCase(); %>
+
+        <option value=<%= c.id %>
+          <% if(nome === categoria) print('selected')%> >
+          <%= c.nome %>
+        </option>
+
+      <%});%>
+
+    </select>
+  </div>
+</div>

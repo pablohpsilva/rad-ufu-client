@@ -1,0 +1,25 @@
+<div class="control-group">
+  <label class="control-label" for="itemN">Tipo</label>
+    <div class="controls">
+
+      <!-- Tipos por categoria -->
+      <select id="itemN">
+        <% _.chain(tipos)
+            .filter(function(t){
+              return t.categoria.get("nome").toLowerCase() === categoria
+                || t.categoria.get("id") == categoria;
+            })
+            .each(function(t){ %>
+            <option> <%= t.codigo %> </option>
+        <%});%>
+      </select>
+
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="descricao">Descriação</label>
+  <div class="controls">
+    <textarea class="span4" rows="3" id="descricao" placeholder="Breve descricao"></textarea>
+  </div>
+</div>
