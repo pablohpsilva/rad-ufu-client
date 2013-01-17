@@ -28,7 +28,7 @@ define([
                 this.$el.html(_.template(cadastroAtivFrameTpl, data));
 
                 this.subViews.categorias
-                    .setElement($("#categorias"))
+                    .setElement($("#categorias-block"))
                     .render({
                         categoria  : this.model
                     });
@@ -44,7 +44,7 @@ define([
                 $("#tipos").empty();
 
                 this.subViews.tipos
-                    .setElement($("#tipos"))
+                    .setElement($("#tipos-block"))
                     .render({
                         categoria : categoria
                     });
