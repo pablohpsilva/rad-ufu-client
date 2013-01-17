@@ -16,6 +16,7 @@ define([
             },
 
             initialize : function() {
+                this.on("close", this.limpaSubviews, this);
                 this.listenTo(this.subViews.categorias, "change", this.renderTipos);
             },
 
@@ -45,9 +46,7 @@ define([
 
                 this.subViews.tipos
                     .setElement($("#tipos-block"))
-                    .render({
-                        categoria : categoria
-                    });
+                    .render(categoria);
             },
 
             limpaSubviews : function() {
