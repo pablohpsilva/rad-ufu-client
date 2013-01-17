@@ -3,10 +3,10 @@
     <div class="controls">
 
       <!-- Tipos por categoria -->
-      <select id="itemN">
+      <select id="tipo-selector">
 
         <%_.each(tipos, function(t){ %>
-          <option> <%= t.codigo %> </option>
+          <option value="<%= t.codigo %>"> <%= t.codigo %> </option>
         <%});%>
 
       </select>
@@ -14,14 +14,4 @@
   </div>
 </div>
 
-<div id="descricao-block"></div>
-
-<div id="mults-block"></div>
-
-
-<div class="control-group">
-  <label class="control-label" for="descricao">Descriação</label>
-  <div class="controls">
-    <textarea class="span4" rows="3" id="descricao" placeholder="Breve descricao"></textarea>
-  </div>
-</div>
+<span id="descricao-block"></span>
