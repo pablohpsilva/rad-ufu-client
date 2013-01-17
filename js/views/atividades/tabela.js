@@ -9,8 +9,6 @@ define([
 
         var AtividadesTabelaView = Backbone.View.extend({
 
-            el : "#tabela",
-
             collection : profOak.get("atividades"),
 
             subViews : {

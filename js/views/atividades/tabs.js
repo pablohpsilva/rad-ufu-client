@@ -8,8 +8,6 @@ define([
 
         var CategoriaTabsView = Backbone.View.extend({
 
-            el : "#categorias",
-
             collection : CategoriaCollection,
 
             render : function(categoria) {

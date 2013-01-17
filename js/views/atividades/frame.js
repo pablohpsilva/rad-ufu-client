@@ -1,11 +1,10 @@
 define([
 
-    "util/evAggregator",
     "views/atividades/tabs",
     "views/atividades/tabela",
     "../../../components/require/text!templates/atividades/frame.html"
 
-    ], function(evAggregator, Tabs, Tabela, atividadesFrameTpl) {
+    ], function(TabsView, TabelaView, atividadesFrameTpl) {
 
         var AtividadesFrame = Backbone.View.extend({
 
@@ -13,8 +12,8 @@ define([
 
             subViews : {
 
-                tabs   : new Tabs(),
-                tabela : new Tabela()
+                tabs   : new TabsView(),
+                tabela : new TabelaView()
             },
 
             initialize : function() {
@@ -26,11 +25,11 @@ define([
                 this.$el.html(_.template(atividadesFrameTpl, {categoria:this.model}));
 
                 this.subViews.tabs
-                    .setElement($("#categorias"))
+                    .setElement($("#categorias-block"))
                     .render(this.model);
 
                 this.subViews.tabela
-                    .setElement($("#tabela"))
+                    .setElement($("#tabela-block"))
                     .render(this.model);
 
                 // inicializa o tooltip
