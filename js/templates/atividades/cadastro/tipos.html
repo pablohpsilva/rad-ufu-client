@@ -4,18 +4,19 @@
 
       <!-- Tipos por categoria -->
       <select id="itemN">
-        <% _.chain(tipos)
-            .filter(function(t){
-              return t.categoria.get("nome").toLowerCase() === categoria
-                || t.categoria.get("id") == categoria;
-            })
-            .each(function(t){ %>
-            <option> <%= t.codigo %> </option>
+
+        <%_.each(tipos, function(t){ %>
+          <option> <%= t.codigo %> </option>
         <%});%>
+
       </select>
 
   </div>
 </div>
+
+<div id="descricao-block"></div>
+
+<div id="mults-block"></div>
 
 
 <div class="control-group">
