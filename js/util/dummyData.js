@@ -28,8 +28,18 @@ define([
                       +"mesmo. Turmas adicionais da mesma disciplina ministradas pelo docente serão"
                       +"pontuadas nos itens 02 e 03.",
             pontuacao: 10,
-            limitePontos: 80,
-            pontuacaoRef: 1,
+            limitePontos: 0,
+            pontuacaoRef: 0,
+        });
+
+        tipoCollection.create({
+            //id:1,
+            codigo:2,
+            categoria: categorias.get(1),
+            descricao: "Aula teórica ou prática para turmas adicionais da mesma disciplina.",
+            pontuacao: 8,
+            limitePontos: 0,
+            pontuacaoRef: 0,
         });
 
         tipoCollection.add(ensino1);
