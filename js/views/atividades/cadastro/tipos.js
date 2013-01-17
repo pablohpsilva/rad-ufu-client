@@ -12,13 +12,17 @@ define([
                 descricao : new DescricaoView()
             },
 
+            events : {
+                "change #tipo-selector" : "tipoSelected"
+            },
+
             initialize : function() {
                 this.on("close", this.limpaSubviews, this);
                 this.on("tipoSelected", this.tipoSelected, this);
             },
 
             tipoSelected : function() {
-                var tipoCodigo = $("#categoria-selector").val().toLowerCase();
+                var tipoCodigo = $("#tipo-selector").val().toLowerCase();
                 this.renderDescricao(tipoCodigo);
             },
 
