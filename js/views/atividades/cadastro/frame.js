@@ -2,9 +2,10 @@ define([
 
     "views/atividades/cadastro/categorias",
     "views/atividades/cadastro/tipos",
+    "views/alert",
     "../../../../components/require/text!templates/atividades/cadastro/frame.html",
 
-    ], function(CategoriasView, TiposView, cadastroAtivFrameTpl) {
+    ], function(CategoriasView, TiposView, AlertView, cadastroAtivFrameTpl) {
 
         var CadastroAtividadeFrame = Backbone.View.extend({
 
@@ -12,25 +13,35 @@ define([
 
             subViews : {
                 categorias : new CategoriasView(),
-                tipos      : new TiposView()
+                tipos      : new TiposView(),
+                err        : new AlertView()
             },
 
-            initialize : function() {
+            initialize : function () {
                 this.on("close", this.limpaSubviews, this);
 
-                this.listenTo(this.subViews.tipos, "close", function() {
-                    console.log(this);
-                    this.$("#dates-block").hide(); // TODO: exibir um warning
-                }, this);
+                this.listenTo(this.subViews.tipos, "close", this.catSemTipo, this);
 
-                this.listenTo(this.subViews.tipos, "tipoSelected", function() {
-                    this.$("#dates-block").show();
-                }, this);
+                this.listenTo(this.subViews.tipos, "tipoSelected", this.catComTipo, this);
 
                 this.listenTo(this.subViews.categorias, "change", this.renderTipos);
             },
 
-            render : function() {
+            catSemTipo : function () {
+                this.$("#dates-controls-block").hide();
+                this.subViews.err
+                    .setElement($("#err"))
+                    .render({
+                    msg  : "Não existem atividades desta categoria"
+                });
+            },
+
+            catComTipo : function () {
+                this.subViews.err.close();
+                this.$("#dates-controls-block").show();
+            },
+
+            render : function () {
 
                 var data = {
                     categoria  : this.model,
