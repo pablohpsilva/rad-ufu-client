@@ -8,8 +8,6 @@ define([
 
             init : function() {
 
-                new Router();
-
                 // Método adicionado Backbone.View para destruir as views, no final
                 // dispara o evento 'close', as views podem escutar este evento para
                 // executar rotinas de limpeza
@@ -18,6 +16,8 @@ define([
                     this.stopListening();
                     this.trigger("close");
                 };
+
+                new Router();
             }
 
         };
