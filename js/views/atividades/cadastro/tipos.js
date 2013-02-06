@@ -2,14 +2,16 @@ define([
 
     "collections/tipo",
     "views/atividades/cadastro/descricao",
+    "views/atividades/cadastro/multiplicadores",
     "../../../../components/require/text!templates/atividades/cadastro/tipos.html"
 
-    ],  function(tCollection, DescricaoView, tiposTpl) {
+    ],  function(tCollection, DescricaoView, MultsView, tiposTpl) {
 
         var CategoriasView = Backbone.View.extend({
 
             subViews : {
-                descricao : new DescricaoView()
+                descricao : new DescricaoView(),
+                mults     : new MultsView()
             },
 
             events : {
@@ -24,6 +26,7 @@ define([
             tipoSelected : function() {
                 var tipoCodigo = $("#tipo-selector").val().toLowerCase();
                 this.renderDescricao(tipoCodigo);
+                this.renderMultiplicadores(tipoCodigo);
             },
 
             render : function(catSelecionada) {
@@ -52,6 +55,12 @@ define([
             renderDescricao : function(tipoCodigo) {
                 this.subViews.descricao
                     .setElement($("#descricao-block"))
+                    .render(tipoCodigo);
+            },
+
+            renderMultiplicadores : function(tipoCodigo) {
+                this.subViews.mults
+                    .setElement($("#mults-block"))
                     .render(tipoCodigo);
             },
 

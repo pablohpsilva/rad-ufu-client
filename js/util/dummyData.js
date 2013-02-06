@@ -50,7 +50,6 @@ define([
             valor:6,
         });
 
-
         var ativ = new Ativ({
             id:1,
             descricao:"",
