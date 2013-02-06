@@ -17,6 +17,16 @@ define([
 
             initialize : function() {
                 this.on("close", this.limpaSubviews, this);
+
+                this.listenTo(this.subViews.tipos, "close", function() {
+                    console.log(this);
+                    this.$("#dates-block").hide(); // TODO: exibir um warning
+                }, this);
+
+                this.listenTo(this.subViews.tipos, "tipoSelected", function() {
+                    this.$("#dates-block").show();
+                }, this);
+
                 this.listenTo(this.subViews.categorias, "change", this.renderTipos);
             },
 

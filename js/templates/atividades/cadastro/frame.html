@@ -7,32 +7,33 @@
 
     <div class="form-horizontal">
 
+      <!-- Categorias -->
+      <span id="categorias-block"></span>
 
-          <!-- Categorias -->
-          <span id="categorias-block"></span>
+      <!-- Tipos -->
+      <span id="tipos-block"></span>
 
-          <!-- Tipos -->
-          <span id="tipos-block"></span>
-
-
-
-      <div class="control-group">
-        <label class="control-label" for="dataInicio">Inicio</label>
-        <div class="controls">
-          <input type="text" id="dataInicio" placeholder="10/10/2010">
+      <!-- Datas -->
+      <span id="dates-block">
+        <div class="control-group">
+          <label class="control-label" for="dataInicio">Inicio</label>
+          <div class="controls">
+            <input type="text" id="dataInicio" placeholder="10/10/2010">
+          </div>
         </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label" for="dataInicio">Fim</label>
-        <div class="controls">
-          <input type="text" id="dataFim" placeholder="10/10/2010">
+        <div class="control-group">
+          <label class="control-label" for="dataFim">Fim</label>
+          <div class="controls">
+            <input type="text" id="dataFim" placeholder="10/10/2010">
+          </div>
         </div>
-      </div>
+      </span>
+
       <div class="controls">
         <a href="#/atividades/<%= categoria %>"class="btn">Cancelar</a>
         <a class="btn btn-primary" id="novaAtividade">Ok</a>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>
