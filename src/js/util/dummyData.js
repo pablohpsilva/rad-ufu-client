@@ -33,7 +33,7 @@ define([
         });
 
         tipoCollection.create({
-            //id:1,
+            id:2,
             codigo:2,
             categoria: categorias.get(1),
             descricao: "Aula teórica ou prática para turmas adicionais da mesma disciplina.",
