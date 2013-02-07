@@ -26,6 +26,15 @@ module.exports = function(grunt) {
           'src/css/style.css': 'src/less/style.less',
           'src/css/font.css': 'src/less/font-awesome.less'
         }
+      },
+      build: {
+        options: {
+          yuicompress: true
+        },
+        files: {
+          'build/css/style.css': 'src/less/style.less',
+          'build/css/font.css': 'src/less/font-awesome.less'
+        }
       }
     },
     requirejs: {
@@ -55,7 +64,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', 'prepar o projeto para deploy', function () {
     grunt.task.run(
-      ['requirejs:build']
+      ['requirejs:build', 'less:build']
     );
   })
 
