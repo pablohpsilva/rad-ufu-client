@@ -2,7 +2,9 @@
   "name": "rad-ufu-client",
   "version": "0.0.0",
   "description": "Cliente para o sistema rad-ufu",
-  "scripts": {},
+  "scripts": {
+    "install": "mkdir src/css && grunt setup"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/pablohenrique/rad-ufu.git"
@@ -19,7 +21,10 @@
   "readmeFilename": "README.md",
   "dependencies": {
     "bootstrap": "git://github.com/twitter/bootstrap.git#v2.2.2",
-    "FontAwesome": "git://github.com/kersten/Font-Awesome.git",
-    "less": "git://github.com/cloudhead/less.js.git#v1.3.3"
+    "FontAwesome": "git://github.com/kersten/Font-Awesome.git"
+  },
+  "devDependencies": {
+    "grunt-contrib-less": "~0.3.2",
+    "grunt": "~0.3.17"
   }
 }
