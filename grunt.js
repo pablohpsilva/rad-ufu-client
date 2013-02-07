@@ -1,7 +1,8 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
-  grunt.loadNpmTasks("grunt-contrib-less");
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
 
   // Project configuration.
   grunt.initConfig({
@@ -26,6 +27,20 @@ module.exports = function(grunt) {
           'src/css/font.css': 'src/less/font-awesome.less'
         }
       }
+    },
+    requirejs: {
+      build: {
+        options: {
+          appDir: 'src/js/',
+          baseUrl: '.',
+          mainConfigFile: 'src/js/main.js',
+          modules: [
+            { name:'main' }
+          ],
+          inlineText: true,
+          dir: 'build/radufu/js'
+        }
+      }
     }
   });
 
@@ -35,6 +50,12 @@ module.exports = function(grunt) {
   grunt.registerTask('setup', 'configurar o projeto para desenvolvimento', function () {
     grunt.task.run(
       ['less:setup']
+    );
+  });
+
+  grunt.registerTask('build', 'prepar o projeto para deploy', function () {
+    grunt.task.run(
+      ['requirejs:build']
     );
   })
 
