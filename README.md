@@ -6,7 +6,6 @@ Universidade Federal de Uberlandia
 Setup:
 ------
 1.   Download & install [nodejs](http://nodejs.org)
-2.   $ sudo npm install -g grunt-cli
 
 TODO:
 -----

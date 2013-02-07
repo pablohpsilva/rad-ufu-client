@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Cliente para o sistema rad-ufu",
   "scripts": {
-    "install": "mkdir src/css && grunt setup"
+    "install": "mkdir src/css && ./node_modules/.bin/grunt setup"
   },
   "repository": {
     "type": "git",
