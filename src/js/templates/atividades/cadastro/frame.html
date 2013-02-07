@@ -1,41 +1,40 @@
-<div class="row">
-  <div class="span6 offset2">
+<div class="row-fluid">
+  <div class="span6 offset3">
+      <div class="page-header">
+        <h2 align="center">Nova Atividade</h2>
+      </div>
 
-    <div class="page-header">
-      <h2 align="center">Nova Atividade</h2>
-    </div>
+      <!-- Alerts -->
+      <span id="err"></span>
 
-    <!-- Alerts -->
-    <span id="err"></span>
+      <div class="form-horizontal">
 
-    <div class="form-horizontal">
+        <!-- Categorias -->
+        <span id="categorias-block"></span>
 
-      <!-- Categorias -->
-      <span id="categorias-block"></span>
+        <!-- Tipos -->
+        <span id="tipos-block"></span>
 
-      <!-- Tipos -->
-      <span id="tipos-block"></span>
-
-      <!-- Datas -->
-      <span id="dates-controls-block">
-        <div class="control-group">
-          <label class="control-label" for="dataInicio">Inicio</label>
-          <div class="controls">
-            <input type="text" id="dataInicio" placeholder="10/10/2010">
+        <!-- Datas -->
+        <span id="dates-controls-block">
+          <div class="control-group">
+            <label class="control-label" for="dataInicio">Inicio</label>
+            <div class="controls">
+              <input type="text" id="dataInicio" placeholder="10/10/2010">
+            </div>
           </div>
-        </div>
-        <div class="control-group">
-          <label class="control-label" for="dataFim">Fim</label>
-          <div class="controls">
-            <input type="text" id="dataFim" placeholder="10/10/2010">
+          <div class="control-group">
+            <label class="control-label" for="dataFim">Fim</label>
+            <div class="controls">
+              <input type="text" id="dataFim" placeholder="10/10/2010">
+            </div>
           </div>
-        </div>
-        <div class="controls">
-          <a href="#/atividades/<%= categoria %>"class="btn">Cancelar</a>
-          <a class="btn btn-primary" id="novaAtividade">Ok</a>
-        </div>
-      </span>
+          <div class="controls">
+            <a href="#/atividades/<%= categoria %>"class="btn">Cancelar</a>
+            <a class="btn btn-primary" id="novaAtividade">Ok</a>
+          </div>
+        </span>
 
+      </div>
     </div>
-  </div>
 </div>
