@@ -9,7 +9,6 @@ require.config({
         "jquery"       : "../../components/jquery/jquery",
         "underscore"   : "../../components/underscore/underscore",
         "backbone"     : "../../components/backbone/backbone",
-        "bootstrap"   : "../../components/bootstrap/js/bootstrap",
         "text": "../../components/require/text",
 
         // Development: armazenagem temporária dos dados
@@ -23,12 +22,7 @@ require.config({
                 "backbone.localStorage",
                 "underscore",
                 "jquery",
-                "bootstrap"
             ]
-        },
-
-        "bootstrap" : {
-            deps : ["jquery"]
         },
 
         "backbone.localStorage" : {
