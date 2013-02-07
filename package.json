@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Cliente para o sistema rad-ufu",
   "scripts": {
-    "install": "mkdir src/css && ./node_modules/.bin/grunt setup"
+    "install": "mkdir src/font && cp node_modules/FontAwesome/font/* src/font/ && mkdir src/css && ./node_modules/.bin/grunt setup"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
     "grunt-contrib-less": "~0.3.2",
     "grunt": "~0.3.17",
     "requirejs/text": "git://github.com/requirejs/text.git#2.0.5",
-    "grunt-contrib-requirejs": "~0.3.4"
+    "grunt-contrib-requirejs": "~0.3.4",
+    "grunt-contrib-clean": "~0.3.1",
+    "grunt-contrib-copy": "~0.3.2"
   }
 }

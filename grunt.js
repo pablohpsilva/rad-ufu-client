@@ -3,6 +3,8 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Project configuration.
   grunt.initConfig({
@@ -17,14 +19,17 @@ module.exports = function(grunt) {
     concat: {
     },
     min: {
+      build: {
+        src: 'node_modules/requirejs/require.js',
+        dest: 'build/radufu/js/lib/require.js'
+      }
     },
     watch: {
     },
     less: {
       setup: {
         files: {
-          'src/css/style.css': 'src/less/style.less',
-          'src/css/font.css': 'src/less/font-awesome.less'
+          'src/css/style.css': 'src/less/style.less'
         }
       },
       build: {
@@ -32,10 +37,29 @@ module.exports = function(grunt) {
           yuicompress: true
         },
         files: {
-          'build/css/style.css': 'src/less/style.less',
-          'build/css/font.css': 'src/less/font-awesome.less'
+          'build/radufu/css/style.css': 'src/less/style.less'
         }
       }
+    },
+    copy: {
+      build: {
+        files: [
+          { src: 'deploy.html', dest: 'build/radufu/index.html'},
+          { src: 'src/font/*', dest: 'build/radufu/font/'}
+        ]
+      }
+    },
+    clean: {
+      build: [
+        'build/radufu/js/collections',
+        'build/radufu/js/models',
+        'build/radufu/js/templates',
+        'build/radufu/js/util',
+        'build/radufu/js/views',
+        'build/radufu/js/app.js',
+        'build/radufu/js/router.js',
+        'build/radufu/js/build.txt'
+      ]
     },
     requirejs: {
       build: {
@@ -64,7 +88,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', 'prepar o projeto para deploy', function () {
     grunt.task.run(
-      ['requirejs:build', 'less:build']
+      ['requirejs:build', 'less:build', 'min:build', 'copy:build', 'clean:build']
     );
   })
 
