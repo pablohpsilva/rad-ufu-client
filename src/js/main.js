@@ -9,7 +9,7 @@ require.config({
         "jquery"       : "../../components/jquery/jquery",
         "underscore"   : "../../components/underscore/underscore",
         "backbone"     : "../../components/backbone/backbone",
-        "text": "../../components/require/text",
+        "text": "../../node_modules/text/text",
 
         // Development: armazenagem temporária dos dados
         "backbone.localStorage" : "../../components/backbone/backbone.localStorage"
