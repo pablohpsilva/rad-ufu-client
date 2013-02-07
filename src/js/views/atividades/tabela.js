@@ -3,7 +3,7 @@ define([
     "util/evAggregator",
     "views/atividades/entradaTabela",
     "util/dummyData",
-    "../../../components/require/text!templates/atividades/tabela.html"
+    "text!templates/atividades/tabela.html"
 
     ],  function(evAggregator, EntradaTabelaView, profOak, tabelaTpl) {
 

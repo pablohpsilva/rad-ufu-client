@@ -3,7 +3,7 @@ define([
     "views/atividades/cadastro/categorias",
     "views/atividades/cadastro/tipos",
     "views/alert",
-    "../../../../components/require/text!templates/atividades/cadastro/frame.html",
+    "text!templates/atividades/cadastro/frame.html",
 
     ], function(CategoriasView, TiposView, AlertView, cadastroAtivFrameTpl) {
 

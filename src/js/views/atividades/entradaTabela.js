@@ -1,7 +1,7 @@
 define([
 
     "models/atividade",
-    "../../../components/require/text!templates/atividades/entradaTabela.html"
+    "text!templates/atividades/entradaTabela.html"
 
     ],  function(AtividadeModel, atividadeTpl) {
 

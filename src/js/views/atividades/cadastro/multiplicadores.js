@@ -1,7 +1,7 @@
 define([
 
     "collections/tipo",
-    "../../../../components/require/text!templates/atividades/cadastro/multiplicadores.html"
+    "text!templates/atividades/cadastro/multiplicadores.html"
 
 ],  function(tCollection, multTpl) {
 

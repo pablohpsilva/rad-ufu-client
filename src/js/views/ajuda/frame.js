@@ -1,6 +1,6 @@
 define([
 
-    "../../../components/require/text!../../templates/ajuda/frame.html"
+    "text!../../templates/ajuda/frame.html"
 
     ], function(ajudaFrameTpl) {
 

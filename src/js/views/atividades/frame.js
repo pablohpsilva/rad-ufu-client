@@ -2,7 +2,7 @@ define([
 
     "views/atividades/tabs",
     "views/atividades/tabela",
-    "../../../components/require/text!templates/atividades/frame.html"
+    "text!templates/atividades/frame.html"
 
     ], function(TabsView, TabelaView, atividadesFrameTpl) {
 

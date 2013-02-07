@@ -3,14 +3,17 @@ require.config({
     // Development: previne contra o cache dos browsers
     urlArgs : new Date().getTime(),
 
+    baseUrl: "src/js",
+
     paths : {
-        "jquery"       : "../components/jquery/jquery",
-        "underscore"   : "../components/underscore/underscore",
-        "backbone"     : "../components/backbone/backbone",
-        "bootstrap"   : "../components/bootstrap/js/bootstrap",
+        "jquery"       : "../../components/jquery/jquery",
+        "underscore"   : "../../components/underscore/underscore",
+        "backbone"     : "../../components/backbone/backbone",
+        "bootstrap"   : "../../components/bootstrap/js/bootstrap",
+        "text": "../../components/require/text",
 
         // Development: armazenagem temporária dos dados
-        "backbone.localStorage" : "../components/backbone/backbone.localStorage"
+        "backbone.localStorage" : "../../components/backbone/backbone.localStorage"
     },
 
     shim : {

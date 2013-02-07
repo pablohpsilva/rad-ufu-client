@@ -1,6 +1,6 @@
 define([
 
-    "../../../components/require/text!../../templates/relatorio/frame.html"
+    "text!../../templates/relatorio/frame.html"
 
     ], function(relatorioFrameTpl) {
 

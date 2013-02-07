@@ -3,7 +3,7 @@ define([
     "collections/tipo",
     "views/atividades/cadastro/descricao",
     "views/atividades/cadastro/multiplicadores",
-    "../../../../components/require/text!templates/atividades/cadastro/tipos.html"
+    "text!templates/atividades/cadastro/tipos.html"
 
     ],  function(tCollection, DescricaoView, MultsView, tiposTpl) {
 

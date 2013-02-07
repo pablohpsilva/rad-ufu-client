@@ -4,7 +4,7 @@
 //
 define([
 
-    "../../components/require/text!templates/alert.html"
+    "text!templates/alert.html"
 
 ], function (alertTpl) {
 

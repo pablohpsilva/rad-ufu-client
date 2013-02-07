@@ -1,6 +1,6 @@
 define([
 
-    "../../../components/require/text!../../templates/app/navbar.html"
+    "text!../../templates/app/navbar.html"
 
     ], function(appTpl) {
 

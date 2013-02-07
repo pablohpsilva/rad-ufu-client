@@ -1,7 +1,7 @@
 define([
 
     "util/evAggregator",
-    "../../../components/require/text!../../templates/inicio/frame.html"
+    "text!../../templates/inicio/frame.html"
 
     ], function(evAggregator, inicioTpl) {
 

@@ -1,7 +1,7 @@
 define([
 
     "collections/tipo",
-    "../../../../components/require/text!templates/atividades/cadastro/descricao.html"
+    "text!templates/atividades/cadastro/descricao.html"
 
     ],  function(tCollection, descricaoTpl) {
 
