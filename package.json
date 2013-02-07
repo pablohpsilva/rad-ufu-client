@@ -1,0 +1,25 @@
+{
+  "name": "rad-ufu-client",
+  "version": "0.0.0",
+  "description": "Cliente para o sistema rad-ufu",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pablohenrique/rad-ufu.git"
+  },
+  "keywords": [
+    "br",
+    "ufu",
+    "facom",
+    "fagen",
+    "rad-ufu"
+  ],
+  "author": "Yassin Nurmahomed",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "bootstrap": "git://github.com/twitter/bootstrap.git#v2.2.2",
+    "FontAwesome": "git://github.com/kersten/Font-Awesome.git",
+    "less": "git://github.com/cloudhead/less.js.git#v1.3.3"
+  }
+}
