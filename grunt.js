@@ -17,22 +17,30 @@ module.exports = function(grunt) {
         ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
     concat: {
+        bootstrap: {
+          src: ['node_modules/bootstrap/bootstrap-alert'],
+          dest: 'components/bootstrap/bootstrap.js'
+        }
     },
     min: {
-      build: {
+      requirejs: {
         src: 'node_modules/requirejs/require.js',
         dest: 'build/radufu/js/lib/require.js'
+      },
+      bootstrap: {
+        src: '<config:concat.bootstrap.dest>',
+        dest: 'components/bootstrap/bootstrap.min.js'
       }
     },
     watch: {
     },
     less: {
-      setup: {
+      style: {
         files: {
           'src/css/style.css': 'src/less/style.less'
         }
       },
-      build: {
+      compress: {
         options: {
           yuicompress: true
         },
@@ -42,9 +50,13 @@ module.exports = function(grunt) {
       }
     },
     copy: {
-      build: {
+      page: {
         files: [
-          { src: 'deploy.html', dest: 'build/radufu/index.html'},
+          { src: 'deploy.html', dest: 'build/radufu/index.html'}
+        ]
+      },
+      font: {
+        files: [
           { src: 'src/font/*', dest: 'build/radufu/font/'}
         ]
       }
@@ -58,7 +70,8 @@ module.exports = function(grunt) {
         'build/radufu/js/views',
         'build/radufu/js/app.js',
         'build/radufu/js/router.js',
-        'build/radufu/js/build.txt'
+        'build/radufu/js/build.txt',
+        'components/bootstrap/bootstrap.js'
       ]
     },
     requirejs: {
@@ -82,14 +95,20 @@ module.exports = function(grunt) {
 
   grunt.registerTask('setup', 'configurar o projeto para desenvolvimento', function () {
     grunt.task.run(
-      ['less:setup']
+      ['less:style', 'concat:bootstrap']
     );
   });
 
-  grunt.registerTask('build', 'prepar o projeto para deploy', function () {
-    grunt.task.run(
-      ['requirejs:build', 'less:build', 'min:build', 'copy:build', 'clean:build']
-    );
+  grunt.registerTask('build', 'preparar o projeto para deploy', function () {
+    grunt.task.run([
+      'requirejs:build',
+      'less:compress',
+      'min:requirejs',
+      'min:bootstrap',
+      'copy:page',
+      'copy:font',
+      'clean:build'
+    ]);
   })
 
 };
