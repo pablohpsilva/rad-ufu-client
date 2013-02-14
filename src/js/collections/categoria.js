@@ -5,10 +5,7 @@ define([
     ], function(Categoria) {
 
         var CategoriaCollection = Backbone.Collection.extend({
-
-            model : Categoria,
-            localStorage : new Backbone.LocalStorage("categorias")
-
+            model : Categoria
         });
 
         //singleton

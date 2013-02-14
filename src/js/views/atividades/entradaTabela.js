@@ -10,21 +10,9 @@ define([
             tagName : "tr",
 
             render : function() {
-
-                var data = this.model.toJSON();
-
-                //ugly
-                data.comprovantes = data.comprovantes.toJSON();
-                data.tipo         = data.tipo.toJSON();
-                data.tipo.categoria = data.tipo.categoria.toJSON();
-                data.tipo.multiplicadores = data.tipo.multiplicadores.toJSON();
-
-                this.$el.html(_.template(atividadeTpl, data));
-
+                this.$el.html(_.template(atividadeTpl, this.model));
                 return this;
-
             }
-
         });
 
         return AtividadeEntradaTabelaView;

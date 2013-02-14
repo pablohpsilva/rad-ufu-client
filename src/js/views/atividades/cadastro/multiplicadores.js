@@ -1,20 +1,22 @@
 define([
 
     "collections/tipo",
-    "text!templates/atividades/cadastro/multiplicadores.html"
+    "collections/multiplicador",
+    "text!templates/atividades/cadastro/multiplicador.html"
 
-],  function(tCollection, multTpl) {
+],  function(tCollection, multCollection, multTpl) {
 
     var MultiplicadorView = Backbone.View.extend({
 
-        render : function(tipoCodigo) {
-            var model = tCollection
-                .where({ codigo : +tipoCodigo })
-                .pop();
+        render : function(tipoId) {
 
-            var data = (model) ? model.get("multiplicadores").toJSON() : [];
+            var mid = tCollection.get(tipoId)
+                    .get("multiplicador");
 
-            this.$el.html(_.template(multTpl, { multiplicadores : data }));
+            var mult = multCollection.get(mid);
+            var data = mult ? mult.toJSON() : {};
+
+            this.$el.html(_.template(multTpl, { mult : data }));
         }
     });
 

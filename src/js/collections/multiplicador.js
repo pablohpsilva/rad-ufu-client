@@ -8,6 +8,6 @@ define([
             model : Multiplicador
         });
 
-        return MultiplicadorCollection;
+        return new MultiplicadorCollection();
 
 });

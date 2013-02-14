@@ -8,5 +8,5 @@ define([
             model : Professor
         });
 
-        return ProfessorCollection;
+        return new ProfessorCollection();
 });

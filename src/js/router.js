@@ -3,7 +3,7 @@ define([
     "collections/categoria",
     "views/manager"
 
-    ], function(CategoriaCollection, ViewManager) {
+    ], function(categoriaCollection, ViewManager) {
 
         var AppRouter = Backbone.Router.extend({
 
@@ -44,7 +44,7 @@ define([
                 this.on(
                     "route:primeiraCategoria"
                     ,   function() {
-                            var cat, categorias = CategoriaCollection;
+                            var cat, categorias = categoriaCollection;
 
                             categorias.fetch();
                             cat = encodeURIComponent(categorias.at(0).get("nome").toLowerCase());

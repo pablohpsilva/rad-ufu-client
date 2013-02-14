@@ -8,5 +8,5 @@ define([
             model : Comprovante
         });
 
-        return ComprovanteCollection;
+        return new ComprovanteCollection();
 });

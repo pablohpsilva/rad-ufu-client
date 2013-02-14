@@ -8,24 +8,21 @@ define([
 
             defaults : {
                 //id
-                codigo          : 0,
+                item            : 0,
                 categoria       : null,
                 descricao       : "",
                 pontuacao       : 0,
                 limitePontos    : 999,
                 pontuacaoRef    : 0,
-                multiplicadores : null,
+                multiplicador   : null,
             },
 
             initialize : function() {
-                this.set("multiplicadores", new MultiplicadorCollection());
-                this.get("multiplicadores").localStorage = new Backbone.LocalStorage("tipos/" + this.id + "/multiplicadores");
-                this.get("multiplicadores").fetch();
             },
 
             validate : function(attrs) {
 
-                if(attrs.codigo === 0)
+                if(attrs.item === 0)
                     return "código não atribuído ao tipo ou código igual a 0";
                 if(attrs.categoria === null)
                     return "categoría não a atribuída ao tipo";

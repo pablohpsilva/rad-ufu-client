@@ -12,13 +12,10 @@ define([
                 login        : "",
                 senha        : "",
                 siape        : "",
-                atividades   : null
+                atividades   : []
             },
 
             initialize : function() {
-                this.set("atividades", new AtividadeCollection());
-                this.get("atividades").localStorage = new Backbone.LocalStorage("professores/" + this.id + "/atividades");
-                this.get("atividades").fetch();
             },
 
             validate : function(attrs) {

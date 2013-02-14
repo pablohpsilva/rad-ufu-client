@@ -8,5 +8,5 @@ define([
             model : Atividade
         });
 
-        return AtividadeCollection;
+        return new AtividadeCollection();
 });

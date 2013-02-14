@@ -1,9 +1,0 @@
-<% _.each(multiplicadores, function(m) { %>
-    <div class="control-group">
-        <label for="<%= m.nome %>" class="control-label"> <%= m.nome %> </label>
-        <div class="controls">
-            <input type="text" id="<%= m.nome %>"
-                   placeholder="<% (m.limite !== 999)? print('No máximo ' + m.limite ) : print('')%>">
-        </div>
-    </div>
-<% }); %>

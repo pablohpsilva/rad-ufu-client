@@ -5,8 +5,7 @@ define([
     ], function(Tipo) {
 
         var TipoCollection = Backbone.Collection.extend({
-            model : Tipo,
-            localStorage : new Backbone.LocalStorage("tipos")
+            model : Tipo
         });
 
         return new TipoCollection();

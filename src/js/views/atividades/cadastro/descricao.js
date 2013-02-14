@@ -7,10 +7,10 @@ define([
 
         var DescricaoView = Backbone.View.extend({
 
-            render : function(tipoCodigo) {
-                //console.log("render descricao tipo:", tipoCodigo);
+            render : function(tipoId) {
+                //console.log("render descricao tipo:", tipoId);
                 var model = tCollection
-                        .where({codigo: +tipoCodigo})
+                        .where({id: +tipoId})
                         .pop();
 
                 var descricao = (model)? model.get("descricao") : "";

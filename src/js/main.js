@@ -13,7 +13,8 @@ require.config({
         "bootstrap"    : "../../components/bootstrap/bootstrap",
 
         // Development: armazenagem temporária dos dados
-        "backbone.localStorage" : "../../components/backbone/backbone.localStorage"
+        "backbone.localStorage" : "../../components/backbone/backbone.localStorage",
+        "dummyData": "util/dummyData"
     },
 
     shim : {
@@ -23,7 +24,14 @@ require.config({
                 "backbone.localStorage",
                 "underscore",
                 "jquery",
-                "bootstrap"
+                "bootstrap",
+                "dummyData"
+            ]
+        },
+
+        "dummyData": {
+            deps: [
+                "backbone.localStorage"
             ]
         },
 

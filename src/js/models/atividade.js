@@ -6,19 +6,17 @@ define([
 
         var Atividade = Backbone.Model.extend({
 
-            dafaults : {
+            defaults : {
                 //id
                 descricao    : "",
                 inicio       : null,
                 fim          : null,
-                comprovantes : null,
-                tipo         : null
+                comprovantes : [],
+                tipo         : null,
+                valorMult    : 0
             },
 
             initialize : function() {
-                this.set("comprovantes", new ComprovanteCollection());
-                this.get("comprovantes").localStorage = new Backbone.LocalStorage("atividades/" + this.id + "/comprovantes");
-                this.get("comprovantes").fetch();
             },
 
             validate : function(attrs) {
