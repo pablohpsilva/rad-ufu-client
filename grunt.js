@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     },
     concat: {
         bootstrap: {
-          src: ['node_modules/bootstrap/bootstrap-alert'],
+          src: ['node_modules/bootstrap/js/bootstrap-alert.js'],
           dest: 'components/bootstrap/bootstrap.js'
         }
     },
@@ -26,10 +26,6 @@ module.exports = function(grunt) {
       requirejs: {
         src: 'node_modules/requirejs/require.js',
         dest: 'build/radufu/js/lib/require.js'
-      },
-      bootstrap: {
-        src: '<config:concat.bootstrap.dest>',
-        dest: 'components/bootstrap/bootstrap.min.js'
       }
     },
     watch: {
@@ -70,8 +66,7 @@ module.exports = function(grunt) {
         'build/radufu/js/views',
         'build/radufu/js/app.js',
         'build/radufu/js/router.js',
-        'build/radufu/js/build.txt',
-        'components/bootstrap/bootstrap.js'
+        'build/radufu/js/build.txt'
       ]
     },
     requirejs: {
@@ -102,9 +97,8 @@ module.exports = function(grunt) {
   grunt.registerTask('build', 'preparar o projeto para deploy', function () {
     grunt.task.run([
       'requirejs:build',
-      'less:compress',
       'min:requirejs',
-      'min:bootstrap',
+      'less:compress',
       'copy:page',
       'copy:font',
       'clean:build'
