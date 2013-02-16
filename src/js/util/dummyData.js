@@ -22,8 +22,13 @@ define([
 
         var mult1 = {
             id:1,
-            nome:"Aulas por semana"
+            nome:"Aulas / Semana"
         };
+
+        var mult2 = {
+            id:2,
+            nome:"Disciplinas"
+        }
 
         var ensino1 = {
             id:1,
@@ -46,11 +51,26 @@ define([
             id:2,
             item:2,
             categoria: categorias.get(1).get("id"),
-            descricao: "Aula teórica ou prática para turmas adicionais da mesma disciplina.",
-            pontuacao: 8,
+            descricao: "Aula teórica ou prática para turmas adicionais da mesma disciplina, enquadrada"
+                      +"na Situação 1 (ver OBS.), ou ministrada pelo mesmo docente para Cursos"
+                      +"oferecidos em turnos distintos.",
+            pontuacao: 10,
             limitePontos: 0,
-            pontuacaoRef: 0
+            pontuacaoRef: 0,
+            multiplicador: mult1.id
         };
+
+        var ensino3 = {
+            id: 3,
+            item:4,
+            categoria: categorias.get(1).get("id"),
+            descricao: "Aula de graduação oferecida em regime especial, aprovado pelo Conselho da"
+                      +"Unidade.",
+            pontuacao: 10,
+            limitePontos: 0,
+            pontuacaoRef: 0,
+            multiplicador: mult2.id
+        }
 
         var comp1 = {id:1, arquivo:"the X files"};
 
@@ -84,10 +104,10 @@ define([
         comprCollection.add([comp1]);
 
         tipoCollection.localStorage = new Backbone.LocalStorage("tipo/");
-        tipoCollection.add([ensino1, ensino2]);
+        tipoCollection.add([ensino1, ensino2, ensino3]);
 
         multCollection.localStorage = new Backbone.LocalStorage("multiplicador/");
-        multCollection.add([mult1]);
+        multCollection.add([mult1,mult2]);
 
         return oak;
 
