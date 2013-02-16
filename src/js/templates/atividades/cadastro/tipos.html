@@ -1,9 +1,9 @@
 <div class="control-group">
-  <label class="control-label" for="itemN">Tipo</label>
+  <label class="control-label" for="itemN">Item</label>
     <div class="controls">
 
       <!-- Tipos por categoria -->
-      <select id="tipo-selector">
+      <select class="span2" id="tipo-selector">
 
         <%_.each(tipos, function(t){ %>
           <option value="<%= t.id %>"> <%= t.item %> </option>
