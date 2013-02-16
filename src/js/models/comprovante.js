@@ -9,16 +9,16 @@ define(function() {
             },
 
             // Thanks to StackOverflow (http://stackoverflow.com/questions/8171562)
-            readFile: function (file) {
+            readFile: function () {
                 var readr = new FileReader();
 
                 readr.onload = (function (file, comprovante) {
                     return function (e) {
                         comprovante.set({nome: file.name, arquivo: e.target.result});
                     };
-                })(file, this);
+                })(this.get("arquivo"), this);
 
-                readr.readAsDataURL(file);
+                readr.readAsDataURL(this.get("arquivo"));
             },
 
             validate : function(attrs) {
