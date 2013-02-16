@@ -4,15 +4,18 @@ define([
     "collections/categoria",
     "views/atividades/cadastro/descricao",
     "views/atividades/cadastro/multiplicadores",
+    "views/atividades/cadastro/comprovantes",
     "text!templates/atividades/cadastro/tipos.html"
 
-    ],  function(tCollection, categoriaCollection, DescricaoView, MultsView, tiposTpl) {
+    ],  function(tCollection, categoriaCollection, DescricaoView, MultsView,
+                 ComprovantesView, tiposTpl) {
 
         var CategoriasView = Backbone.View.extend({
 
             subViews : {
                 descricao : new DescricaoView(),
-                mults     : new MultsView()
+                mults     : new MultsView(),
+                comprs    : new ComprovantesView()
             },
 
             events : {
@@ -28,6 +31,7 @@ define([
                 var tipoId = $("#tipo-selector").val().toLowerCase();
                 this.renderDescricao(tipoId);
                 this.renderMultiplicadores(tipoId);
+                this.renderComprovantes();
             },
 
             render : function(selecionada) {
@@ -70,6 +74,12 @@ define([
                 this.subViews.mults
                     .setElement($("#mults-block"))
                     .render(tipoId);
+            },
+
+            renderComprovantes : function () {
+                this.subViews.comprs
+                    .setElement($("#comprovantes-block"))
+                    .render();
             },
 
             limpaSubviews : function() {
