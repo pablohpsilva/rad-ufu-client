@@ -12,6 +12,7 @@ define([
                 // dispara o evento 'close', as views podem escutar este evento para
                 // executar rotinas de limpeza
                 Backbone.View.prototype.close = function() {
+                    this.undelegateEvents();
                     this.$el.empty();
                     this.stopListening();
                     this.trigger("close");
