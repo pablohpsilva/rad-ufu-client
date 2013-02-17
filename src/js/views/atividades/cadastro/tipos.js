@@ -34,10 +34,10 @@ define([
                 this.renderComprovantes();
             },
 
-            render : function(selecionada) {
+            render : function(categoria) {
                 function catSelecionada (c) {
-                    return c.nome.toLowerCase() === selecionada
-                        || c.id === +selecionada;
+                    return c.nome.toLowerCase() === categoria ||
+                        c.id === +categoria;
                 }
 
                 //

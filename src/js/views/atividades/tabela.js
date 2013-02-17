@@ -30,14 +30,14 @@ define([
                 this.on("close", this.limpaSubviews, this);
             },
 
-            render : function(selecionada) {
+            render : function (selecionada) {
 
                 this.$el.empty();
                 this.subViews.atividades = [];
 
                 function catSelecionada   (c) {
-                    return c.nome.toLowerCase() === selecionada
-                        || c.id === selecionada;
+                    return c.nome.toLowerCase() === selecionada ||
+                        c.id === selecionada;
                 }
                 function atividadeDoTipo  (a) { return _.contains(_.pluck(tipos,"id"), a.tipo); }
                 function addItemNo        (a) {

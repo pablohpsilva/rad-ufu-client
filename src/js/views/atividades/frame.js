@@ -22,15 +22,17 @@ define([
 
             render : function() {
 
-                this.$el.html(_.template(atividadesFrameTpl, {categoria:this.model}));
+                this.$el.html(_.template(atividadesFrameTpl, {
+                    categoria:this.options.categoria
+                }));
 
                 this.subViews.tabs
                     .setElement($("#categorias-block"))
-                    .render(this.model);
+                    .render(this.options.categoria);
 
                 this.subViews.tabela
                     .setElement($("#tabela-block"))
-                    .render(this.model);
+                    .render(this.options.categoria);
 
                 // inicializa os tooltips
                 this.$("[rel=\"tooltip\"]").tooltip();

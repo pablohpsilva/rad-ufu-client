@@ -11,12 +11,12 @@ define([
                 "change #categoria-selector" : "categoriaSelected"
             },
 
-            categoriaSelected : function() {
+            categoriaSelected : function () {
                 this.trigger("change", $("#categoria-selector").val().toLowerCase());
             },
 
-            render : function(data) {
-
+            render : function () {
+                data = {};
                 data.categorias = catCollection.toJSON();
 
                 this.$el.html(_.template(categoriasTpl, data));

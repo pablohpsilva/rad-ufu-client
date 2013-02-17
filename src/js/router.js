@@ -11,8 +11,8 @@ define([
 
             routes : {
 
+                "atividades/cadastrar"            : "cadastrarAtividade",
                 "atividades/:categoria"           : "atividades",
-                "atividades/:categoria/cadastrar" : "cadastrarAtividade",
                 "atividades"                      : "primeiraCategoria",
                 "relatorio"                       : "relatorio",
                 "ajuda"                           : "ajuda",
@@ -24,14 +24,13 @@ define([
 
                 this.viewManager.show("navbar", {once:true});
 
-                this.on("route:atividades", function (categoria) {
-                    categoria = decodeURIComponent(categoria);
-                    this.viewManager.show("atividades", {model:categoria});
+                this.on("route:atividades", function (c) {
+                    categoria = decodeURIComponent(c);
+                    this.viewManager.show("atividades", {categoria:c});
                 });
 
                 this.on("route:cadastrarAtividade", function (categoria) {
-                    categoria = decodeURIComponent(categoria);
-                    this.viewManager.show("atividades:cadastro", {model:categoria});
+                    this.viewManager.show("atividades:cadastro");
                 });
 
 

@@ -53,25 +53,20 @@ define([
 
             render : function () {
 
-                var data = {
-                    categoria  : this.model
-                };
-
-                this.$el.html(_.template(cadastroAtivFrameTpl, data));
+                this.$el.html(_.template(cadastroAtivFrameTpl));
 
                 this.subViews.categorias
                     .setElement($("#categorias-block"))
-                    .render({
-                        categoria  : this.model
-                    });
+                    .render();
 
-                this.renderTipos(this.model);
+                this.subViews.categorias
+                    .categoriaSelected();
 
                 return this;
 
             },
 
-            renderTipos : function(categoria) {
+            renderTipos : function (categoria) {
 
                 $("#tipos").empty();
 

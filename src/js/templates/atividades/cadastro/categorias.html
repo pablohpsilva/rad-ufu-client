@@ -3,14 +3,8 @@
   <div class="controls">
     <select class="span4" id="categoria-selector">
 
-      <% _.each(categorias, function(c) {
-        var nome = c.nome.toLowerCase(); %>
-
-        <option value=<%= c.id %>
-          <% if(nome === categoria) print('selected')%> >
-          <%= c.nome %>
-        </option>
-
+      <% _.each(categorias, function(c) { %>
+        <option value=<%= c.id %> > <%= c.nome %> </option>
       <%});%>
 
     </select>
