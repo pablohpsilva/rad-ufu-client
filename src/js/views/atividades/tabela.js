@@ -2,18 +2,23 @@ define([
 
     "util/evAggregator",
     "views/atividades/entradaTabela",
+    "views/alert",
     "collections/atividade",
     "collections/categoria",
     "collections/tipo",
     "text!templates/atividades/tabela.html"
 
-    ],  function(evAggregator, EntradaTabelaView, atividadeCollection, categoriaCollection, tipoCollection, tabelaTpl) {
+    ],  function(evAggregator, EntradaTabelaView, AlertView, atividadeCollection,
+                 categoriaCollection,
+                 tipoCollection,
+                 tabelaTpl) {
 
         var AtividadesTabelaView = Backbone.View.extend({
 
             collection : atividadeCollection,
 
             subViews : {
+                err: new AlertView(),
                 atividades : []
             },
 
@@ -77,7 +82,12 @@ define([
                     }, this);
 
                 } else {
-                    this.$el.append("Sem atividades");
+                    //this.$el.append("Sem atividades");
+                    this.subViews.err
+                        .setElement($("#err"))
+                        .render({
+                            msg  : "Nenhuma atividade cadastrada"
+                        });
                 }
 
                 return this;
