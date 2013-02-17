@@ -6,7 +6,7 @@ define([
     "views/atividades/cadastro/categorias",
     "views/atividades/cadastro/tipos",
     "views/alert",
-    "text!templates/atividades/cadastro/frame.html",
+    "text!templates/atividades/cadastro/frame.html"
 
     ], function(Atividade, Comprovante, comprovanteCollection, CategoriasView,
                 TiposView,
@@ -54,7 +54,7 @@ define([
             render : function () {
 
                 var data = {
-                    categoria  : this.model,
+                    categoria  : this.model
                 };
 
                 this.$el.html(_.template(cadastroAtivFrameTpl, data));
