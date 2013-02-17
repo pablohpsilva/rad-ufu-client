@@ -18,7 +18,10 @@ module.exports = function(grunt) {
     },
     concat: {
         bootstrap: {
-          src: ['node_modules/bootstrap/js/bootstrap-alert.js'],
+          src: [
+            'node_modules/bootstrap/js/bootstrap-alert.js',
+            'node_modules/bootstrap/js/bootstrap-tooltip.js'
+          ],
           dest: 'components/bootstrap/bootstrap.js'
         }
     },
