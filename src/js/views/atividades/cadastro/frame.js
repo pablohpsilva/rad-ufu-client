@@ -1,11 +1,17 @@
 define([
 
+    "models/atividade",
+    "models/comprovante",
+    "collections/comprovante",
     "views/atividades/cadastro/categorias",
     "views/atividades/cadastro/tipos",
     "views/alert",
     "text!templates/atividades/cadastro/frame.html",
 
-    ], function(CategoriasView, TiposView, AlertView, cadastroAtivFrameTpl) {
+    ], function(Atividade, Comprovante, comprovanteCollection, CategoriasView,
+                TiposView,
+                AlertView,
+                cadastroAtivFrameTpl) {
 
         var CadastroAtividadeFrame = Backbone.View.extend({
 
@@ -15,6 +21,10 @@ define([
                 categorias : new CategoriasView(),
                 tipos      : new TiposView(),
                 err        : new AlertView()
+            },
+
+            events: {
+                "click #cadastrar": "criarAtividade"
             },
 
             initialize : function () {
@@ -70,8 +80,33 @@ define([
                     .render(categoria);
             },
 
+            criarAtividade: function () {
+                var atividade, dados, fileInput, comprovantes;
+
+                dados = {};
+
+                dados.categoria    = this.$("#categoria-selector").val();
+                dados.tipo         = this.$("#tipo-selector").val();
+                dados.descricao    = this.$("#descricao").val();
+                dados.valorMult    = this.$("#quantidade").val();
+                dados.inicio       = this.$("#dataInicio").val();
+                dados.fim          = this.$("#dataFim").val();
+                fileInput          = this.$("#comprovantes")[0];
+                comprovantes       = [];
+
+                //console.log(fileInput);
+                comprovantes = _.map(fileInput.files, function (file) {
+                    var c = new Comprovante({arquivo:file});
+                    c.readFile();
+                    return c;
+                });
+
+                atividade = new Atividade(dados);
+                console.log(atividade, comprovantes);
+            },
+
             limpaSubviews : function() {
-                _.each( _(this.subViews).values(), function (subView) {
+                _.each(this.subViews, function (subView) {
                    subView.close();
                 });
             }
