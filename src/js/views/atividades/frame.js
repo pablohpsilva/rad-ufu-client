@@ -32,18 +32,13 @@ define([
                     .setElement($("#tabela-block"))
                     .render(this.model);
 
-                // inicializa o tooltip
-                // $("[rel=\"tooltip\"]").tooltip();
+                // inicializa os tooltips
+                this.$("[rel=\"tooltip\"]").tooltip();
 
                 return this;
             },
 
             limpaSubviews : function() {
-                // bug do bootstrap, o tooltip não é removido depois que se
-                // clica no bt, tooltip podia ser removido se o elemento for
-                // destruído
-                // $("[rel=\"tooltip\"]").tooltip("destroy");
-
                 _.each( _(this.subViews).values(), function (subView) {
                    subView.close();
                 });
