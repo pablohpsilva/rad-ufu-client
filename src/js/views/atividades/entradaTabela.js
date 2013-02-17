@@ -9,6 +9,14 @@ define([
 
             tagName : "tr",
 
+            events: {
+                "hover": "toggleControles"
+            },
+
+            toggleControles: function () {
+                this.$("i").toggleClass("invisivel");
+            },
+
             render : function() {
                 this.$el.html(_.template(atividadeTpl, this.model));
                 return this;
