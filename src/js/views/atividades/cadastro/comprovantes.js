@@ -39,8 +39,28 @@ define([
                 // inicializa os tooltips
                 this.$("[rel=\"tooltip\"]").tooltip();
 
+                this.registraHovers();
+
                 //console.log(data.atuais);
                 return this;
+            },
+
+            registraHovers: function () {
+                this.$(".selecionado").hover(
+                    function() {
+                        $(this).find(".icon-remove").removeClass("invisivel");
+                    },
+                    function() {
+                        $(this).find(".icon-remove").addClass("invisivel");
+                });
+
+                this.$(".atual").hover(
+                    function() {
+                        $(this).find(".icon-remove").removeClass("invisivel");
+                    },
+                    function() {
+                        $(this).find(".icon-remove").addClass("invisivel");
+                });
             },
 
             atualizaSelecionados: function () {
@@ -59,6 +79,10 @@ define([
                 this.$el.empty();
                 this.render();
 
+            },
+
+            toggleRemove: function (e) {
+                this.$(e.target).find(".icon-remove").toggleClass("invisivel");
             },
 
             clickInput: function () {

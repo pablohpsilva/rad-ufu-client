@@ -70,11 +70,11 @@ html {
     overflow-y: scroll;
 }
 
-table {
-    .invisivel {
-        visibility: hidden;
-    }
+.invisivel {
+    visibility: hidden;
+}
 
+table {
     a,
     a:link,
     a:visited,
@@ -98,10 +98,20 @@ table {
 
 .comprovantes {
 
-    i {
+    i.icon-remove,
+    i.icon-plus-sign {
         cursor: pointer;
         //padding-top: 10px;
         //padding-bottom: 10px;
+    }
+
+    i.icon-plus-sign {
+        margin-top: 10px;
+    }
+
+    li.selecionado:hover,
+    li.atual:hover {
+        background-color: @tableBackgroundHover;
     }
 
     #addComprovante:hover {

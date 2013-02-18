@@ -3,16 +3,23 @@
     <div class="controls">
         <input id="comprovantes" type="file" multiple="multiple" style="display: none;">
         <ul class="unstyled">
+            <!-- Se existem comprovantes cadastradas para a atividade, lista todas-->
             <% if (!_.isEmpty(atuais)) { %>
                 <% _.each(atuais, function (c) { %>
-                    <li>
+                    <li class="atual">
                         <a href="#" data-cid="<%= c.id %>"><i class="icon-file icon-large"></i><%= c.nome %></a>
+                        <i class="icon-remove invisivel pull-right" rel="tooltip"
+                            title="Excluir arquivo" data-placement="right"></i>
                     </li>
                 <% }) %>
             <% } %>
+            <!-- Se existirem comprovantes selecionados , lista todos -->
             <% if (!_.isEmpty(selecionados)) { %>
                 <%_.each(selecionados, function(file) {%>
-                    <li><i class="icon-file icon-large"></i><%= file.name %></li>
+                    <li class="selecionado"><i class="icon-file icon-large"></i><%= file.name %>
+                        <i class="icon-remove invisivel pull-right" rel="tooltip"
+                            title="Excluir arquivo" data-placement="right"></i>
+                    </li>
                 <% }) %>
             <% }%>
                 <li><i class="icon-plus-sign icon-large" id="addComprovante"
