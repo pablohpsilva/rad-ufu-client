@@ -1,21 +1,23 @@
 define([
 
     "collections/tipo",
-    "collections/categoria",
     "views/atividades/cadastro/descricao",
-    "views/atividades/cadastro/multiplicadores",
+    "views/atividades/cadastro/multiplicador",
     "views/atividades/cadastro/comprovantes",
     "text!templates/atividades/cadastro/tipos.html"
 
-    ],  function(tCollection, categoriaCollection, DescricaoView, MultsView,
-                 ComprovantesView, tiposTpl) {
+    ],  function(tCollection, DescricaoView, MultsView, ComprovantesView, tiposTpl) {
 
         var CategoriasView = Backbone.View.extend({
 
+            collection: tCollection,
+
+            tpl: tiposTpl,
+
             subViews : {
-                descricao : new DescricaoView(),
-                mults     : new MultsView(),
-                comprs    : new ComprovantesView()
+                descricao : null,
+                multiplicador     : null,
+                comprovantes    : null
             },
 
             events : {
@@ -23,44 +25,30 @@ define([
             },
 
             initialize : function() {
+                this.subViews.descricao     = new DescricaoView();
+                this.subViews.multiplicador = new MultsView(),
+                this.subViews.comprovantes  = new ComprovantesView();
+
                 this.on("close", this.limpaSubviews, this);
                 this.on("tipoSelected", this.tipoSelected, this);
             },
 
             tipoSelected : function() {
-                var tipoId = $("#tipo-selector").val().toLowerCase();
+                var tipoId = $("#tipo-selector").val();
                 this.renderDescricao(tipoId);
                 this.renderMultiplicadores(tipoId);
                 this.renderComprovantes();
             },
 
-            render : function(categoria) {
-                function catSelecionada (c) {
-                    return c.nome.toLowerCase() === categoria ||
-                        c.id === +categoria;
-                }
+            render : function(idCategoria) {
 
-                //
-                // Acha a categoria selecionada
-                //
-                var cat = _.chain(categoriaCollection.toJSON())
-                    .filter(catSelecionada)
-                    .first().value();
+                this.$el.html(_.template(this.tpl, {
+                    tipos : this.collection.toJSON(),
+                    categoria: +idCategoria,
+                    atual : this.options.atual
+                }));
 
-                var tiposDaCategoria = _.chain(tCollection.toJSON())
-                    .where({ categoria:cat.id })
-                    .value();
-
-                if (_.isEmpty(tiposDaCategoria)) {
-                    this.close();
-                } else {
-                    this.$el.html(_.template(tiposTpl, {
-                        tipos : tiposDaCategoria
-                    }));
-
-                    this.trigger("tipoSelected");
-                }
-
+                this.trigger("tipoSelected");
                 return this;
             },
 
@@ -71,13 +59,13 @@ define([
             },
 
             renderMultiplicadores : function(tipoId) {
-                this.subViews.mults
+                this.subViews.multiplicador
                     .setElement($("#mults-block"))
                     .render(tipoId);
             },
 
             renderComprovantes : function () {
-                this.subViews.comprs
+                this.subViews.comprovantes
                     .setElement($("#comprovantes-block"))
                     .render();
             },

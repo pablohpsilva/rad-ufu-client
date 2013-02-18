@@ -7,17 +7,18 @@ define([
 
         var DescricaoView = Backbone.View.extend({
 
+            collection: tCollection,
+
+            tpl: descricaoTpl,
+
             render : function(tipoId) {
-                //console.log("render descricao tipo:", tipoId);
-                var model = tCollection
-                        .where({id: +tipoId})
-                        .pop();
+                var data = {};
 
-                var descricao = (model)? model.get("descricao") : "";
+                data.descricao = this.collection.get(+tipoId)
+                    .get("descricao");
+                data.atual = this.options.atual;
 
-                this.$el.html(_.template(descricaoTpl, {
-                    descricao : descricao
-                }));
+                this.$el.html(_.template(this.tpl, data));
             }
         });
 

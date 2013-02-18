@@ -14,7 +14,7 @@ define([
                 pontuacao       : 0,
                 limitePontos    : 999,
                 pontuacaoRef    : 0,
-                multiplicador   : null,
+                multiplicador   : null
             },
 
             initialize : function() {

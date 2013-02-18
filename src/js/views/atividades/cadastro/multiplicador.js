@@ -9,14 +9,14 @@ define([
     var MultiplicadorView = Backbone.View.extend({
 
         render : function(tipoId) {
-
+            var data = {};
             var mid = tCollection.get(tipoId)
                     .get("multiplicador");
 
-            var mult = multCollection.get(mid);
-            var data = mult ? mult.toJSON() : {};
+            data.mult  = multCollection.get(mid).toJSON();
+            data.atual = this.options.atual;
 
-            this.$el.html(_.template(multTpl, { mult : data }));
+            this.$el.html(_.template(multTpl, data));
         }
     });
 

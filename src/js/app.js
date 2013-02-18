@@ -1,6 +1,6 @@
 define([
 
-    "router",
+    "router"
 
     ], function(Router) {
 

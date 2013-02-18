@@ -3,11 +3,16 @@ define([
     "views/app/navbar",
     "views/atividades/frame",
     "views/atividades/cadastro/frame",
+    "views/atividades/edicao/frame",
     "views/inicio/frame",
     "views/relatorio/frame",
     "views/ajuda/frame"
 
-    ], function(Navbar, AtividadesFrame, CadastroAtividadesFrame, InicioFrame, RelatorioFrame, AjudaFrame) {
+    ], function(Navbar, AtividadesFrame, CadastroAtividadesFrame,
+                EdicaoAtividadesFrame,
+                InicioFrame,
+                RelatorioFrame,
+                AjudaFrame) {
 
         var ViewFactory = Backbone.Model.extend({
 
@@ -26,6 +31,9 @@ define([
 
                     case "atividades:cadastro" :
                         return new CadastroAtividadesFrame(options);
+
+                    case "atividades:edicao":
+                        return new EdicaoAtividadesFrame(options);
 
                     case "relatorio" :
                         return new RelatorioFrame(options);

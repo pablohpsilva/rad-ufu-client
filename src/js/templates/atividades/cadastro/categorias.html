@@ -4,7 +4,7 @@
     <select class="span4" id="categoria-selector">
 
       <% _.each(categorias, function(c) { %>
-        <option value=<%= c.id %> > <%= c.nome %> </option>
+        <option <% if (atual && atual == c.id) print("selected")%> value=<%= c.id %> > <%= c.nome %> </option>
       <%});%>
 
     </select>

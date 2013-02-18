@@ -11,7 +11,14 @@ define([
     "models/comprovante",
     "models/atividade"
 
-    ],  function(multCollection, comprCollection, ativCollection, categoriaCollection, tipoCollection, Professor, Tipo, Mult, Comp, Ativ) {
+    ],  function(multCollection, comprCollection, ativCollection,
+                 categoriaCollection,
+                 tipoCollection,
+                 Professor,
+                 Tipo,
+                 Mult,
+                 Comp,
+                 Ativ) {
 
         var categorias = categoriaCollection;
         categorias.localStorage = new Backbone.LocalStorage("categoria/");
@@ -28,7 +35,7 @@ define([
         var mult2 = {
             id:2,
             nome:"Disciplinas"
-        }
+        };
 
         var ensino1 = {
             id:1,
@@ -70,16 +77,21 @@ define([
             limitePontos: 0,
             pontuacaoRef: 0,
             multiplicador: mult2.id
-        }
+        };
 
-        var comp1 = {id:1, arquivo:"the X files"};
+        var comp1 = {id:1, arquivo:"", nome: "The X files.pdf"};
+        var comp2 = {id:2, arquivo:"", nome: "Top Secret.pdf"};
 
         var ativ1 = {
             id:1,
-            descricao:"",
-            inicio: "28/12/2012",
-            fim: "29/12/2012",
-            comprovantes: [comp1.id],
+            descricao:"Cupcake ipsum dolor sit amet. Faworki jujubes cheesecake "+
+                "macaroon halvah cupcake lollipop sweet roll. Cake chocolate wafer "+
+                "jujubes fruitcake chocolate. Cookie applicake candy canes. Croissant "+
+                "carrot cake caramels chupa chups icing I love bonbon powder. Cake I "+
+                "love I love topping marzipan I love.",
+            inicio: new Date(2012, 11, 28),
+            fim: new Date(2012, 11, 29),
+            comprovantes: [comp1.id,comp2.id],
             tipo: ensino1.id,
             valorMult: 6
         };
@@ -87,8 +99,8 @@ define([
         var ativ2 = {
             id:2,
             descricao:"descrição diferente",
-            inicio:"30/12/2012",
-            fim:"31/12/2012",
+            inicio: new Date(2011, 11, 29),
+            fim: new Date(2011, 11, 30), // meses vão de 0 a 11
             tipo: ensino2.id,
             valorMult: 2
         };
@@ -101,7 +113,7 @@ define([
         ativCollection.add([ativ1, ativ2]);
 
         comprCollection.localStorage = new Backbone.LocalStorage("atividade/" + ativ1.id + "/comprovante/");
-        comprCollection.add([comp1]);
+        comprCollection.add([comp1,comp2]);
 
         tipoCollection.localStorage = new Backbone.LocalStorage("tipo/");
         tipoCollection.add([ensino1, ensino2, ensino3]);

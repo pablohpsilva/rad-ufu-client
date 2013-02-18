@@ -6,7 +6,9 @@
       <select class="span2" id="tipo-selector">
 
         <%_.each(tipos, function(t){ %>
-          <option value="<%= t.id %>"> <%= t.item %> </option>
+            <% if (t.categoria === categoria) { %>
+                <option <% if (atual && atual == t.id) print("selected")%> value="<%= t.id %>"> <%= t.item %> </option>
+            <% } %>
         <%});%>
 
       </select>

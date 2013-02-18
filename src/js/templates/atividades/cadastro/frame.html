@@ -1,13 +1,13 @@
 <ul class="breadcrumb">
   <li><a href="#/inicio">Início</a> <span class="divider">&gt;</span></li>
   <li><a href="#/atividades">Atividades</a> <span class="divider">&gt;</span></li></li>
-  <li class="active">Nova Atividade</li>
+  <li class="active"><% (editar) ? print("Editar") : print("Nova") %> Atividade</li>
 </ul>
 
 <div class="row-fluid">
   <div class="span6 offset3">
       <div class="page-header">
-        <h2 align="center">Nova Atividade</h2>
+        <h2 align="center"><% (editar) ? print("Editar") : print("Nova") %> Atividade</h2>
       </div>
 
       <!-- Alerts -->
@@ -26,18 +26,20 @@
           <div class="control-group">
             <label class="control-label" for="dataInicio">Inicio</label>
             <div class="controls">
-              <input class="span4" type="date" id="dataInicio" placeholder="dd/mm/aaaa">
+              <input class="span4" type="date" id="dataInicio" placeholder="dd/mm/aaaa"
+                value="<% if (atual && atual.inicio) print(atual.inicio)%>">
             </div>
           </div>
           <div class="control-group">
             <label class="control-label" for="dataFim">Fim</label>
             <div class="controls">
-              <input class="span4" type="date" id="dataFim" placeholder="dd/mm/aaaa">
+              <input class="span4" type="date" id="dataFim" placeholder="dd/mm/aaaa"
+                value="<% if (atual && atual.fim) print(atual.fim)%>">
             </div>
           </div>
           <div class="controls">
             <a href="#/atividades"class="btn">Cancelar</a>
-            <a class="btn btn-primary" id="cadastrar">Cadastrar</a>
+            <a class="btn btn-primary" id="<% (editar) ? print("salvar") : print("cadastrar") %>"><% (editar) ? print("Salvar") : print("Cadastrar") %></a>
           </div>
         </span>
 

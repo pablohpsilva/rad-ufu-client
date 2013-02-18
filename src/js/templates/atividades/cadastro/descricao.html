@@ -2,6 +2,6 @@
     <label for="descricao" class="control-label">Descrição</label>
     <div class="controls">
         <textarea id="descricao" cols="1" rows="10"
-                  placeholder="<%= descricao %>"></textarea>
+                  placeholder="<%= descricao %>"><% if (atual) %><%= atual %></textarea>
     </div>
 </div>

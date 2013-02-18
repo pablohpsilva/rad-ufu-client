@@ -17,9 +17,11 @@ define([
 
             el : $("#content"),
 
+            tpl: cadastroAtivFrameTpl,
+
             subViews : {
-                categorias : new CategoriasView(),
-                tipos      : new TiposView(),
+                categorias : null,
+                tipos      : null,
                 err        : new AlertView()
             },
 
@@ -28,6 +30,10 @@ define([
             },
 
             initialize : function () {
+
+                this.subViews.categorias = new CategoriasView();
+                this.subViews.tipos      = new TiposView();
+
                 this.on("close", this.limpaSubviews, this);
 
                 this.listenTo(this.subViews.tipos, "close", this.catSemTipo, this);
@@ -35,25 +41,23 @@ define([
                 this.listenTo(this.subViews.tipos, "tipoSelected", this.catComTipo, this);
 
                 this.listenTo(this.subViews.categorias, "change", this.renderTipos);
+
             },
 
             catSemTipo : function () {
                 this.$("#dates-controls-block").hide();
-                this.subViews.err
-                    .setElement($("#err"))
-                    .render({
-                    msg  : "Não existem atividades desta categoria"
-                });
             },
 
             catComTipo : function () {
-                this.subViews.err.close();
                 this.$("#dates-controls-block").show();
             },
 
             render : function () {
 
-                this.$el.html(_.template(cadastroAtivFrameTpl));
+                this.$el.html(_.template(this.tpl, {
+                    editar: false,
+                    atual: this.options.atual
+                }));
 
                 this.subViews.categorias
                     .setElement($("#categorias-block"))
@@ -62,20 +66,24 @@ define([
                 this.subViews.categorias
                     .categoriaSelected();
 
+                // inicializa os tooltips
+                this.$("[rel=\"tooltip\"]").tooltip();
+
                 return this;
 
             },
 
-            renderTipos : function (categoria) {
+            renderTipos : function (idCategoria) {
 
                 $("#tipos").empty();
 
                 this.subViews.tipos
                     .setElement($("#tipos-block"))
-                    .render(categoria);
+                    .render(idCategoria);
             },
 
             criarAtividade: function () {
+                console.log("cadastrando atividade");
                 var atividade, dados, fileInput, comprovantes;
 
                 dados = {};
@@ -90,6 +98,10 @@ define([
                 comprovantes       = [];
 
                 //console.log(fileInput);
+
+                //
+                // Cria um objeto 'Comprovante' para cada arquivo selecionado
+                //
                 comprovantes = _.map(fileInput.files, function (file) {
                     var c = new Comprovante({arquivo:file});
                     c.readFile();
@@ -98,6 +110,7 @@ define([
 
                 atividade = new Atividade(dados);
                 console.log(atividade, comprovantes);
+                alert("todo");
             },
 
             limpaSubviews : function() {

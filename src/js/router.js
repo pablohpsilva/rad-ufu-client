@@ -1,9 +1,10 @@
 define([
 
     "collections/categoria",
+    "collections/atividade",
     "views/manager"
 
-    ], function(categoriaCollection, ViewManager) {
+    ], function(categoriaCollection, atividadeCollection, ViewManager) {
 
         var AppRouter = Backbone.Router.extend({
 
@@ -11,8 +12,9 @@ define([
 
             routes : {
 
+                "atividades/:id/editar"           : "editarAtividade",
                 "atividades/cadastrar"            : "cadastrarAtividade",
-                "atividades/:categoria"           : "atividades",
+                "atividades/:categoria"           : "listarAtividades",
                 "atividades"                      : "primeiraCategoria",
                 "relatorio"                       : "relatorio",
                 "ajuda"                           : "ajuda",
@@ -24,12 +26,18 @@ define([
 
                 this.viewManager.show("navbar", {once:true});
 
-                this.on("route:atividades", function (c) {
-                    categoria = decodeURIComponent(c);
+                this.on("route:editarAtividade", function (id) {
+                    this.viewManager.show("atividades:edicao", {
+                        model: atividadeCollection.get(id)
+                    });
+                });
+
+                this.on("route:listarAtividades", function (c) {
+                    c = decodeURIComponent(c);
                     this.viewManager.show("atividades", {categoria:c});
                 });
 
-                this.on("route:cadastrarAtividade", function (categoria) {
+                this.on("route:cadastrarAtividade", function () {
                     this.viewManager.show("atividades:cadastro");
                 });
 

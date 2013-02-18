@@ -1,9 +1,8 @@
-<% if (!_.isEmpty(mult)) { %>
 <div class="control-group">
-    <label for="<%= mult.id %>" class="control-label"> Qtde. </label>
+    <label for="quantidade" class="control-label"> Qtde. </label>
     <div class="controls">
-        <input class="span2" type="text" id="quantidade">
+        <input class="span2" type="text" id="quantidade"
+            value="<% if (atual) print(atual) %>">
        <span class="help-inline"><%= mult.nome %></span>
     </div>
 </div>
-<% } %>
