@@ -61,9 +61,10 @@ require.config({
 
 require([
 
+    "dummyData",
     "app"
 
-    ], function(App) {
+    ], function(dummy, App) {
 
         App.init();
 

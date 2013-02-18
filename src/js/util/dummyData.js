@@ -121,6 +121,7 @@ define([
         multCollection.localStorage = new Backbone.LocalStorage("multiplicador/");
         multCollection.add([mult1,mult2]);
 
+        console.log("dummydata generated");
         return oak;
 
 });

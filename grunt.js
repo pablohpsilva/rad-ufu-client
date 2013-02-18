@@ -106,6 +106,6 @@ module.exports = function(grunt) {
       'copy:font',
       'clean:build'
     ]);
-  })
+  });
 
 };
