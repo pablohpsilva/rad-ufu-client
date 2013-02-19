@@ -70,6 +70,12 @@ define([
                     .render();
             },
 
+            resetDados: function () {
+                _.each(this.subViews, function (subView) {
+                    if (subView.resetDados) subView.resetDados();
+                });
+            },
+
             preparaDados: function (dadosCadastro) {
                 var t = this.$("#tipo-selector").val();
                 // validar e (caso exista algum erro não modificar dadosCadastro)

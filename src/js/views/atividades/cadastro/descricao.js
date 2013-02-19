@@ -21,6 +21,10 @@ define([
                 this.$el.html(_.template(this.tpl, data));
             },
 
+            resetDados: function () {
+                this.$("#descricao").val("");
+            },
+
             preparaDados: function (dadosCadastro) {
                 var d = this.$("#descricao").val();
                 // validar e (caso exista algum erro não modificar dadosCadastro)

@@ -19,6 +19,10 @@ define([
                 this.$el.html(_.template(multTpl, data));
             },
 
+            resetDados: function () {
+                this.$("#quantidade").val("");
+            },
+
             preparaDados: function (dadosCadastro) {
                 var m = this.$("#quantidade").val();
                 // validar e (caso exista algum erro não modificar dadosCadastro)

@@ -87,6 +87,14 @@ define([
                     .render(idCategoria);
             },
 
+            resetDados: function () {
+                _.each(_.omit(this.subViews, "err"), function (subView) {
+                    if (subView.resetDados) subView.resetDados();
+                });
+                this.$("#dataInicio").val("");
+                this.$("#dataFim").val("");
+            },
+
             preparaDados: function () {
                 var dataInicio, dataFim, dataFormato, dataLang, dadosCadastro = {};
 
@@ -142,6 +150,8 @@ define([
                     this.subViews.err
                         .setElement(this.$("#err"))
                         .render({ msg: "Atividade cadastrada", type: "alert-success" });
+
+                    this.resetDados();
                 }
                 console.log(atividadeCollection.create(atividade));
             },

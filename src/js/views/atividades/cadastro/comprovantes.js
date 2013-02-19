@@ -83,6 +83,11 @@ define([
 
             },
 
+            resetDados: function () {
+                this.selecionados = [];
+                this.render();
+            },
+
             preparaDados: function (dadosCadastro) {
                 if (!_.isEmpty(this.selecionados))
                     // nb: os objetos aninhados não são clonados
