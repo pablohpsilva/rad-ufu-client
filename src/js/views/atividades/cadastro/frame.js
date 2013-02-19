@@ -139,7 +139,9 @@ define([
                     });
 
                     atividade.comprovantes = cids;
-
+                    this.subViews.err
+                        .setElement(this.$("#err"))
+                        .render({ msg: "Atividade cadastrada", type: "alert-success" });
                 }
                 console.log(atividadeCollection.create(atividade));
             },
