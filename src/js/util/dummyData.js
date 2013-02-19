@@ -89,8 +89,8 @@ define([
                 "jujubes fruitcake chocolate. Cookie applicake candy canes. Croissant "+
                 "carrot cake caramels chupa chups icing I love bonbon powder. Cake I "+
                 "love I love topping marzipan I love.",
-            inicio: new Date(2012, 11, 28),
-            fim: new Date(2012, 11, 29),
+            inicio: "28/11/2012",
+            fim: "29/11/2012",
             comprovantes: [comp1.id,comp2.id],
             tipo: ensino1.id,
             valorMult: 6
@@ -99,8 +99,8 @@ define([
         var ativ2 = {
             id:2,
             descricao:"descrição diferente",
-            inicio: new Date(2011, 11, 29),
-            fim: new Date(2011, 11, 30), // meses vão de 0 a 11
+            inicio: "29/11/2011",
+            fim: "30/11/2011",
             tipo: ensino2.id,
             valorMult: 2
         };
