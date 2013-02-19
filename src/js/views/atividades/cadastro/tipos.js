@@ -73,7 +73,7 @@ define([
             preparaDados: function (dadosCadastro) {
                 var t = this.$("#tipo-selector").val();
                 // validar e (caso exista algum erro não modificar dadosCadastro)
-                dadosCadastro.tipo = t;
+                dadosCadastro.tipo = +t;
 
                 _.each(this.subViews, function (subView) {
                     subView.preparaDados(dadosCadastro);
