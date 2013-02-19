@@ -145,8 +145,7 @@ define([
                     _.each(atividade.comprovantes, function (f) {
                         var c = new Comprovante();
                         c.set("nome", f.name);
-                        // usando cid enquanto estamos rodando só no cliente
-                        cids.push(c.cid);
+                        cids.push(c.id);
                         comprovanteCollection.push(c);
                     });
 

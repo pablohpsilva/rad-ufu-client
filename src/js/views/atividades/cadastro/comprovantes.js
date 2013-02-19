@@ -29,9 +29,7 @@ define([
                 if (this.options.atuais)
                     data.atuais = comprovanteCollection.chain()
                         .filter(function (c) {
-                            return _.contains(this.options.atuais, c.id) ||
-                                // só usar isto enquanto não agregado ao back-end!
-                                _.contains(this.options.atuais, c.cid);
+                            return _.contains(this.options.atuais, c.id);
                         }, this)
                         .map(function (c) {
                             return c.toJSON();
