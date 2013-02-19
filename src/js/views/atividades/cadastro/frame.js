@@ -69,6 +69,9 @@ define([
                 // inicializa os tooltips
                 this.$("[rel=\"tooltip\"]").tooltip();
 
+                // inicializa datepickers
+                this.$(".datepicker").datepicker();
+
                 return this;
 
             },

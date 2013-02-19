@@ -20,7 +20,9 @@ module.exports = function(grunt) {
         bootstrap: {
           src: [
             'node_modules/bootstrap/js/bootstrap-alert.js',
-            'node_modules/bootstrap/js/bootstrap-tooltip.js'
+            'node_modules/bootstrap/js/bootstrap-tooltip.js',
+            'components/bootstrap-datepicker/js/bootstrap-datepicker.js',
+            'components/bootstrap-datepicker/js/locales/bootstrap-datepicker.pt-BR.js'
           ],
           dest: 'components/bootstrap/bootstrap.js'
         }
