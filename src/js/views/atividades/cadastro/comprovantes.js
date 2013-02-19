@@ -13,7 +13,8 @@ define([
 
             events: {
                 "click #addComprovante": "clickInput",
-                "change #comprovantes": "atualizaSelecionados"
+                "change #comprovantes": "atualizaSelecionados",
+                "click li.selecionado i.icon-remove": "removeSelecionado"
             },
 
             initialize: function () {
@@ -70,6 +71,14 @@ define([
                 this.$el.empty();
                 this.render();
 
+            },
+
+            removeSelecionado: function (ev) {
+                console.log("removendo selecionado");
+                var el = this.$(ev.target);
+                this.selecionados = _.omit(this.selecionados, el.data("name"));
+                el.parent("li").remove();
+                console.log("selecionados: ",this.selecionados);
             },
 
             resetDados: function () {

@@ -63,6 +63,15 @@ define([
                 var atividade = {};
 
                 atividade = this.preparaDados();
+
+                if (!_.isEmpty(atividade.err)) {
+                    _.each(atividade.err, function (errMsg) {
+                        this.subViews.err
+                            .setElement(this.$("#err"))
+                            .render({ msg: errMsg, type: "alert-error" });
+                    }, this);
+                }
+
                 console.log(atividade);
             }
         });

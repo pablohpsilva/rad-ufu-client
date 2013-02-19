@@ -38,8 +38,50 @@ define([
                 return this;
             },
 
+            atualizaSelecionados: function () {
+                var files;
+
+                function contemArquivo (collection, nome) {
+                    var contem = collection.filter(function (c) {
+                        return nome === c.get("nome");
+                    });
+                    if (!_.isEmpty(contem)) return true;
+                    return false;
+                }
+
+                files = $("#comprovantes")[0].files;
+                console.log("atualizando arquivos selecionados");
+                //console.log(files);
+
+                _.each(files, function (f) {
+                    if(!contemArquivo(this.collection, f.name))
+                        this.selecionados[f.name] = f;
+                    else
+                        console.log("Arquivo já existente não adicionado");
+                }, this);
+
+                //console.log("selecionados", this.selecionados);
+
+                this.$el.empty();
+                this.render();
+
+            },
+
+            preparaDados: function (dadosEdicao) {
+                if(_.isEmpty(this.options.atuais) &&
+                   _.isEmpty(this.selecionados))
+                    dadosEdicao.err.push("Selecione um arquivo comprovante");
+
+                dadosEdicao.atuais      = this.options.atuais;
+                dadosEdicao.selecionados = this.selecionados;
+            },
+
             removeAtual: function (ev) {
-                $(ev.target).parent("li").remove();
+                console.log("removendo do atual:", this.options.atuais);
+                var el = this.$(ev.target);
+                this.options.atuais = _.without(this.options.atuais, el.data("id"));
+                el.parent("li").remove();
+                console.log("atual:", this.options.atuais);
             }
         });
 
