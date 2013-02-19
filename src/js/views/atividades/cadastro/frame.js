@@ -143,10 +143,8 @@ define([
                     }, this);
                 } else {
                     _.each(atividade.comprovantes, function (f) {
-                        var c = new Comprovante();
-                        c.set("nome", f.name);
-                        cids.push(c.id);
-                        comprovanteCollection.push(c);
+                        var c = comprovanteCollection.create({nome:f.name});
+                        cids.push(c.get("id"));
                     });
 
                     atividade.comprovantes = cids;
