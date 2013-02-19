@@ -98,6 +98,8 @@ define([
             preparaDados: function () {
                 var dataInicio, dataFim, dataFormato, dataLang, dadosCadastro = {};
 
+                dadosCadastro.err = [];
+
                 _.each(_.omit(this.subViews, "err"), function (subView) {
                     subView.preparaDados(dadosCadastro);
                 });
@@ -114,11 +116,11 @@ define([
                 dataFim     = this.$("#dataFim").val();
 
                 if (!dataInicio) {
-                    dadosCadastro.err = "Escolha a data em que a atividade iniciou";
+                    dadosCadastro.err.push("Escolha a data em que a atividade iniciou");
                 } else if (!dataFim) {
-                    dadosCadastro.err = "Escolha a data em que a atividade terminou";
+                    dadosCadastro.err.push("Escolha a data em que a atividade terminou");
                 } else if (dateParse(dataInicio) > dateParse(dataFim)) {
-                    dadosCadastro.err = "Escolha uma data de inicio anterior a data de fim";
+                    dadosCadastro.err.push("Escolha uma data de inicio anterior a data de fim");
                 } else {
                     dadosCadastro.inicio = dataInicio;
                     dadosCadastro.fim    = dataFim;
@@ -133,10 +135,12 @@ define([
                 console.log("cadastrando atividade");
                 atividade = this.preparaDados();
 
-                if (atividade.err) {
-                    this.subViews.err
-                        .setElement(this.$("#err"))
-                        .render({ msg: atividade.err, type: "alert-error" });
+                if (!_.isEmpty(atividade.err)) {
+                    _.each(atividade.err, function (errMsg) {
+                        this.subViews.err
+                            .setElement(this.$("#err"))
+                            .render({ msg: errMsg, type: "alert-error" });
+                    }, this);
                 } else {
                     _.each(atividade.comprovantes, function (f) {
                         var c = new Comprovante();

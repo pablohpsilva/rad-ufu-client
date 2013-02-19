@@ -29,9 +29,9 @@ define([
                 var d = this.$("#descricao").val();
 
                 if(!d.length) // se a descricao tem tamanho igual a zero
-                    dadosCadastro.err = "Preencha o campo descricao";
+                    dadosCadastro.err.push("Preencha o campo descricao");
                 else if(d.length > 2300) // se a descricao tem tamanho maior que 2300
-                    dadosCadastro.err = "Descricao possui mais do que 2300 caracteres";
+                    dadosCadastro.err.push("Descricao possui mais do que 2300 caracteres");
 
                 dadosCadastro.descricao = d;
             }

@@ -89,9 +89,10 @@ define([
             },
 
             preparaDados: function (dadosCadastro) {
-                if (!_.isEmpty(this.selecionados))
-                    // nb: os objetos aninhados não são clonados
-                    dadosCadastro.comprovantes = _.clone(this.selecionados);
+                if (_.isEmpty(this.selecionados))
+                    dadosCadastro.err.push("Selecione um arquivo comprovante");
+                // nb: os objetos aninhados não são clonados
+                dadosCadastro.comprovantes = _.clone(this.selecionados);
             },
 
             toggleRemove: function (e) {

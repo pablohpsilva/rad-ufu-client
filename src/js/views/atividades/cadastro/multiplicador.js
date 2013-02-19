@@ -29,12 +29,13 @@ define([
                 var id = this.$("#quantidade").data("mult-id");
                 var limite = multCollection.get(id).get("limite");
 
-                if(isNaN(m-0) || m=="") // se o multiplicador for um valor diferente de um numero ou nao tem nada escrito
-                    dadosCadastro.err = "Erro no valor do multiplicador";
-                else 
-                    if(!limite) // se o limite nao for undefined
-                        if(m > limite) //se o m for maior que o seu limite
-                            dadosCadastro.err = "Valor do multiplicador esta maior que o seu limite";
+                // se o multiplicador for um valor não numérico ou vazio
+                if(isNaN(m-0) || m === "")
+                    dadosCadastro.err.push("O valor da quantidade deve ser numérico");
+                else
+                    //se existir um limite e o m for maior que o seu limite
+                    if(limite && limite < m)
+                        dadosCadastro.err.push("Valor do multiplicador esta maior que o seu limite");
 
                 dadosCadastro.valorMult = m;
 
