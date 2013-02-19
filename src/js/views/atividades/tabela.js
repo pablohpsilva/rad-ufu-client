@@ -24,8 +24,8 @@ define([
 
             initialize : function() {
 
-                this.listenTo(this.collection, "add", this.addOne, this);
-                this.listenTo(this.collection, "remove", this.render, this);
+                //this.listenTo(this.collection, "add", this.addOne, this);
+                //this.listenTo(this.collection, "remove", this.render, this);
 
                 this.on("close", this.limpaSubviews, this);
             },
@@ -60,6 +60,8 @@ define([
                     .where({categoria:cat.id})
                     .value();
 
+
+                console.log(atividadeCollection.toJSON());
                 //
                 // Acha as atividades pertencentes aos tipos das categorias
                 //
