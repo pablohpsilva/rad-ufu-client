@@ -6,19 +6,19 @@ define([
 
     "text!templates/alert.html"
 
-], function (alertTpl) {
+    ], function (alertTpl) {
 
-   var AlertView = Backbone.View.extend({
-        el : "#err",
+        var AlertView = Backbone.View.extend({
+            el : "#err",
 
-        render : function (options) {
-            var args = (!options) ? {} : options;
-            if(!args.type) args.type = "";
+            render : function (options) {
+                var args = (!options) ? {} : options;
+                if(!args.type) args.type = "";
 
-            this.$el.html(_.template(alertTpl, args));
-        }
-   });
+                this.$el.append(_.template(alertTpl, args));
+            }
+        });
 
-   return AlertView;
+    return AlertView;
 
 });
