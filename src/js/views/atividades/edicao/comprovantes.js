@@ -6,6 +6,10 @@ define([
 
         var ComprovanteEdicaoView = ComprovanteCadastroView.extend({
 
+            events: _.extend({
+                "click li.atual i.icon-remove": "removeAtual"
+            }, ComprovanteCadastroView.prototype.events),
+
             render: function () {
                 var data = {};
 
@@ -32,6 +36,10 @@ define([
 
                 //console.log(data.atuais);
                 return this;
+            },
+
+            removeAtual: function (ev) {
+                $(ev.target).parent("li").remove();
             }
         });
 
