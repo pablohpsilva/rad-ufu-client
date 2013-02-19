@@ -11,11 +11,27 @@
         <div class="form-horizontal">
             <div class="control-group">
                 <label for="dataInicio" class="control-label">Início</label>
-                <div class="controls"><input type="date" id="dataInicio" class="span4" placeholder="dd/mm/aaaa"></div>
+                <div class="controls">
+                    <input type="text" id="dataInicio" class="span4 datepicker"
+                        placeholder="dd/mm/aaaa"
+                        data-date-format="dd/mm/yyyy"
+                        data-date-weekstart="1"
+                        data-date-autoclose="true"
+                        data-date-today-highlight="true"
+                        data-date-language="pt-BR">
+                </div>
             </div>
             <div class="control-group">
                 <label for="dataFim" class="control-label">Fim</label>
-                <div class="controls"><input type="date" id="dataFim" class="span4" placeholder="dd/mm/aaaa"></div>
+                <div class="controls">
+                    <input type="text" id="dataFim" class="span4 datepicker"
+                        placeholder="dd/mm/aaaa"
+                        data-date-format="dd/mm/yyyy"
+                        data-date-weekstart="1"
+                        data-date-autoclose="true"
+                        data-date-today-highlight="true"
+                        data-date-language="pt-BR">
+                </div>
             </div>
             <div class="control-group">
                 <label for="classe" class="control-label">Classe</label>

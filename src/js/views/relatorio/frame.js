@@ -10,10 +10,10 @@ define([
 
             render : function() {
                 this.$el.html(_.template(relatorioFrameTpl));
-
+                this.$(".datepicker").datepicker();
                 return this;
 
-            },
+            }
 
         });
 
