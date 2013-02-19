@@ -81,6 +81,12 @@ define([
 
             },
 
+            preparaDados: function (dadosCadastro) {
+                if (!_.isEmpty(this.selecionados))
+                    // nb: os objetos aninhados não são clonados
+                    dadosCadastro.comprovantes = _.clone(this.selecionados);
+            },
+
             toggleRemove: function (e) {
                 this.$(e.target).find(".icon-remove").toggleClass("invisivel");
             },

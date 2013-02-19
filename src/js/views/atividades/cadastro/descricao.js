@@ -19,6 +19,12 @@ define([
                 data.atual = this.options.atual;
 
                 this.$el.html(_.template(this.tpl, data));
+            },
+
+            preparaDados: function (dadosCadastro) {
+                var d = this.$("#descricao").val();
+                // validar e (caso exista algum erro não modificar dadosCadastro)
+                dadosCadastro.descricao = d;
             }
         });
 

@@ -27,6 +27,12 @@ define([
                 this.$el.html(_.template(this.tpl, data));
 
                 return this;
+            },
+
+            preparaDados: function (dadosCadastro) {
+                var c = this.$("#categoria-selector").val();
+                // validar e (caso exista algum erro não modificar dadosCadastro)
+                dadosCadastro.categoria = c;
             }
         });
 

@@ -82,34 +82,22 @@ define([
                     .render(idCategoria);
             },
 
-            criarAtividade: function () {
-                console.log("cadastrando atividade");
-                var atividade, dados, fileInput, comprovantes;
+            preparaDados: function () {
+                var dadosCadastro = {};
 
-                dados = {};
-
-                dados.categoria    = this.$("#categoria-selector").val();
-                dados.tipo         = this.$("#tipo-selector").val();
-                dados.descricao    = this.$("#descricao").val();
-                dados.valorMult    = this.$("#quantidade").val();
-                dados.inicio       = this.$("#dataInicio").val();
-                dados.fim          = this.$("#dataFim").val();
-                fileInput          = this.$("#comprovantes")[0];
-                comprovantes       = [];
-
-                //console.log(fileInput);
-
-                //
-                // Cria um objeto 'Comprovante' para cada arquivo selecionado
-                //
-                comprovantes = _.map(fileInput.files, function (file) {
-                    var c = new Comprovante({arquivo:file});
-                    c.readFile();
-                    return c;
+                _.each(_.omit(this.subViews, "err"), function (subView) {
+                    subView.preparaDados(dadosCadastro);
                 });
 
-                atividade = new Atividade(dados);
-                console.log(atividade, comprovantes);
+                dadosCadastro.inicio = this.$("#dataInicio").val();
+                dadosCadastro.fim    = this.$("#dataFim").val();
+
+                return dadosCadastro;
+            },
+
+            criarAtividade: function () {
+                console.log("cadastrando atividade");
+                console.log(this.preparaDados());
                 alert("todo");
             },
 
