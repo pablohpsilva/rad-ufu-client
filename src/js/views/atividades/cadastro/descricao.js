@@ -27,7 +27,12 @@ define([
 
             preparaDados: function (dadosCadastro) {
                 var d = this.$("#descricao").val();
-                // validar e (caso exista algum erro não modificar dadosCadastro)
+
+                if(!d.length) // se a descricao tem tamanho igual a zero
+                    dadosCadastro.err = "Preencha o campo descricao";
+                else if(d.length > 2300) // se a descricao tem tamanho maior que 2300
+                    dadosCadastro.err = "Descricao possui mais do que 2300 caracteres";
+
                 dadosCadastro.descricao = d;
             }
         });
