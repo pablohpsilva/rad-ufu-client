@@ -5,8 +5,7 @@ define(function() {
             defaults : {
                 //id
                 nome   : "",
-                valor  : 0,
-                limite : 999
+                valor  : 0
             },
 
             validate : function(attrs) {
