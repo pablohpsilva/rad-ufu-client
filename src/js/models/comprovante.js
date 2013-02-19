@@ -22,8 +22,8 @@ define(function() {
             },
 
             validate : function(attrs) {
-                if(attrs.arquivo === null)
-                    return "arquivo não atribuído ao comprovante";
+                //if(attrs.arquivo === null)
+                    //return "arquivo não atribuído ao comprovante";
             }
 
         });
