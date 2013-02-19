@@ -61,7 +61,7 @@ define([
                     .value();
 
 
-                console.log(atividadeCollection.toJSON());
+                console.log("tabela com atividades:",atividadeCollection.toJSON());
                 //
                 // Acha as atividades pertencentes aos tipos das categorias
                 //
