@@ -60,7 +60,10 @@ define([
 
             editarAtividade: function () {
                 console.log("editando atividade");
-                alert("todo");
+                var atividade = {};
+
+                atividade = this.preparaDados();
+                console.log(atividade);
             }
         });
 

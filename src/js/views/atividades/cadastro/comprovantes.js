@@ -7,6 +7,10 @@ define([
 
         var comprView = Backbone.View.extend({
 
+            collection: comprovanteCollection,
+
+            tpl: comprovantesTpl,
+
             events: {
                 "click #addComprovante": "clickInput",
                 "change #comprovantes": "atualizaSelecionados"
@@ -20,25 +24,12 @@ define([
             render: function () {
                 var data = {};
 
-                data.atuais       = [];
+                data.atuais = [];
                 data.selecionados = this.selecionados;
-                //
-                // Se já existem comprovantes para a atividade, busca os comprovantes
-                // na collection
-                //
-                if (this.options.atuais)
-                    data.atuais = comprovanteCollection.chain()
-                        .filter(function (c) {
-                            return _.contains(this.options.atuais, c.id);
-                        }, this)
-                        .map(function (c) {
-                            return c.toJSON();
-                        }).value();
 
                 this.$el.html(_.template(comprovantesTpl, data));
                 // inicializa os tooltips
                 this.$("[rel=\"tooltip\"]").tooltip();
-
                 this.registraHovers();
 
                 //console.log(data.atuais);
