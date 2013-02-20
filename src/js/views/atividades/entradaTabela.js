@@ -37,6 +37,10 @@ define([
                 this.model.pontuacao = this.model.valorMult * valor;
 
                 this.$el.html(_.template(atividadeTpl, this.model));
+
+                // inicializa os tooltips
+                this.$("[rel=\"tooltip\"]").tooltip();
+
                 return this;
             }
         });

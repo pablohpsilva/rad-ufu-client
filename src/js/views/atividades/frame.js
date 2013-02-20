@@ -35,9 +35,6 @@ define([
                     .setElement($("#tabela-block"))
                     .render();
 
-                // inicializa os tooltips
-                this.$("[rel=\"tooltip\"]").tooltip();
-
                 return this;
             },
 
