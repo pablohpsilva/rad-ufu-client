@@ -152,9 +152,10 @@ define([
                         .setElement(this.$("#err"))
                         .render({ msg: "Atividade cadastrada", type: "alert-success" });
 
+                    atividadeCollection.create(atividade);
                     this.resetDados();
                 }
-                console.log(atividadeCollection.create(atividade));
+                console.log(atividade);
             },
 
             limpaSubviews : function() {
