@@ -1,11 +1,13 @@
 define([
 
     "models/atividade",
+    "collections/atividade",
     "collections/tipo",
     "collections/multiplicador",
     "text!templates/atividades/entradaTabela.html"
 
-    ],  function(AtividadeModel, tipoCollection, multiplicadorCollection,
+    ],  function(AtividadeModel, atividadeCollection, tipoCollection,
+                 multiplicadorCollection,
                  atividadeTpl) {
 
         var AtividadeEntradaTabelaView = Backbone.View.extend({
@@ -13,11 +15,18 @@ define([
             tagName : "tr",
 
             events: {
-                "hover": "toggleControles"
+                "hover": "toggleControles",
+                "click li i.icon-remove": "removeAtividade"
             },
 
             toggleControles: function () {
                 this.$("i").toggleClass("invisivel");
+            },
+
+            removeAtividade: function (ev) {
+                var id = this.$(ev.target).data("id-atividade");
+                console.log("removendo atividade com id:", id);
+                atividadeCollection.remove(id);
             },
 
             render : function() {
