@@ -25,19 +25,20 @@ define([
             initialize : function() {
 
                 //this.listenTo(this.collection, "add", this.addOne, this);
-                //this.listenTo(this.collection, "remove", this.render, this);
+                this.listenTo(this.collection, "remove", this.render, this);
 
                 this.on("close", this.limpaSubviews, this);
             },
 
-            render : function (selecionada) {
+            render : function () {
+                this.limpaSubviews();
 
                 this.$el.empty();
                 this.subViews.atividades = [];
 
                 function catSelecionada   (c) {
-                    return c.nome.toLowerCase() === selecionada ||
-                        c.id === selecionada;
+                    return c.nome.toLowerCase() === this.options.categoria ||
+                        c.id === this.options.categoria;
                 }
                 function atividadeDoTipo  (a) { return _.contains(_.pluck(tipos,"id"), a.tipo); }
                 function addItemNo        (a) {
@@ -50,8 +51,11 @@ define([
                 // Acha a categoria selecionada
                 //
                 var cat = _.chain(categoriaCollection.toJSON())
-                    .filter(catSelecionada)
+                    .filter(catSelecionada, this)
                     .first().value();
+
+                console.log("selecionada:", this.options.categoria);
+                console.log(cat);
 
                 //
                 // Acha os tipos pertencentes a categoria selecionada

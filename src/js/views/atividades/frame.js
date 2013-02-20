@@ -13,10 +13,11 @@ define([
             subViews : {
 
                 tabs   : new TabsView(),
-                tabela : new TabelaView()
+                tabela : null
             },
 
             initialize : function() {
+                this.subViews.tabela = new TabelaView({categoria: this.options.categoria});
                 this.on("close", this.limpaSubviews, this);
             },
 
@@ -32,7 +33,7 @@ define([
 
                 this.subViews.tabela
                     .setElement($("#tabela-block"))
-                    .render(this.options.categoria);
+                    .render();
 
                 // inicializa os tooltips
                 this.$("[rel=\"tooltip\"]").tooltip();
