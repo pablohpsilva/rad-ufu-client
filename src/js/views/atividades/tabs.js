@@ -12,8 +12,6 @@ define([
 
             render : function(categoria) {
 
-                this.collection.fetch();
-
                 this.$el.html(_.template(tabsCategoriaTpl, {
                     categorias  : this.collection,
                     selecionada : categoria
