@@ -41,10 +41,15 @@ define([
             atualizaSelecionados: function () {
                 var files;
 
-                function contemArquivo (collection, nome) {
-                    var contem = collection.filter(function (c) {
-                        return nome === c.get("nome");
-                    });
+                //
+                // Verifica se existem comprovantes atuais com o nome 'nome'
+                //
+                function contemArquivo (collection, nome, thisView) {
+                    var contem = collection.chain()
+                        .filter(function (c) {
+                            return _.contains(thisView.options.atuais, c.id) && nome === c.get("nome");
+                        })
+                        .value();
                     if (!_.isEmpty(contem)) return true;
                     return false;
                 }
@@ -54,7 +59,7 @@ define([
                 //console.log(files);
 
                 _.each(files, function (f) {
-                    if(!contemArquivo(this.collection, f.name))
+                    if(!contemArquivo(this.collection, f.name, this))
                         this.selecionados[f.name] = f;
                     else
                         console.log("Arquivo já existente não adicionado");
