@@ -21,7 +21,7 @@ define([
                 });
 
                 this.subViews.comprovantes = new ComprovantesCadastroView({
-                    atuais: _.clone(this.model.get("comprovantes"))
+                    atuais: this.model.get("comprovantes")
                 });
 
                 this.on("close", this.limpaSubviews, this);
