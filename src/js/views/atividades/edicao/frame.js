@@ -35,6 +35,8 @@ define([
 
                 this.listenTo(this.subViews.categorias, "change", this.renderTipos);
 
+                this.listenTo(this.model, "change", this.atividadeAlterada);
+
                 //console.log(this.model);
             },
 
@@ -84,14 +86,20 @@ define([
                             novos.push(c.get("id"));
                         });
 
-                    atividade.comprovantes = _.union(atividade.atuais, novos);
-                    this.model.set(_.omit(atividade, "atuais", "err", "selecionados"));
+                    atividade.comprovantes = (!_.isEmpty(novos)) ?
+                        _.union(atividade.atuais, novos) :
+                        atividade.atuais;
 
-                    this.subViews.err
-                        .setElement(this.$("#err"))
-                        .render({ msg: "Dados da atividade alterados", type: "alert-success" });
+                    this.model.set(_.omit(atividade, "atuais", "err", "selecionados", "categoria"));
                 }
                 console.log(atividade);
+            },
+
+            atividadeAlterada: function () {
+                console.log("Atributos alterados: ", this.model.changedAttributes());
+                this.subViews.err
+                        .setElement(this.$("#err"))
+                        .render({ msg: "Dados da atividade alterados", type: "alert-success" });
             }
         });
 

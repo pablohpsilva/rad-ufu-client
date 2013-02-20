@@ -77,7 +77,7 @@ define([
                    _.isEmpty(this.selecionados))
                     dadosEdicao.err.push("Selecione um arquivo comprovante");
 
-                dadosEdicao.atuais      = this.options.atuais;
+                dadosEdicao.atuais       = this.options.atuais;
                 dadosEdicao.selecionados = this.selecionados;
             },
 
