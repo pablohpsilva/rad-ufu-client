@@ -37,7 +37,7 @@ define([
                     if(limite && limite < m)
                         dadosCadastro.err.push("Valor do multiplicador esta maior que o seu limite");
 
-                dadosCadastro.valorMult = m;
+                dadosCadastro.valorMult = +m;
 
             }
         });
