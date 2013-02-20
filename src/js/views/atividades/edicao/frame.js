@@ -3,9 +3,12 @@ define([
     "views/atividades/cadastro/frame",
     "views/atividades/edicao/categorias",
     "views/atividades/edicao/tipos",
+    "collections/comprovante",
     "collections/tipo"
 
-    ],  function (CadastroAtividadeFrame, CategoriasView, TiposView, tipoCollection) {
+    ],  function (CadastroAtividadeFrame, CategoriasView, TiposView,
+                  comprovanteCollection,
+                  tipoCollection) {
 
         var EdicaoAtividadeFrame = CadastroAtividadeFrame.extend({
 
@@ -54,13 +57,16 @@ define([
                 // inicializa os tooltips
                 this.$("[rel=\"tooltip\"]").tooltip();
 
+                // inicializa datepickers
+                this.$(".datepicker").datepicker();
+
                 return this;
 
             },
 
             editarAtividade: function () {
                 console.log("editando atividade");
-                var atividade = {};
+                var atividade = {}, novos = [];
 
                 atividade = this.preparaDados();
 
@@ -70,8 +76,21 @@ define([
                             .setElement(this.$("#err"))
                             .render({ msg: errMsg, type: "alert-error" });
                     }, this);
-                }
+                } else {
+                    // Se existem novos arquivos para a atividade
+                    if (!_.isEmpty(atividade.selecionados))
+                        _.each(atividade.selecionados, function (f) {
+                            var c = comprovanteCollection.create({nome:f.name});
+                            novos.push(c.get("id"));
+                        });
 
+                    atividade.comprovantes = _.union(atividade.atuais, novos);
+                    this.model.set(_.omit(atividade, "atuais", "err", "selecionados"));
+
+                    this.subViews.err
+                        .setElement(this.$("#err"))
+                        .render({ msg: "Dados da atividade alterados", type: "alert-success" });
+                }
                 console.log(atividade);
             }
         });
