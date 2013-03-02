@@ -11,9 +11,6 @@ require.config({
         "backbone"     : "../../node_modules/backbone/backbone",
         "text"         : "../../node_modules/text/text",
         "bootstrap"    : "../../components/bootstrap/bootstrap",
-
-        // Development: armazenagem temporária dos dados
-        "backbone.localStorage" : "../../components/backbone/backbone.localStorage",
         "dummyData": "util/dummyData"
     },
 
@@ -21,9 +18,6 @@ require.config({
         "app" : {
             deps : [
                 "backbone",
-                "backbone.localStorage",
-                "underscore",
-                "jquery",
                 "bootstrap",
                 "dummyData"
             ]
@@ -31,21 +25,12 @@ require.config({
 
         "dummyData": {
             deps: [
-                "backbone.localStorage"
+                "backbone"
             ]
         },
 
         "bootstrap" : {
             deps : ["jquery"]
-        },
-
-        "backbone.localStorage" : {
-            deps    : ["backbone"],
-            exports : "Backbone"
-        },
-
-        "underscore" : {
-            exports : "_"
         },
 
         "backbone" : {
@@ -55,6 +40,9 @@ require.config({
             //Once loaded, use the global 'Backbone' as the
             //module value.
             exports : "Backbone"
+        },
+        "underscore" : {
+            exports : "_"
         }
     }
 });

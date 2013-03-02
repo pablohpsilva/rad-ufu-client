@@ -68,7 +68,7 @@ define([
 
             editarAtividade: function () {
                 console.log("editando atividade");
-                var atividade = {}, novos = [];
+                var atividade = {}, novosComprovantes = [];
 
                 atividade = this.preparaDados();
 
@@ -82,12 +82,12 @@ define([
                     // Se existem novos arquivos para a atividade
                     if (!_.isEmpty(atividade.selecionados))
                         _.each(atividade.selecionados, function (f) {
-                            var c = comprovanteCollection.create({nome:f.name});
-                            novos.push(c.get("id"));
+                            var c = comprovanteCollection.add({nome:f.name});
+                            novosComprovantes.push(c.get("id"));
                         });
 
-                    atividade.comprovantes = (!_.isEmpty(novos)) ?
-                        _.union(atividade.atuais, novos) :
+                    atividade.comprovantes = (!_.isEmpty(novosComprovantes)) ?
+                        _.union(atividade.atuais, novosComprovantes) :
                         atividade.atuais;
 
                     this.model.set(_.omit(atividade, "atuais", "err", "selecionados", "categoria"));
