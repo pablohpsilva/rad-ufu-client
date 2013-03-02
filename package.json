@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Cliente para o sistema rad-ufu",
   "scripts": {
-    "install": "mkdir src/font && cp node_modules/FontAwesome/font/* src/font/ && mkdir src/css && ./node_modules/.bin/grunt setup"
+    "install": "mkdir src/font && cp node_modules/FontAwesome/font/* src/font/ || ./node_modules/.bin/grunt setup"
   },
   "repository": {
     "type": "git",
