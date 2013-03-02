@@ -27,7 +27,7 @@ define([
                     model:this.model
                 });
 
-                this.on("close", this.limpaSubviews, this);
+                this.on("close", this.cleanUp, this);
 
                 this.listenTo(this.subViews.tipos, "close", this.catSemTipo, this);
 

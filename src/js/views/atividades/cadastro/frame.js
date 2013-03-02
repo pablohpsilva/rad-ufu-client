@@ -36,7 +36,7 @@ define([
                 this.subViews.categorias = new CategoriasView();
                 this.subViews.tipos      = new TiposView();
 
-                this.on("close", this.limpaSubviews, this);
+                this.on("close", this.cleanUp, this);
 
                 this.listenTo(this.subViews.tipos, "close", this.catSemTipo, this);
 
@@ -158,7 +158,8 @@ define([
                 console.log(atividade);
             },
 
-            limpaSubviews : function() {
+            cleanUp: function() {
+                $(".datepicker").remove();
                 _.each(this.subViews, function (subView) {
                    subView.close();
                 });
