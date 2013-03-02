@@ -43,7 +43,7 @@ define([
                 function atividadeDoTipo  (a) { return _.contains(_.pluck(tipos,"id"), a.tipo); }
                 function addItemNo        (a) {
                     var i = _.indexOf(_.pluck(tipos, "id"), a.tipo);
-                    if (i !== -1) a.item = tipos[i].item;
+                    if (i !== -1) a.item = tipos[i].id;
                     return a;
                 }
 

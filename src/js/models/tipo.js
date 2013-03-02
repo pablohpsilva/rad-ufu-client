@@ -8,7 +8,6 @@ define([
 
             defaults : {
                 //id
-                item            : 0,
                 categoria       : null,
                 descricao       : "",
                 pontuacao       : 0,
@@ -22,7 +21,7 @@ define([
 
             validate : function(attrs) {
 
-                if(attrs.item === 0)
+                if(attrs.id === 0)
                     return "código não atribuído ao tipo ou código igual a 0";
                 if(attrs.categoria === null)
                     return "categoría não a atribuída ao tipo";

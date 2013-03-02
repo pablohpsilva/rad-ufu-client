@@ -41,7 +41,6 @@ define([
 
         var ensino1 = {
             id:1,
-            item:1,
             categoria: categorias.get(1).get("id"),
             descricao: "Aula teórica ou prática de disciplinas ministradas na Educação Básica, na"
                       +"Educação Profissional, em cursos de graduação ou pós-graduação stricto e lato"
@@ -58,7 +57,6 @@ define([
 
         var ensino2 = {
             id:2,
-            item:2,
             categoria: categorias.get(1).get("id"),
             descricao: "Aula teórica ou prática para turmas adicionais da mesma disciplina, enquadrada"
                       +"na Situação 1 (ver OBS.), ou ministrada pelo mesmo docente para Cursos"
@@ -70,8 +68,7 @@ define([
         };
 
         var ensino3 = {
-            id: 3,
-            item:4,
+            id: 4,
             categoria: categorias.get(1).get("id"),
             descricao: "Aula de graduação oferecida em regime especial, aprovado pelo Conselho da"
                       +"Unidade.",

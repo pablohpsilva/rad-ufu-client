@@ -7,7 +7,7 @@
 
         <%_.each(tipos, function(t){ %>
             <% if (t.categoria === categoria) { %>
-                <option <% if (atual && atual == t.id) print("selected")%> value="<%= t.id %>"> <%= t.item %> </option>
+                <option <% if (atual && atual == t.id) print("selected")%> value="<%= t.id %>"> <%= t.id %> </option>
             <% } %>
         <%});%>
 
