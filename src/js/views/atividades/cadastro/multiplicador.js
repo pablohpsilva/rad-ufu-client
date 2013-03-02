@@ -35,7 +35,7 @@ define([
                 else
                     //se existir um limite e o m for maior que o seu limite
                     if(limite && limite < m)
-                        dadosCadastro.err.push("Valor do multiplicador esta maior que o seu limite");
+                        dadosCadastro.err.push("O valor da quantidade excedeu o limite de " + limite);
 
                 dadosCadastro.valorMult = +m;
 
