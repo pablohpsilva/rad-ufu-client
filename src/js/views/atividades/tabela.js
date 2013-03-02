@@ -54,8 +54,8 @@ define([
                     .filter(catSelecionada, this)
                     .first().value();
 
-                console.log("selecionada:", this.options.categoria);
-                console.log(cat);
+                console.log("categoria selecionada: ", this.options.categoria);
+                console.log("categoria achada: ", cat);
 
                 //
                 // Acha os tipos pertencentes a categoria selecionada
@@ -65,7 +65,6 @@ define([
                     .value();
 
 
-                console.log("tabela com atividades:",atividadeCollection.toJSON());
                 //
                 // Acha as atividades pertencentes aos tipos das categorias
                 //
@@ -73,6 +72,8 @@ define([
                     .filter(atividadeDoTipo)
                     .map(addItemNo)
                     .value();
+
+                console.log("atividades:",ativs);
 
                 _.each(ativs, function (atividade) {
                     this.subViews.atividades
