@@ -10,7 +10,7 @@ require.config({
         "underscore"   : "../../node_modules/underscore/underscore",
         "backbone"     : "../../node_modules/backbone/backbone",
         "text"         : "../../node_modules/text/text",
-        "bootstrap"    : "../../components/bootstrap/bootstrap",
+        "bootstrap"    : "../../node_modules/bootstrap/bootstrap",
         "dummyData": "util/dummyData"
     },
 

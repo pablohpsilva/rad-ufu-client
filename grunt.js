@@ -24,7 +24,7 @@ module.exports = function(grunt) {
             'components/bootstrap-datepicker/js/bootstrap-datepicker.js',
             'components/bootstrap-datepicker/js/locales/bootstrap-datepicker.pt-BR.js'
           ],
-          dest: 'components/bootstrap/bootstrap.js'
+          dest: 'node_modules/bootstrap/bootstrap.js'
         }
     },
     min: {
