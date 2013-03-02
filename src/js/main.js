@@ -8,7 +8,7 @@ require.config({
     paths : {
         "jquery"       : "../../components/jquery/jquery",
         "underscore"   : "../../components/underscore/underscore",
-        "backbone"     : "../../components/backbone/backbone",
+        "backbone"     : "../../node_modules/backbone/backbone",
         "text"         : "../../node_modules/text/text",
         "bootstrap"    : "../../components/bootstrap/bootstrap",
 

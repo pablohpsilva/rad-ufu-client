@@ -22,7 +22,8 @@
   "dependencies": {
     "bootstrap": "git://github.com/twitter/bootstrap.git#v2.2.2",
     "FontAwesome": "git://github.com/kersten/Font-Awesome.git",
-    "requirejs": "~2.1.4"
+    "requirejs": "~2.1.4",
+    "backbone": "~0.9.9"
   },
   "devDependencies": {
     "grunt-contrib-less": "~0.3.2",
