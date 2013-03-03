@@ -1,6 +1,6 @@
 define([
 
-    "../../src/js/models/tipo"
+    "models/tipo"
 
     ], function (Tipo) {
         describe("Tipo Model", function () {

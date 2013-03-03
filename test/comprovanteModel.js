@@ -1,6 +1,6 @@
 define([
 
-    "../../src/js/models/comprovante"
+    "models/comprovante"
 
     ], function (Comprovante) {
 

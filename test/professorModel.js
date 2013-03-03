@@ -1,6 +1,6 @@
 define([
 
-    "../../src/js/models/professor"
+    "models/professor"
 
     ], function (Professor) {
         describe("Professor Model", function () {

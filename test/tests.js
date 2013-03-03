@@ -1,12 +1,13 @@
 require([
 
     "chai",
-    "models/categoria",
-    "models/atividade",
-    "models/comprovante",
-    "models/multiplicador",
-    "models/professor",
-    "models/tipo"
+    "categoriaModel",
+    "atividadeModel",
+    "comprovanteModel",
+    "multiplicadorModel",
+    "professorModel",
+    "tipoModel",
+    "cadastroView"
 
 ], function (chai) {
     window.should = chai.should();

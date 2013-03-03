@@ -1,6 +1,6 @@
 define([
 
-    "../../src/js/models/atividade"
+    "models/atividade"
 
     ],  function (Atividade) {
 

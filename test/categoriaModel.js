@@ -1,18 +1,19 @@
 define([
 
-    "../../src/js/models/multiplicador"
+    "models/categoria"
 
-    ], function (Multiplicador) {
-        describe("Multiplicador Model", function () {
+    ], function (Categoria) {
+
+        describe("Categoria Model", function () {
             describe("Após inicialização (default)", function () {
                 beforeEach(function (done) {
-                    this.multiplicador = new Multiplicador();
+                    this.categoria = new Categoria();
                     done();
                 });
                 it("O nome deve ser uma string vazia", function (done) {
-                    this.multiplicador.get("nome").should.equal("");
+                    this.categoria.get("nome").should.equal("");
                     done();
                 });
             });
         });
-});
+    });
