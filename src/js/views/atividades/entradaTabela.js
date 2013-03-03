@@ -30,9 +30,8 @@ define([
             },
 
             render : function() {
-                var mid = tipoCollection.get(this.model.tipo)
-                        .get("multiplicador"),
-                    valor = multiplicadorCollection.get(mid).get("valor");
+                var valor = tipoCollection.get(this.model.tipo)
+                        .get("pontuacao");
 
                 this.model.pontuacao = this.model.valorMult * valor;
 

@@ -29,14 +29,12 @@ define([
 
         var mult1 = {
             id:1,
-            nome:"Aulas / Semana",
-            valor:10
+            nome:"Aulas / Semana"
         };
 
         var mult2 = {
             id:2,
-            nome:"Disciplinas",
-            valor:10
+            nome:"Disciplinas"
         };
 
         var ensino1 = {

@@ -5,7 +5,7 @@ define(function() {
             defaults : {
                 //id
                 nome: "",
-                arquivo: null
+                arquivo: ""
             },
 
             // Thanks to StackOverflow (http://stackoverflow.com/questions/8171562)
@@ -22,8 +22,8 @@ define(function() {
             },
 
             validate : function(attrs) {
-                //if(attrs.arquivo === null)
-                    //return "arquivo não atribuído ao comprovante";
+                if(attrs.arquivo === "")
+                    return "arquivo não atribuído ao comprovante";
             }
 
         });
