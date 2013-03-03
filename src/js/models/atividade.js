@@ -1,27 +1,23 @@
-define([
-
-    "collections/comprovante"
-
-    ], function(ComprovanteCollection) {
+define([], function() {
 
         var Atividade = Backbone.Model.extend({
 
             defaults : {
                 //id
                 descricao    : "",
-                inicio       : null,
-                fim          : null,
+                inicio       : "",
+                fim          : "",
                 comprovantes : [],
-                tipo         : null,
+                tipo         : 0,
                 valorMult    : 0
             },
 
             validate : function(attrs) {
-                if(attrs.inicio === null || attrs.fim === null)
+                if(attrs.inicio === "" || attrs.fim === "")
                     return "data de início ou fim não atribuídas a atividade";
-                if(attrs.comprovantes === null)
+                if(attrs.comprovantes.length() === 0)
                     return "comprovante não anexado a atividade";
-                if(attrs.tipo === null)
+                if(attrs.tipo === 0)
                     return "atividade sem tipo";
             }
         });
