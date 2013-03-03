@@ -1,19 +1,15 @@
-define([
-
-    "collections/multiplicador"
-
-    ], function(MultiplicadorCollection) {
+define([], function() {
 
         var Tipo = Backbone.Model.extend({
 
             defaults : {
                 //id
-                categoria       : null,
+                categoria       : 0,
                 descricao       : "",
                 pontuacao       : 0,
-                limitePontos    : 999,
+                limitePontos    : 0,
                 pontuacaoRef    : 0,
-                multiplicador   : null
+                multiplicador   : 0
             },
 
             initialize : function() {
@@ -23,7 +19,7 @@ define([
 
                 if(attrs.id === 0)
                     return "código não atribuído ao tipo ou código igual a 0";
-                if(attrs.categoria === null)
+                if(attrs.categoria === 0)
                     return "categoría não a atribuída ao tipo";
                 if(attrs.descricao === "")
                     return "descrição não atribuída ao tipo";
