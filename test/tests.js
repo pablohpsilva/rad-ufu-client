@@ -1,6 +1,8 @@
 require([
 
+    "sinon",
     "chai",
+    "sinon-chai",
     "categoriaModel",
     "atividadeModel",
     "comprovanteModel",
@@ -9,7 +11,8 @@ require([
     "tipoModel",
     "cadastroView"
 
-], function (chai) {
+], function (sinon, chai, sinonChai) {
+    chai.use(sinonChai);
     window.should = chai.should();
     mocha.run();
 });
