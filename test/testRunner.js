@@ -24,7 +24,6 @@ require.config({
             deps: [
                 "backbone",
                 "mocha",
-                "sinon",
                 "bootstrap"
             ]
         },
