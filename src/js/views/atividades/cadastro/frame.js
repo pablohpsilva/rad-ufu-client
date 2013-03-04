@@ -17,7 +17,7 @@ define([
 
         var CadastroAtividadeFrame = Backbone.View.extend({
 
-            el : $("#content"),
+            el : "#content",
 
             tpl: cadastroAtivFrameTpl,
 
