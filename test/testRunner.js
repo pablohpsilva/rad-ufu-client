@@ -6,6 +6,7 @@ require.config({
         "jquery": "../components/jquery/jquery",
         "underscore": "../node_modules/underscore/underscore",
         "backbone": "../node_modules/backbone/backbone",
+        "bootstrap": "../node_modules/bootstrap/bootstrap",
         "text": "../node_modules/text/text",
         "chai": "../node_modules/chai/chai",
         "sinon": "../node_modules/sinon/pkg/sinon",
@@ -14,7 +15,8 @@ require.config({
         "models": "../src/js/models",
         "views": "../src/js/views",
         "collections": "../src/js/collections",
-        "templates": "../src/js/templates"
+        "templates": "../src/js/templates",
+        "util": "../src/js/util"
     },
 
     shim: {
@@ -22,7 +24,8 @@ require.config({
             deps: [
                 "backbone",
                 "mocha",
-                "sinon"
+                "sinon",
+                "bootstrap"
             ]
         },
         "mocha": {
@@ -30,6 +33,9 @@ require.config({
                 this.mocha.setup("bdd");
                 return this.mocha;
             }
+        },
+        "bootstrap" : {
+            deps : ["jquery"]
         },
         "backbone": {
             //These script dependencies should be loaded before loading
