@@ -37,7 +37,6 @@ define([
                 var tipoId = $("#tipo-selector").val();
                 this.renderDescricao(tipoId);
                 this.renderMultiplicadores(tipoId);
-                this.renderComprovantes();
             },
 
             render : function(idCategoria) {
@@ -49,6 +48,7 @@ define([
                 }));
 
                 this.trigger("tipoSelected");
+                this.renderComprovantes();
                 return this;
             },
 
