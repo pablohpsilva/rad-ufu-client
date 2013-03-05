@@ -10,29 +10,19 @@ require.config({
         "underscore"   : "../../node_modules/underscore/underscore",
         "backbone"     : "../../node_modules/backbone/backbone",
         "text"         : "../../node_modules/text/text",
-        "bootstrap"    : "../../node_modules/bootstrap/bootstrap",
-        "dummyData": "util/dummyData"
+        "bootstrap"    : "../../node_modules/bootstrap/bootstrap"
     },
 
     shim : {
         "app" : {
             deps : [
                 "backbone",
-                "bootstrap",
-                "dummyData"
+                "bootstrap"
             ]
         },
-
-        "dummyData": {
-            deps: [
-                "backbone"
-            ]
-        },
-
         "bootstrap" : {
             deps : ["jquery"]
         },
-
         "backbone" : {
             //These script dependencies should be loaded before loading
             //backbone.js
@@ -47,13 +37,6 @@ require.config({
     }
 });
 
-require([
-
-    "dummyData",
-    "app"
-
-    ], function(dummy, App) {
-
-        App.init();
-
+require(["app"], function(App) {
+    App.init();
 });
