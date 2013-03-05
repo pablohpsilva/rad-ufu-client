@@ -6,11 +6,11 @@ require.config({
     baseUrl: "src/js",
 
     paths : {
-        "jquery"       : "../../components/jquery/jquery",
-        "underscore"   : "../../node_modules/underscore/underscore",
-        "backbone"     : "../../node_modules/backbone/backbone",
-        "text"         : "../../node_modules/text/text",
-        "bootstrap"    : "../../node_modules/bootstrap/bootstrap"
+        "jquery":        "../../components/jquery/jquery",
+        "underscore":    "../../node_modules/underscore/underscore",
+        "backbone":      "../../node_modules/backbone/backbone",
+        "text":          "../../node_modules/text/text",
+        "bootstrap":     "../../node_modules/bootstrap/bootstrap"
     },
 
     shim : {
@@ -23,6 +23,7 @@ require.config({
         "bootstrap" : {
             deps : ["jquery"]
         },
+
         "backbone" : {
             //These script dependencies should be loaded before loading
             //backbone.js
