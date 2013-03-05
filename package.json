@@ -36,6 +36,7 @@
     "sinon-chai": "~2.3.1",
     "chai": "~1.5.0",
     "mocha": "~1.8.1",
-    "sinon": "~1.6.0"
+    "sinon": "~1.6.0",
+    "Backbone.localStorage": "git://github.com/jeromegn/Backbone.localStorage.git#v1.1.0"
   }
 }
