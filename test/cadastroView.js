@@ -1,9 +1,12 @@
 define([
 
+    "views/atividades/cadastro/multiplicador",
+    "views/atividades/cadastro/descricao",
+    "views/atividades/cadastro/tipos",
     "views/atividades/cadastro/frame",
     "util/dummyData"
 
-    ],  function (CadastroFrame) {
+    ],  function (MultiplicadorView, DescricaoView, TiposView, CadastroFrame) {
 
         describe("Cadastro Atividades View", function () {
             describe("Renderização", function () {
@@ -60,24 +63,148 @@ define([
             describe("Interação", function () {
                 beforeEach(function (done) {
                     $("<div>").attr("id", "content").css("display", "none").appendTo("body");
-                    this.renderTiposSpy = sinon.spy(CadastroFrame.prototype, "renderTipos");
+                    this.renderTiposSpy = sinon.spy(TiposView.prototype, "render");
+                    this.renderDescricaoSpy = sinon.spy(DescricaoView.prototype, "render");
+                    this.renderMultiplicadorSpy = sinon.spy(MultiplicadorView.prototype, "render");
                     this.cadastroView = new CadastroFrame();
                     this.cadastroView.render();
                     done();
                 });
                 afterEach(function (done) {
-                    CadastroFrame.prototype.renderTipos.restore();
+                    TiposView.prototype.render.restore();
+                    DescricaoView.prototype.render.restore();
+                    MultiplicadorView.prototype.render.restore();
                     this.cadastroView.remove();
                     $(".datepicker").remove();
                     done();
                 });
-                it("As informações do tipo devem ser atualizadas se a categoria mudar", function (done) {
+                it("A lista de tipos deve ser atualizada se a categoria mudar", function (done) {
                     this.cadastroView.subViews
-                        .categorias.trigger("change", $("#categoria-selector").val());
-                        console.log(this.renderTiposSpy.should);
+                        .categorias.$el.find("#categoria-selector").change();
                     this.renderTiposSpy.should.have.been.calledTwice;
                     done();
-               });
+                });
+                it("A Descrição deve ser atualizada se o tipo mudar", function (done) {
+                    this.cadastroView.subViews
+                        .tipos.$el.find("#tipo-selector").change();
+                    this.renderDescricaoSpy.should.have.been.calledTwice;
+                    done();
+                });
+                it("O multiplicador deve ser atualizado se o tipo mudar", function (done) {
+                    this.cadastroView.subViews
+                        .tipos.$el.find("#tipo-selector").change();
+                    this.renderMultiplicadorSpy.should.have.been.calledTwice;
+                    done();
+                });
+            });
+            describe("Comprovante SubView", function () {
+                beforeEach(function (done) {
+                    $("<div>").attr("id", "content").css("display", "none").appendTo("body");
+                    this.cadastroView = new CadastroFrame();
+                    this.cadastroView.render();
+                    done();
+                });
+                afterEach(function (done) {
+                    this.cadastroView.remove();
+                    $(".datepicker").remove();
+                    done();
+                });
+                describe("Inicialização", function () {
+                    it("O hash de arquivos selecionados deve estar vazio", function (done) {
+                        this.cadastroView.subViews.tipos.subViews.comprovantes
+                            .selecionados.should.be.empty;
+                        done();
+                    });
+
+                    // Como testar os arquivos???
+                });
+            });
+            describe("Cadastro de atividade", function () {
+                beforeEach(function (done) {
+                    $("<div>").attr("id", "content").css("display", "none").appendTo("body");
+                    this.cadastroView = new CadastroFrame();
+                    this.cadastroView.render();
+                    done();
+                });
+                afterEach(function (done) {
+                    this.cadastroView.remove();
+                    $(".datepicker").remove();
+                    done();
+                });
+                describe("Descrição", function () {
+                    beforeEach(function (done) {
+                        $("#quantidade").val(2);
+                        $("#dataInicio").val("01/03/2013");
+                        $("#dataFim").val("02/03/2013");
+                        this.cadastroView.subViews.tipos.subViews
+                            .comprovantes.selecionados["stub"] = "stub";
+                        this.dadosCadastro = this.cadastroView.preparaDados();
+                        done();
+                    });
+                    it("Deve ocorrer um erro se o campo de descrição for vazio", function (done) {
+                        this.dadosCadastro.err.should.have.length(1);
+                        done();
+                    });
+                });
+                describe("Quantidade", function () {
+                    beforeEach(function (done) {
+                        $("#descricao").val("desc");
+                        $("#dataInicio").val("01/03/2013");
+                        $("#dataFim").val("02/03/2013");
+                        this.cadastroView.subViews.tipos.subViews
+                            .comprovantes.selecionados["stub"] = "stub";
+                        this.dadosCadastro = this.cadastroView.preparaDados();
+                        done();
+                    });
+                    it("Deve ocorrer um erro se o campo de quantidade for vazio", function (done) {
+                        this.dadosCadastro.err.should.have.length(1);
+                        done();
+                    });
+                    it("Deve ocorrer um erro se o campo de quantidade não for numérico", function (done) {
+                        $("#qunatidade").val("oi");
+                        this.dadosCadastro.err.should.have.length(1);
+                        done();
+                    });
+                });
+                describe("Comprovantes", function () {
+                    beforeEach(function (done) {
+                        $("#quantidade").val(2);
+                        $("#descricao").val("desc");
+                        $("#dataInicio").val("01/03/2013");
+                        $("#dataFim").val("02/03/2013");
+                        this.dadosCadastro = this.cadastroView.preparaDados();
+                        done();
+                    });
+                    it("Deve ocorrer um erro se não for anexado pelo menos um comprovante", function (done) {
+                        this.dadosCadastro.err.should.have.length(1);
+                        done();
+                    });
+                });
+                describe("Datas", function () {
+                    beforeEach(function (done) {
+                        $("#quantidade").val(2);
+                        $("#descricao").val("desc");
+                        this.cadastroView.subViews.tipos.subViews
+                            .comprovantes.selecionados["stub"] = "stub";
+                        done();
+                    });
+                    it("Deve ocorrer um erro se a data de início não for informada", function (done) {
+                        $("#dataFim").val("02/03/2013");
+                        this.dadosCadastro.err.should.have.length(1);
+                        done();
+                    });
+                    it("Deve ocorrer um erro se a data de fim não for informada", function (done) {
+                        $("#dataInicio").val("01/03/2013");
+                        this.dadosCadastro.err.should.have.length(1);
+                        done();
+                    });
+                    it("Deve ocorrer um erro se a data de início for posterior a data de fim", function (done) {
+                        $("#dataInicio").val("02/03/2013");
+                        $("#dataFim").val("01/03/2013");
+                        this.dadosCadastro.err.should.have.length(1);
+                        done();
+                    });
+                });
             });
         });
     });
