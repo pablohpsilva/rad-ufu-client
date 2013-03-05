@@ -142,8 +142,8 @@ define([
                             .render({ msg: errMsg, type: "alert-error" });
                     }, this);
                 } else {
-                    _.each(atividade.comprovantes, function (f) {
-                        var c = comprovanteCollection.create({nome:f.name}, {wait:true});
+                    _.each(atividade.comprovantes, function (file) {
+                        var c = comprovanteCollection.create({nome:file.name}, {wait:true});
                         cids.push(c.get("id"));
                     });
 
