@@ -6,6 +6,7 @@ require.config({
         "jquery": "../components/jquery/jquery",
         "underscore": "../node_modules/underscore/underscore",
         "backbone": "../node_modules/backbone/backbone",
+        "localStorage": "../node_modules/Backbone.localStorage/backbone.localStorage",
         "bootstrap": "../node_modules/bootstrap/bootstrap",
         "text": "../node_modules/text/text",
         "chai": "../node_modules/chai/chai",
@@ -22,7 +23,7 @@ require.config({
     shim: {
         "tests": {
             deps: [
-                "backbone",
+                "localStorage",
                 "mocha",
                 "bootstrap"
             ]
@@ -43,6 +44,10 @@ require.config({
             //Once loaded, use the global 'Backbone' as the
             //module value.
             exports : "Backbone"
+        },
+        "localStorage": {
+            deps: ["backbone"],
+            exports: "Backbone"
         },
         "underscore": {
             exports : "_"
