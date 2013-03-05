@@ -1,12 +1,18 @@
 define([
 
+    "collections/atividade",
+    "collections/comprovante",
     "views/atividades/cadastro/multiplicador",
     "views/atividades/cadastro/descricao",
     "views/atividades/cadastro/tipos",
     "views/atividades/cadastro/frame",
     "util/dummyData"
 
-    ],  function (MultiplicadorView, DescricaoView, TiposView, CadastroFrame) {
+    ],  function (AtividadeCollection, ComprovanteCollection,
+                  MultiplicadorView,
+                  DescricaoView,
+                  TiposView,
+                  CadastroFrame) {
 
         describe("Cadastro Atividades View", function () {
             describe("Renderização", function () {
@@ -137,7 +143,7 @@ define([
                         $("#dataInicio").val("01/03/2013");
                         $("#dataFim").val("02/03/2013");
                         this.cadastroView.subViews.tipos.subViews
-                            .comprovantes.selecionados["stub"] = "stub";
+                            .comprovantes.selecionados["foo"] = "foo";
                         this.dadosCadastro = this.cadastroView.preparaDados();
                         done();
                     });
@@ -152,7 +158,7 @@ define([
                         $("#dataInicio").val("01/03/2013");
                         $("#dataFim").val("02/03/2013");
                         this.cadastroView.subViews.tipos.subViews
-                            .comprovantes.selecionados["stub"] = "stub";
+                            .comprovantes.selecionados["foo"] = "foo";
                         this.dadosCadastro = this.cadastroView.preparaDados();
                         done();
                     });
@@ -185,7 +191,7 @@ define([
                         $("#quantidade").val(2);
                         $("#descricao").val("desc");
                         this.cadastroView.subViews.tipos.subViews
-                            .comprovantes.selecionados["stub"] = "stub";
+                            .comprovantes.selecionados["foo"] = "foo";
                         done();
                     });
                     it("Deve ocorrer um erro se a data de início não for informada", function (done) {
@@ -202,6 +208,35 @@ define([
                         $("#dataInicio").val("02/03/2013");
                         $("#dataFim").val("01/03/2013");
                         this.dadosCadastro.err.should.have.length(1);
+                        done();
+                    });
+                });
+                describe("Cadastro", function () {
+                    beforeEach(function (done) {
+                        $("#quantidade").val(2);
+                        $("#descricao").val("desc");
+                        $("#dataInicio").val("01/03/2013");
+                        $("#dataFim").val("02/03/2013");
+                        this.cadastroView.subViews.tipos.subViews
+                            .comprovantes.selecionados["foo"] = {name:"foo"};
+                        this.cadastroView.subViews.tipos.subViews
+                            .comprovantes.selecionados["bar"] = {name:"bar"};
+
+                        this.comprovanteCreateStub = sinon.stub(ComprovanteCollection, "create");
+                        this.comprovanteCreateStub
+                            .returns({get:function (id) { return Math.floor((Math.random()*10)+1);}});
+                        this.atividadeCreateStub = sinon.stub(AtividadeCollection, "create");
+                        done();
+                    });
+                    afterEach(function (done) {
+                        this.comprovanteCreateStub.restore();
+                        this.atividadeCreateStub.restore();
+                        done();
+                    });
+                    it("Deve ser cadastrada uma nova atividade quando houver um click no botão 'cadastrar'", function (done) {
+                        this.cadastroView.$el.find("#cadastrar").click();
+                        this.comprovanteCreateStub.should.have.been.calledTwice;
+                        this.atividadeCreateStub.should.have.been.calledOnce;
                         done();
                     });
                 });
