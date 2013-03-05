@@ -82,7 +82,7 @@ define([
                     // Se existem novos arquivos para a atividade
                     if (!_.isEmpty(atividade.selecionados))
                         _.each(atividade.selecionados, function (f) {
-                            var c = comprovanteCollection.add({nome:f.name});
+                            var c = comprovanteCollection.create({nome:f.name}, {wait:true});
                             novosComprovantes.push(c.get("id"));
                         });
 
@@ -90,7 +90,7 @@ define([
                         _.union(atividade.atuais, novosComprovantes) :
                         atividade.atuais;
 
-                    this.model.set(_.omit(atividade, "atuais", "err", "selecionados", "categoria"));
+                    this.model.save(_.omit(atividade, "atuais", "err", "selecionados", "categoria"));
                 }
                 console.log(atividade);
             },

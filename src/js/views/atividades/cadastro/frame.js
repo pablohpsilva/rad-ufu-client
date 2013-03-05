@@ -143,7 +143,7 @@ define([
                     }, this);
                 } else {
                     _.each(atividade.comprovantes, function (f) {
-                        var c = comprovanteCollection.add({nome:f.name});
+                        var c = comprovanteCollection.create({nome:f.name}, {wait:true});
                         cids.push(c.get("id"));
                     });
 
@@ -152,7 +152,7 @@ define([
                         .setElement(this.$("#err"))
                         .render({ msg: "Atividade cadastrada", type: "alert-success" });
 
-                    atividadeCollection.add(atividade);
+                    atividadeCollection.create(atividade);
                     this.resetDados();
                 }
                 console.log(atividade);
