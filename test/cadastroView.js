@@ -222,10 +222,8 @@ define([
                         this.cadastroView.subViews.tipos.subViews
                             .comprovantes.selecionados["bar"] = {name:"bar"};
 
-                        this.comprovanteCreateStub = sinon.stub(ComprovanteCollection, "create");
-                        this.comprovanteCreateStub
-                            .returns({get:function (id) { return Math.floor((Math.random()*10)+1);}});
-                        this.atividadeCreateStub = sinon.stub(AtividadeCollection, "create");
+                        this.comprovanteCreateStub = sinon.spy(ComprovanteCollection, "create");
+                        this.atividadeCreateStub = sinon.spy(AtividadeCollection, "create");
                         done();
                     });
                     afterEach(function (done) {
