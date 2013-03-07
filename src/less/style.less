@@ -136,7 +136,7 @@ html {
 .invisivel {
     visibility: hidden;
 }
-
+@tableBackground: @bodyBackground;
 table {
     a,
     a:link,
@@ -147,7 +147,8 @@ table {
         text-decoration: none;
     }
 
-    i {
+    i{
+        color: @tableBackground;
         .pull-right;
         cursor: pointer;
         padding-top: 10px;
@@ -157,6 +158,10 @@ table {
     i:hover {
         .scale(1.3);
     }
+
+    tr:hover i {
+      color: @textColor;
+    };
 
     td:last-child {
         width: 40px;

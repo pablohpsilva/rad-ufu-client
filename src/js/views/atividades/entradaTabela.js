@@ -15,12 +15,7 @@ define([
             tagName : "tr",
 
             events: {
-                "hover": "toggleControles",
                 "click li i.icon-remove": "removeAtividade"
-            },
-
-            toggleControles: function () {
-                this.$("i").toggleClass("invisivel");
             },
 
             removeAtividade: function (ev) {
