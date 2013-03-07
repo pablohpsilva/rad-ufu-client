@@ -6,13 +6,15 @@ define([
     "collections/comprovante",
     "views/atividades/cadastro/categorias",
     "views/atividades/cadastro/tipos",
-    "views/alert",
+    "views/alerts/successAlert",
+    "views/alerts/errorAlert",
     "text!templates/atividades/cadastro/frame.html"
 
     ], function(Atividade, Comprovante, atividadeCollection,
                 comprovanteCollection, CategoriasView,
                 TiposView,
-                AlertView,
+                SuccessAlertView,
+                ErrorAlertView,
                 cadastroAtivFrameTpl) {
 
         var CadastroAtividadeFrame = Backbone.View.extend({
@@ -24,7 +26,10 @@ define([
             subViews : {
                 categorias : null,
                 tipos      : null,
-                err        : new AlertView()
+                alert: {
+                    sucss      : new SuccessAlertView(),
+                    err        : new ErrorAlertView()
+                }
             },
 
             events: {
@@ -88,7 +93,7 @@ define([
             },
 
             resetDados: function () {
-                _.each(_.omit(this.subViews, "err"), function (subView) {
+                _.each(_.omit(this.subViews, "alert"), function (subView) {
                     if (subView.resetDados) subView.resetDados();
                 });
                 this.$("#dataInicio").val("");
@@ -100,7 +105,7 @@ define([
 
                 dadosCadastro.err = [];
 
-                _.each(_.omit(this.subViews, "err"), function (subView) {
+                _.each(_.omit(this.subViews, "alert"), function (subView) {
                     subView.preparaDados(dadosCadastro);
                 });
 
@@ -137,9 +142,9 @@ define([
 
                 if (!_.isEmpty(atividade.err)) {
                     _.each(atividade.err, function (errMsg) {
-                        this.subViews.err
+                        this.subViews.alert.err
                             .setElement(this.$("#err"))
-                            .render({ msg: errMsg, type: "alert-error" });
+                            .render(errMsg);
                     }, this);
                 } else {
                     _.each(atividade.comprovantes, function (file) {
@@ -148,9 +153,9 @@ define([
                     });
 
                     atividade.comprovantes = cids;
-                    this.subViews.err
+                    this.subViews.alert.sucss
                         .setElement(this.$("#err"))
-                        .render({ msg: "Atividade cadastrada", type: "alert-success" });
+                        .render("Atividade cadastrada");
 
                     atividadeCollection.create(atividade);
                     this.resetDados();
@@ -160,7 +165,7 @@ define([
 
             cleanUp: function() {
                 $(".datepicker").remove();
-                _.each(this.subViews, function (subView) {
+                _.each(_.omit(this.subViews,"alert"), function (subView) {
                    subView.close();
                 });
             }

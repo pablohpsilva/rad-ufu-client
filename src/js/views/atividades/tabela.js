@@ -2,13 +2,13 @@ define([
 
     "util/evAggregator",
     "views/atividades/entradaTabela",
-    "views/alert",
+    "views/alerts/alert",
     "collections/atividade",
     "collections/categoria",
     "collections/tipo",
     "text!templates/atividades/tabela.html"
 
-    ],  function(evAggregator, EntradaTabelaView, AlertView, atividadeCollection,
+    ],  function(evAggregator, EntradaTabelaView, InfoAlertView, atividadeCollection,
                  categoriaCollection,
                  tipoCollection,
                  tabelaTpl) {
@@ -18,8 +18,10 @@ define([
             collection : atividadeCollection,
 
             subViews : {
-                err: new AlertView(),
-                atividades : []
+                atividades : [],
+                alert: {
+                     err: new InfoAlertView()
+                }
             },
 
             initialize : function() {
@@ -90,11 +92,9 @@ define([
 
                 } else {
                     //this.$el.append("Sem atividades");
-                    this.subViews.err
+                    this.subViews.alert.err
                         .setElement($("#err"))
-                        .render({
-                            msg  : "Nenhuma atividade cadastrada"
-                        });
+                        .render("Nenhuma atividade cadastrada");
                 }
 
                 return this;
