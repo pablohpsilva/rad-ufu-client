@@ -8,7 +8,7 @@
                 <% _.each(atuais, function (c) { %>
                     <li class="atual">
                         <a href="#"><i class="icon-file icon-large"></i><%= c.nome %></a>
-                        <i class="icon-remove invisivel pull-right" rel="tooltip"
+                        <i class="icon-remove pull-right" rel="tooltip"
                             title="Excluir arquivo" data-placement="right"
                             data-id="<%= c.id %>"></i>
                     </li>
@@ -18,7 +18,7 @@
             <% if (!_.isEmpty(selecionados)) { %>
                 <%_.each(selecionados, function(file) {%>
                     <li class="selecionado"><i class="icon-file icon-large"></i><%= file.name %>
-                        <i class="icon-remove invisivel pull-right" rel="tooltip"
+                        <i class="icon-remove pull-right" rel="tooltip"
                             title="Excluir arquivo" data-placement="right"
                             data-name="<%= file.name %>"></i>
                     </li>

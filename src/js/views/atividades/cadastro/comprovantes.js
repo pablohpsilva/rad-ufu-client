@@ -31,28 +31,9 @@ define([
                 this.$el.html(_.template(comprovantesTpl, data));
                 // inicializa os tooltips
                 this.$("[rel=\"tooltip\"]").tooltip();
-                this.registraHovers();
 
                 //console.log(data.atuais);
                 return this;
-            },
-
-            registraHovers: function () {
-                this.$(".selecionado").hover(
-                    function() {
-                        $(this).find(".icon-remove").removeClass("invisivel");
-                    },
-                    function() {
-                        $(this).find(".icon-remove").addClass("invisivel");
-                });
-
-                this.$(".atual").hover(
-                    function() {
-                        $(this).find(".icon-remove").removeClass("invisivel");
-                    },
-                    function() {
-                        $(this).find(".icon-remove").addClass("invisivel");
-                });
             },
 
             atualizaSelecionados: function () {
