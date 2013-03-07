@@ -12,15 +12,19 @@ define([
 
             tpl: alertTpl,
 
+            el : "#err",
+
             data: {
                 type: "elert-info",
                 icon: "icon-info-sign"
             },
 
-            el : "#err",
+            cleanUp : function () {},
 
             render : function (msg) {
                 this.data.msg = msg;
+
+                this.cleanUp();
                 this.$el.append(_.template(alertTpl, this.data));
             }
         });

@@ -10,15 +10,10 @@ define([
                 icon: "icon-ok"
             },
 
-            clearErrors: function () {
+            cleanUp: function () {
                 this.$(".alert-error").each(function () {
                     this.remove();
                 });
-            },
-            render : function (msg) {
-                this.data.msg = msg;
-                this.clearErrors();
-                this.$el.append(_.template(this.tpl, this.data));
             }
         });
 
