@@ -4,7 +4,7 @@ define([
 
     ], function(Professor) {
 
-        var AtividadeCollection = Backbone.Collection.extend({
+        var ProfessorCollection = Backbone.Collection.extend({
             model : Professor
         });
 
