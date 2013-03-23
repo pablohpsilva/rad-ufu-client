@@ -12,9 +12,18 @@ define([
                   MultiplicadorView,
                   DescricaoView,
                   TiposView,
-                  CadastroFrame) {
+                  CadastroFrame,
+                  dummyData) {
 
         describe("Cadastro Atividades View", function () {
+            beforeEach(function (done) {
+                dummyData.load();
+                done();
+            });
+            afterEach(function (done) {
+                dummyData.reset();
+                done();
+            });
             describe("Renderização", function () {
                 beforeEach(function (done) {
                     $("<div>").attr("id", "content").css("display", "none").appendTo("body");

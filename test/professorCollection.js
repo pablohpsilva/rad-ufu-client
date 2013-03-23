@@ -6,6 +6,14 @@ define([
 
         describe('Professor Collection', function () {
             describe('Interação com a API', function () {
+                beforeEach(function (done) {
+                    this.Collection = professorCollection;
+                    done();
+                });
+                afterEach(function (done) {
+                    this.Collection.reset();
+                    done();
+                });
                 it('Deve carregar os dados dos professores', function (done) {
                     this.ajaxStub = sinon.stub($, "ajax").yieldsTo("success", [
                         {
@@ -16,7 +24,6 @@ define([
                         }
                     ]);
 
-                    this.Collection = professorCollection;
                     this.Collection.url = "localhost/rad-ufu/api/professor";
                     this.Collection.fetch();
                     this.Collection.should.have.length(1);

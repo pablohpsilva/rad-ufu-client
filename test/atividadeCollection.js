@@ -6,6 +6,14 @@ define([
 
         describe('Atividade Collection', function () {
             describe('Interação com a API', function () {
+                beforeEach(function (done) {
+                    this.Collection = atividadeCollection;
+                    done();
+                });
+                afterEach(function (done) {
+                    this.Collection.reset();
+                    done();
+                });
                 it('Deve carregar os dados das atividades', function (done) {
                     this.ajaxStub = sinon.stub($, "ajax").yieldsTo("success",[
                         {
@@ -28,12 +36,11 @@ define([
                         }
                     ]);
 
-                    this.aCollection = atividadeCollection;
-                    this.aCollection.url = "localhost/rad-ufu/api/atividade";
-                    this.aCollection.fetch();
-                    this.aCollection.should.have.length(2);
-                    this.aCollection.at(0).get("id").should.equal(1);
-                    this.aCollection.at(1).get("id").should.equal(2);
+                    this.Collection.url = "localhost/rad-ufu/api/atividade";
+                    this.Collection.fetch();
+                    this.Collection.should.have.length(2);
+                    this.Collection.at(0).get("id").should.equal(1);
+                    this.Collection.at(1).get("id").should.equal(2);
                     this.ajaxStub.restore();
                     done();
                 });

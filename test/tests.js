@@ -14,6 +14,7 @@ require([
     "comprovanteCollection",
     "multiplicadorCollection",
     "professorCollection",
+    "tipoCollection",
     "cadastroView"
 
 ], function (sinon, chai, sinonChai) {

@@ -6,13 +6,20 @@ define([
 
         describe('Multiplicador Collection', function () {
             describe('Interação com a API', function () {
+                beforeEach(function (done) {
+                    this.Collection = multiplicadorCollection;
+                    done();
+                });
+                afterEach(function (done) {
+                    this.Collection.reset();
+                    done();
+                });
                 it('Deve carregar os dados dos multiplicadors', function (done) {
                     this.ajaxStub = sinon.stub($, "ajax").yieldsTo("success", [
                         {"id":1, "nome":"Aulas / Semana"},
                         {"id":2, "nome":"Disciplinas"}
                     ]);
 
-                    this.Collection = multiplicadorCollection;
                     this.Collection.url = "localhost/rad-ufu/api/multiplicador";
                     this.Collection.fetch();
                     this.Collection.should.have.length(2);
