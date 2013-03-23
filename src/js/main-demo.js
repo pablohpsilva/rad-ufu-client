@@ -8,7 +8,6 @@ require.config({
     paths : {
         "jquery":       "../../components/jquery/jquery",
         "underscore":   "../../node_modules/underscore/underscore",
-        "localStorage": "../../node_modules/Backbone.localStorage/backbone.localStorage",
         "backbone":     "../../node_modules/backbone/backbone",
         "text":         "../../node_modules/text/text",
         "bootstrap":    "../../node_modules/bootstrap/bootstrap",
@@ -18,7 +17,7 @@ require.config({
     shim : {
         "app" : {
             deps : [
-                "dummyData",
+                "backbone",
                 "bootstrap"
             ]
         },
@@ -33,19 +32,16 @@ require.config({
             //module value.
             exports : "Backbone"
         },
-        "localStorage": {
-            deps: ["backbone"],
-            exports: "Backbone"
-        },
-        "dummyData": {
-            deps: ["localStorage"]
-        },
         "underscore" : {
             exports : "_"
+        },
+        "dummyData": {
+            deps: ["backbone"]
         }
     }
 });
 
-require(["app"], function(App) {
+require(["dummyData","app"], function(dummyData, App) {
+    dummyData.load();
     App.init();
 });
