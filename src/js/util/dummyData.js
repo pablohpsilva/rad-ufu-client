@@ -21,7 +21,7 @@ define([
                  Ativ) {
 
         var categorias = categoriaCollection;
-        categorias.localStorage = new Backbone.LocalStorage("categoria/");
+        //categorias.localStorage = new Backbone.LocalStorage("categoria/");
         categorias.add({id:1, nome:"Ensino"});
         categorias.add({id:2, nome:"Orientação"});
         categorias.add({id:3, nome:"Produção"});
@@ -106,16 +106,16 @@ define([
 
         oak.set("atividades", [ativ1.id, ativ2.id]);
 
-        ativCollection.localStorage = new Backbone.LocalStorage("professor/" +oak.get("id")+ "/atividade/");
+        //ativCollection.localStorage = new Backbone.LocalStorage("professor/" +oak.get("id")+ "/atividade/");
         ativCollection.add([ativ1, ativ2]);
 
-        comprCollection.localStorage = new Backbone.LocalStorage("atividade/" + ativ1.id + "/comprovante/");
+        //comprCollection.localStorage = new Backbone.LocalStorage("atividade/" + ativ1.id + "/comprovante/");
         comprCollection.add([comp1,comp2]);
 
-        tipoCollection.localStorage = new Backbone.LocalStorage("tipo/");
+        //tipoCollection.localStorage = new Backbone.LocalStorage("tipo/");
         tipoCollection.add([ensino1, ensino2, ensino3]);
 
-        multCollection.localStorage = new Backbone.LocalStorage("multiplicador/");
+        //multCollection.localStorage = new Backbone.LocalStorage("multiplicador/");
         multCollection.add([mult1,mult2]);
 
         console.log("dummydata generated");
