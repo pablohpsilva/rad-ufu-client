@@ -1,4 +1,9 @@
-define([], function() {
+define([
+
+        "collections/categoria",
+        "collections/multiplicador"
+
+    ], function (categoriaCollection, multCollection) {
 
         var Tipo = Backbone.Model.extend({
 
@@ -31,6 +36,17 @@ define([], function() {
                  * if(attrs.pontuacaoRef === 0)
                  *   return "pontuação referencia não atríbuida ao tipo";
                  */
+            },
+
+            parse: function (response, options) {
+                var attrHash = _.extend({}, response);
+
+                categoriaCollection.add(attrHash.categoria);
+                attrHash.categoria = attrHash.categoria.id;
+                multCollection.add(attrHash.multiplicador);
+                attrHash.multiplicador = attrHash.multiplicador.id;
+
+                return attrHash;
             }
 
         });
