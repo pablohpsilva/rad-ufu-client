@@ -222,8 +222,13 @@ define([
                         this.cadastroView.subViews.tipos.subViews
                             .comprovantes.selecionados["bar"] = {name:"bar"};
 
+                        AtividadeCollection.url = "localhost/rad-ufu/api/atividade";
+                        ComprovanteCollection.url = "localhost/rad-ufu/api/coprovante";
                         this.comprovanteCreateStub = sinon.spy(ComprovanteCollection, "create");
                         this.atividadeCreateStub = sinon.spy(AtividadeCollection, "create");
+
+                        this.ajaxStub = sinon.stub($, "ajax").yieldsTo("success");
+
                         done();
                     });
                     afterEach(function (done) {
@@ -235,6 +240,7 @@ define([
                         this.cadastroView.$el.find("#cadastrar").click();
                         this.comprovanteCreateStub.should.have.been.calledTwice;
                         this.atividadeCreateStub.should.have.been.calledOnce;
+                        this.ajaxStub.restore();
                         done();
                     });
                 });
