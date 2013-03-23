@@ -9,6 +9,11 @@ require([
     "multiplicadorModel",
     "professorModel",
     "tipoModel",
+    "atividadeCollection",
+    "categoriaCollection",
+    "comprovanteCollection",
+    "multiplicadorCollection",
+    "professorCollection",
     "cadastroView"
 
 ], function (sinon, chai, sinonChai) {
