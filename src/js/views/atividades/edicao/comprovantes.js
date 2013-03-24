@@ -32,8 +32,6 @@ define([
                 // inicializa os tooltips
                 this.$("[rel=\"tooltip\"]").tooltip();
 
-                this.registraHovers();
-
                 //console.log(data.atuais);
                 return this;
             },
