@@ -49,14 +49,14 @@ define([
                     this.cCollection.reset();
                     done();
                 });
-                it('Deve adicionar o comprovante e o multiplicador as respectivas collections e guardar apenas os ids destes', function (done) {
+                it('Deve adicionar a categoria e o multiplicador as respectivas collections e guardar apenas os ids destes', function (done) {
                     var jsonResponseStub =
                         {
                             "categoria": {
                                 "id": 1,
                                 "nome": "Ensino"
                             },
-                            "descricao": "Aula teórica ou prática para turmas adicionais da mesma disciplina, ministradapelo mesmo docente, e no mesmo Curso, enquadrada na Situação 2 (ver OBS.).",
+                            "descricao": "Aula teórica ou prática para turmas adicionais da mesma disciplina...",
                             "id": 3,
                             "limitePontos": null,
                             "multiplicador": {

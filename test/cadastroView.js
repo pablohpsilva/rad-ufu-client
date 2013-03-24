@@ -1,5 +1,6 @@
 define([
 
+    "models/atividade",
     "collections/atividade",
     "collections/comprovante",
     "views/atividades/cadastro/multiplicador",
@@ -8,7 +9,7 @@ define([
     "views/atividades/cadastro/frame",
     "util/dummyData"
 
-    ],  function (AtividadeCollection, ComprovanteCollection,
+    ],  function (Atividade, AtividadeCollection, ComprovanteCollection,
                   MultiplicadorView,
                   DescricaoView,
                   TiposView,
@@ -231,25 +232,37 @@ define([
                         this.cadastroView.subViews.tipos.subViews
                             .comprovantes.selecionados["bar"] = {name:"bar"};
 
-                        AtividadeCollection.url = "localhost/rad-ufu/api/atividade";
-                        ComprovanteCollection.url = "localhost/rad-ufu/api/coprovante";
-                        this.comprovanteCreateStub = sinon.spy(ComprovanteCollection, "create");
-                        this.atividadeCreateStub = sinon.spy(AtividadeCollection, "create");
+                        AtividadeCollection.url    = "localhost/rad-ufu/api/atividade";
+                        ComprovanteCollection.url  = "localhost/rad-ufu/api/coprovante";
+                        this.comprovanteCreateSpy = sinon.spy(ComprovanteCollection, "create");
+                        this.atividadeCreateSpy   = sinon.spy(AtividadeCollection, "create");
+
+                        this.atividadeParseStub    = sinon.stub(Atividade.prototype, "parse")
+                            .returns({
+                                "id":1,
+                                "valorMult":2,
+                                "descricao":"desc",
+                                "inicio":"01/03/2013",
+                                "fim":"02/03/2013",
+                                "tipo":1,
+                                "comprovantes":[1]
+                            });
 
                         this.ajaxStub = sinon.stub($, "ajax").yieldsTo("success");
 
                         done();
                     });
                     afterEach(function (done) {
-                        this.comprovanteCreateStub.restore();
-                        this.atividadeCreateStub.restore();
+                        this.comprovanteCreateSpy.restore();
+                        this.atividadeCreateSpy.restore();
+                        this.atividadeParseStub.restore();
+                        this.ajaxStub.restore();
                         done();
                     });
                     it("Deve ser cadastrada uma nova atividade quando houver um click no botão 'cadastrar'", function (done) {
                         this.cadastroView.$el.find("#cadastrar").click();
-                        this.comprovanteCreateStub.should.have.been.calledTwice;
-                        this.atividadeCreateStub.should.have.been.calledOnce;
-                        this.ajaxStub.restore();
+                        this.comprovanteCreateSpy.should.have.been.calledTwice;
+                        this.atividadeCreateSpy.should.have.been.calledOnce;
                         done();
                     });
                 });
