@@ -42,6 +42,7 @@ require.config({
 });
 
 require(["app", "router"], function(App, Router) {
-    new App();
+    var app = new App();
+    app.bootstrapCollections();
     new Router();
 });
