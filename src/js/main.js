@@ -20,6 +20,9 @@ require.config({
                 "bootstrap"
             ]
         },
+        "router": {
+            deps: ["backbone"]
+        },
         "bootstrap" : {
             deps : ["jquery"]
         },
@@ -38,6 +41,7 @@ require.config({
     }
 });
 
-require(["app"], function(App) {
-    App.init();
+require(["app", "router"], function(App, Router) {
+    new App();
+    new Router();
 });
