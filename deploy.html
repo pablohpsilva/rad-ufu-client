@@ -5,7 +5,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>RAD / UFU</title>
   <link rel="stylesheet" href="css/style.css">
-  <script type="text/javascript" data-main="js/main.js" src="js/lib/require.js"></script>
 </head>
 
 <body style="padding-top: 40px;">
@@ -31,7 +30,22 @@
       </div>
     </div>
   </div>
-
+  <script type="text/javascript">
+    var require = {
+      config: {
+        "app": {
+          //$loggedUserJSON
+          loggedUser: {
+            "atividades": [],
+            "id": 1,
+            "nome": "Girafales",
+            "siape": "12129idasdas"
+          }
+        }
+      }
+    }
+  </script>
+  <script type="text/javascript" data-main="js/main.js" src="js/lib/require.js"></script>
 </body>
 
 </html>
