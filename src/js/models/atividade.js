@@ -1,4 +1,10 @@
-define([], function() {
+define([
+
+    "models/tipo",
+    "collections/tipo",
+    "collections/comprovante"
+
+    ], function (Tipo, tipoCollection, comprovanteCollection) {
 
         var Atividade = Backbone.Model.extend({
 
@@ -19,7 +25,25 @@ define([], function() {
                     return "comprovante não anexado a atividade";
                 if(attrs.tipo === 0)
                     return "atividade sem tipo";
+            },
+
+            parse: function (response, options) {
+                var attrHash = _.extend({}, response),
+                    tipoAttrHash;
+
+                tipoAttrHash = Tipo.prototype.parse(attrHash.tipo);
+                tipoCollection.add(tipoAttrHash);
+
+                attrHash.tipo = attrHash.tipo.id;
+
+                _.each(attrHash.comprovantes, function (comprovante, i) {
+                    comprovanteCollection.add(comprovante);
+                    attrHash.comprovantes[i] = comprovante.id;
+                });
+
+                return attrHash;
             }
+
         });
 
         return Atividade;
