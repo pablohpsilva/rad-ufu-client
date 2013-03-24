@@ -33,14 +33,15 @@ define([
             },
 
             render : function () {
+
                 this.limpaSubviews();
 
                 this.$el.empty();
                 this.subViews.atividades = [];
 
                 function catSelecionada   (c) {
-                    return c.nome.toLowerCase() === this.options.categoria ||
-                        c.id === this.options.categoria;
+                    return c.get("nome").toLowerCase() === this.options.categoria ||
+                        c.get("id") === this.options.categoria;
                 }
                 function atividadeDoTipo  (a) { return _.contains(_.pluck(tipos,"id"), a.tipo); }
                 function addItemNo        (a) {
@@ -52,12 +53,13 @@ define([
                 //
                 // Acha a categoria selecionada
                 //
-                var cat = _.chain(categoriaCollection.toJSON())
+                var cat = (categoriaCollection).chain()
                     .filter(catSelecionada, this)
                     .first().value();
 
-                console.log("categoria selecionada: ", this.options.categoria);
-                console.log("categoria achada: ", cat);
+                console.log("tabelaView > categorias: ", categoriaCollection);
+                console.log("tabelaView > categoria selecionada: ", this.options.categoria);
+                console.log("tabelaView > categoria achada: ", cat);
 
                 //
                 // Acha os tipos pertencentes a categoria selecionada
