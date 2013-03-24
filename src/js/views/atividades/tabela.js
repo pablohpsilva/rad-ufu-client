@@ -76,7 +76,7 @@ define([
                     .map(addItemNo)
                     .value();
 
-                console.log("atividades:",ativs);
+                console.log("tabelaView > atividades:",ativs);
 
                 _.each(ativs, function (atividade) {
                     this.subViews.atividades
