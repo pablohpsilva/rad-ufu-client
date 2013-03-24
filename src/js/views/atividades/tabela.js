@@ -40,8 +40,8 @@ define([
                 this.subViews.atividades = [];
 
                 function catSelecionada   (c) {
-                    return c.get("nome").toLowerCase() === this.options.categoria ||
-                        c.get("id") === this.options.categoria;
+                    return c.nome.toLowerCase() === this.options.categoria ||
+                        c.id === this.options.categoria;
                 }
                 function atividadeDoTipo  (a) { return _.contains(_.pluck(tipos,"id"), a.tipo); }
                 function addItemNo        (a) {
@@ -53,7 +53,7 @@ define([
                 //
                 // Acha a categoria selecionada
                 //
-                var cat = (categoriaCollection).chain()
+                var cat = _.chain(categoriaCollection.toJSON())
                     .filter(catSelecionada, this)
                     .first().value();
 
@@ -67,7 +67,6 @@ define([
                 var tipos = _.chain(tipoCollection.toJSON())
                     .where({categoria:cat.id})
                     .value();
-
 
                 //
                 // Acha as atividades pertencentes aos tipos das categorias
