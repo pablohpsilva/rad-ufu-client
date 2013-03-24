@@ -5,9 +5,26 @@
         <title>RAD / UFU</title>
         <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
         <style type="text/css">.datepicker{display: none;}</style>
-        <script data-main="testRunner.js" src="../node_modules/requirejs/require.js"></script>
     </head>
     <body>
         <div id="mocha"></div>
+        <script type="text/javascript">
+            var require = {
+              config: {
+                "../src/js/app": {
+                  serverLocation: "localhost/",
+                  apiLocation: "rad-ufu/api/",
+                  //loggedUser JSON
+                  loggedUser: {
+                    "atividades": [],
+                    "id": 1,
+                    "nome": "Girafales",
+                    "siape": "12129idasdas"
+                  }
+                }
+              }
+            }
+        </script>
+        <script data-main="testRunner.js" src="../node_modules/requirejs/require.js"></script>
     </body>
 </html>

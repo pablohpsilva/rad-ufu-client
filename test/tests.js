@@ -15,7 +15,8 @@ require([
     "multiplicadorCollection",
     "professorCollection",
     "tipoCollection",
-    "cadastroView"
+    "cadastroView",
+    "aplicacao"
 
 ], function (sinon, chai, sinonChai) {
     chai.use(sinonChai);
