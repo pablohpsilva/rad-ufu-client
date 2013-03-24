@@ -53,7 +53,7 @@ module.exports = function(grunt) {
     copy: {
       page: {
         files: [
-          { src: 'deploy.html', dest: 'build/radufu/index.html'}
+          { src: 'deploy.php', dest: 'build/radufu/index.php'}
         ]
       },
       font: {
