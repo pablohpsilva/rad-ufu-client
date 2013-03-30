@@ -27,9 +27,14 @@ define([
             initialize : function() {
 
                 //this.listenTo(this.collection, "add", this.addOne, this);
-                this.listenTo(this.collection, "remove", this.render, this);
+                this.listenTo(this.collection, "remove", this.atividadeRemoved, this);
 
                 this.on("close", this.limpaSubviews, this);
+            },
+
+            atividadeRemoved: function (atividade) {
+                atividade.destroy({ success: _.bind(this.render(), this) });
+                //this.render();
             },
 
             render : function () {
@@ -67,6 +72,8 @@ define([
                 var tipos = _.chain(tipoCollection.toJSON())
                     .where({categoria:cat.id})
                     .value();
+
+                console.log("tabelaView > tipos da categoria: ", tipos);
 
                 //
                 // Acha as atividades pertencentes aos tipos das categorias
