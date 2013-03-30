@@ -63,7 +63,7 @@ define([
             },
 
             resetDados: function () {
-                this.selecionados = [];
+                this.selecionados = {};
                 this.render();
             },
 
