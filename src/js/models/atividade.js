@@ -18,28 +18,37 @@ define([
                 valorMult    : 0
             },
 
-            validate : function(attrs) {
+            validate : function (attrs) {
                 if(attrs.inicio === "" || attrs.fim === "")
                     return "data de início ou fim não atribuídas a atividade";
-                if(attrs.comprovantes.length === 0)
-                    return "comprovante não anexado a atividade";
                 if(attrs.tipo === 0)
                     return "atividade sem tipo";
+            },
+
+            addComprovante: function (comprovante) {
+                this.get("comprovantes").push(comprovante.get("id"));
+            },
+
+            rmComprovante: function (comprovante) {
+                this.set("comprovantes", _.without(this.get("comprovantes"), comprovante.get("id")));
             },
 
             parse: function (response, options) {
                 var attrHash = _.extend({}, response),
                     tipoAttrHash;
 
-                tipoAttrHash = Tipo.prototype.parse(attrHash.tipo);
-                tipoCollection.add(tipoAttrHash);
+                if (attrHash.tipo) {
+                    tipoAttrHash = Tipo.prototype.parse(attrHash.tipo);
+                    tipoCollection.add(tipoAttrHash);
+                    attrHash.tipo = attrHash.tipo.id;
+                }
 
-                attrHash.tipo = attrHash.tipo.id;
-
-                _.each(attrHash.comprovantes, function (comprovante, i) {
-                    comprovanteCollection.add(comprovante);
-                    attrHash.comprovantes[i] = comprovante.id;
-                });
+                if (attrHash.comprovantes) {
+                    _.each(attrHash.comprovantes, function (comprovante, i) {
+                        comprovanteCollection.add(comprovante);
+                        attrHash.comprovantes[i] = comprovante.id;
+                    });
+                }
 
                 return attrHash;
             }
