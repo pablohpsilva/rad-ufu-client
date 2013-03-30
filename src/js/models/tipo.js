@@ -17,9 +17,6 @@ define([
                 multiplicador   : 0
             },
 
-            initialize : function() {
-            },
-
             validate : function(attrs) {
 
                 if(attrs.id === 0)
