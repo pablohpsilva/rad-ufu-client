@@ -135,32 +135,44 @@ define([
             },
 
             criarAtividade: function () {
-                var atividade = {}, cids = [];
+                var atividade = {}, cids = [], comprovantes;
 
                 console.log("cadastrando atividade");
                 atividade = this.preparaDados();
+                comprovantes = atividade.comprovantes;
+
+                var comprovanteCriado = _.bind(function (atividade) {
+                    return _.bind(function (comprovante) {
+                        atividade.addComprovante(comprovante);
+                        if (atividade.get("comprovantes").length === _.keys(comprovantes).length)
+                            this.alert("Atividade cadastrada com sucesso", { type: "success" });
+                    }, this);
+                }, this);
+
+                var criarComprovantes = function (atividade) {
+                    _.each(comprovantes, function (file) {
+                        var c = { nome: file.name, arquivo: file, atividade: atividade.get("id") };
+                        comprovanteCollection.create(c, { success: comprovanteCriado(atividade) });
+                    });
+                };
 
                 if (!_.isEmpty(atividade.err)) {
                     _.each(atividade.err, function (errMsg) {
-                        this.subViews.alert.err
-                            .setElement(this.$("#err"))
-                            .render(errMsg);
+                        this.alert(errMsg, { type: "err" });
                     }, this);
                 } else {
-                    _.each(atividade.comprovantes, function (file) {
-                        var c = comprovanteCollection.create({nome:file.name}, {wait:true});
-                        cids.push(c.get("id"));
-                    });
-
-                    atividade.comprovantes = cids;
-                    this.subViews.alert.sucss
-                        .setElement(this.$("#err"))
-                        .render("Atividade cadastrada");
-
-                    atividadeCollection.create(atividade);
-                    this.resetDados();
+                    atividade = _.omit(atividade, "err", "comprovantes");
+                    atividadeCollection.create(atividade, { success: criarComprovantes });
                 }
-                console.log(atividade);
+            },
+
+            alert: function (message, options) {
+                var alertTypes = {
+                    err:   this.subViews.alert.err,
+                    success: this.subViews.alert.sucss
+                };
+
+                alertTypes[options.type].setElement("#err").render(message);
             },
 
             cleanUp: function() {
