@@ -10,6 +10,11 @@ define([
                 "click li.atual i.icon-remove": "removeAtual"
             }, ComprovanteCadastroView.prototype.events),
 
+            initialize: function () {
+                this.selecionados = {};
+                this.toDestroy    = [];
+            },
+
             render: function () {
                 var data = {};
 
@@ -77,11 +82,14 @@ define([
 
                 dadosEdicao.atuais       = this.options.atuais;
                 dadosEdicao.selecionados = this.selecionados;
+                dadosEdicao.toDestroy    = this.toDestroy;
             },
 
             removeAtual: function (ev) {
                 console.log("removendo do atual:", this.options.atuais);
+                var id = this.$(ev.target).data("id");
                 var el = this.$(ev.target);
+                this.toDestroy.push(this.collection.get(el.data("id")));
                 this.options.atuais = _.without(this.options.atuais, el.data("id"));
                 el.parent("li").remove();
                 console.log("atual:", this.options.atuais);
