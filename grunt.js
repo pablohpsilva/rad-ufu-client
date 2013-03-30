@@ -6,6 +6,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
+  var deployDir = grunt.option('destination') || '/var/www/rad-ufu/public/';
+
   // Project configuration.
   grunt.initConfig({
     pkg: '<json:package.json>',
@@ -56,6 +58,11 @@ module.exports = function(grunt) {
           { src: 'deploy.php', dest: 'build/radufu/index.php'}
         ]
       },
+      deploy: {
+        files: [
+          { src: 'build/radufu/**', dest: deployDir }
+        ]
+      },
       font: {
         files: [
           { src: 'src/font/*', dest: 'build/radufu/font/'}
@@ -64,6 +71,9 @@ module.exports = function(grunt) {
     },
     clean: {
       build: [
+        'build'
+      ],
+      buildfiles: [
         'build/radufu/js/collections',
         'build/radufu/js/models',
         'build/radufu/js/templates',
@@ -72,6 +82,12 @@ module.exports = function(grunt) {
         'build/radufu/js/app.js',
         'build/radufu/js/router.js',
         'build/radufu/js/build.txt'
+      ],
+      deploy: [
+        deployDir + 'css/',
+        deployDir + 'font/',
+        deployDir + 'js/',
+        deployDir + 'index.php'
       ]
     },
     requirejs: {
@@ -101,12 +117,21 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', 'preparar o projeto para deploy', function () {
     grunt.task.run([
+      'clean:build',
       'requirejs:build',
       'min:requirejs',
       'less:compress',
       'copy:page',
       'copy:font',
-      'clean:build'
+      'clean:buildfiles'
+    ]);
+  });
+
+  grunt.registerTask('deploy', 'copiar o build para o backend', function () {
+    grunt.task.run([
+      'build',
+      'clean:deploy',
+      'copy:deploy'
     ]);
   });
 

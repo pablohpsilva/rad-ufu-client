@@ -2,13 +2,24 @@
   require_once (__DIR__ . '/../src/RADUFU/Autoloader.php');
 
   use RADUFU\Service\CategoriaService,
-      RADUFU\Service\AtividadeService;
+      RADUFU\Service\AtividadeService,
+      RADUFU\Service\ProfessorService,
+      RADUFU\Service\TipoService;
 
   $atividadeService = new AtividadeService();
-  $CategoriaService = new CategoriaService();
+  $categoriaService = new CategoriaService();
+  $professorService = new ProfessorService();
+  $tipoService      = new TipoService();
 
-  $atividades = json_encode($atividadeService->searchAll(1));
-  $categorias = json_encode($CategoriaService->searchAll());
+  $user = $professorService->get(1);
+
+  session_start();
+  $_SESSION["user"] = $user;
+
+  $user_json  = json_encode($user);
+  $atividades = json_encode($atividadeService->searchAll($user->getId()));
+  $categorias = json_encode($categoriaService->searchAll());
+  $tipos      = json_encode($tipoService->searchAll());
 ?>
 
 <!DOCTYPE html>
@@ -47,14 +58,9 @@
     var require = {
       config: {
         "app": {
-          //$loggedUserJSON
-          loggedUser: {
-            "atividades": [],
-            "id": 1,
-            "nome": "Girafales",
-            "siape": "12129idasdas"
-          },
+          loggedUser: <?php echo($user_json); ?>,
           categorias: <?php echo($categorias); ?>,
+          tipos:      <?php echo($tipos); ?>,
           atividades: <?php echo($atividades); ?>
         }
       }
