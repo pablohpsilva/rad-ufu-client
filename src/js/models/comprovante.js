@@ -21,6 +21,24 @@ define(function() {
                 readr.readAsDataURL(this.get("arquivo"));
             },
 
+            sync: function (method, model, options) {
+                var formData;
+
+                if (method === "create") {
+                    formData = new FormData();
+                    formData.append(this.get("nome"), this.get("arquivo"));
+                    formData.append("id_atividade", this.get("atividade"));
+                    options.data = formData;
+                    options.processData = false;
+                    options.contentType = false;
+
+                }
+
+                console.log("comprovante > sync arguments: ", arguments);
+
+                return Backbone.sync.apply(this, arguments);
+            },
+
             validate : function(attrs) {
                 //if(attrs.arquivo === "")
                     //return "arquivo não atribuído ao comprovante";
@@ -29,5 +47,4 @@ define(function() {
         });
 
         return Comprovante;
-
 });
