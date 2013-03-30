@@ -35,7 +35,7 @@ define([
 
                 this.listenTo(this.subViews.categorias, "change", this.renderTipos);
 
-                this.listenTo(this.model, "change", this.atividadeAlterada);
+                this.listenTo(this.model, "sync", this.atividadeAlterada);
 
                 //console.log(this.model);
             },
@@ -68,38 +68,45 @@ define([
 
             editarAtividade: function () {
                 console.log("editando atividade");
-                var atividade = {}, novosComprovantes = [];
+                var atividade, addToAtividade, rmFromAtividade;
+
+                addToAtividade  = _.bind(this.model.addComprovante, this.model);
+                rmFromAtividade = _.bind(this.model.rmComprovante, this.model);
 
                 atividade = this.preparaDados();
 
                 if (!_.isEmpty(atividade.err)) {
                     _.each(atividade.err, function (errMsg) {
-                        this.subViews.err
-                            .setElement(this.$("#err"))
-                            .render({ msg: errMsg, type: "alert-error" });
+                        this.alert(errMsg, { type: "err" });
                     }, this);
                 } else {
-                    // Se existem novos arquivos para a atividade
-                    if (!_.isEmpty(atividade.selecionados))
-                        _.each(atividade.selecionados, function (f) {
-                            var c = comprovanteCollection.create({nome:f.name}, {wait:true});
-                            novosComprovantes.push(c.get("id"));
+
+                    // se existem arquivos comprovantes para excluir da atividade
+                    if (!_.isEmpty(atividade.toDestroy)) {
+                        _.each(atividade.toDestroy, function (c) {
+                            c.destroy({ success: rmFromAtividade });
                         });
+                    }
 
-                    atividade.comprovantes = (!_.isEmpty(novosComprovantes)) ?
-                        _.union(atividade.atuais, novosComprovantes) :
-                        atividade.atuais;
-
-                    this.model.save(_.omit(atividade, "atuais", "err", "selecionados", "categoria"));
+                    // Se existem novos arquivos para a atividade temos que
+                    // grava-los
+                    if (!_.isEmpty(atividade.selecionados)) {
+                        _.each(atividade.selecionados, function (f) {
+                            comprovanteCollection.create({
+                                nome:f.name,
+                                arquivo:f,
+                                atividade: this.model.get("id")
+                            }, { success: addToAtividade });
+                        }, this);
+                    }
+                    atividade = _.omit(atividade, "toDestroy" ,"atuais", "err", "selecionados", "categoria");
+                    this.model.save(atividade);
                 }
                 console.log(atividade);
             },
 
             atividadeAlterada: function () {
-                console.log("Atributos alterados: ", this.model.changedAttributes());
-                this.subViews.err
-                        .setElement(this.$("#err"))
-                        .render({ msg: "Dados da atividade alterados", type: "alert-success" });
+                this.alert("Dados da atividade alterados", { type: "success" });
             }
         });
 
