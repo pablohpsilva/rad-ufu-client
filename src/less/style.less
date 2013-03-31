@@ -49,6 +49,8 @@
   background-color: @alertBackground;
   //border: 1px solid @warningBorder;
   .border-radius(@baseBorderRadius);
+  .animated;
+  .fadeIn;
 }
 // Alternate styles
 // -------------------------
@@ -129,6 +131,8 @@
 
 @import "../../components/bootstrap-datepicker/less/datepicker.less";
 
+@import "../../components/animate/animate.min.less";
+
 html {
     overflow-y: scroll;
 }
@@ -136,6 +140,12 @@ html {
 .invisivel {
     visibility: hidden;
 }
+
+#tabela-block {
+  .animated;
+  .fadeInDown;
+}
+
 @tableBackground: @bodyBackground;
 table {
     a,
@@ -160,6 +170,8 @@ table {
     }
 
     tr:hover i {
+      .animated;
+      .fadeInRight;
       color: @textColor;
     };
 
