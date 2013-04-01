@@ -142,6 +142,7 @@ define([
                 atividade = this.preparaDados();
                 comprovantes = atividade.comprovantes;
                 atividadeAttrHash = _.omit(atividade, "err", "comprovantes");
+                var alert = _.bind(this.alert, this);
 
                 var a = new Atividade(atividadeAttrHash);
 
@@ -166,6 +167,7 @@ define([
                         comprovanteCollection.add(comprovantes);
                         atividadeCollection.add(a);
                         _.each(comprovantes, function (c) { a.addComprovante(c); });
+                        alert("Atividade Cadastrada com sucesso", { type: "success" });
 
                     }, function (jqXHR, textStatus, errorThrown) {
 
