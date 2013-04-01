@@ -37,13 +37,7 @@ define(function() {
                 console.log("comprovante > sync arguments: ", arguments);
 
                 return Backbone.sync.apply(this, arguments);
-            },
-
-            validate : function(attrs) {
-                //if(attrs.arquivo === "")
-                    //return "arquivo não atribuído ao comprovante";
             }
-
         });
 
         return Comprovante;
