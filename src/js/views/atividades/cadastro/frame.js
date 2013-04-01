@@ -135,12 +135,50 @@ define([
             },
 
             criarAtividade: function () {
-                var atividade = {}, cids = [], comprovantes;
+                var atividadeAttrHash, atividade = {}, cids = [], comprovantes;
 
-                console.log("cadastrando atividade");
+                console.log("cadastroAtividadeFrame > cadastrando atividade");
+
                 atividade = this.preparaDados();
                 comprovantes = atividade.comprovantes;
+                atividadeAttrHash = _.omit(atividade, "err", "comprovantes");
 
+                var a = new Atividade(atividadeAttrHash);
+
+                comprovantes = _.map(comprovantes, function (file) {
+                    var c = new Comprovante({ nome: file.name, arquivo: file });
+                    c.urlRoot = comprovanteCollection.url;
+                    return c;
+                });
+
+                a.urlRoot = atividadeCollection.url;
+                var atividadeValida = a.save();
+                if (atividadeValida) {
+
+                    atividadeValida
+                      .then(function (data) {
+
+                        _.each(comprovantes, function (c) { c.set("atividade", data.id); });
+                        return $.when.apply(this, _.map(comprovantes, function (c) { return c.save(); }));
+
+                    }).then(function () {
+
+                        comprovanteCollection.add(comprovantes);
+                        atividadeCollection.add(a);
+                        _.each(comprovantes, function (c) { a.addComprovante(c); });
+
+                    }, function (jqXHR, textStatus, errorThrown) {
+
+                        a.destroy();
+                        _.each(comprovantes, function (c) { c.destroy(); });
+                        console.log("cadastroAtividadeFrame > ", arguments);
+                    });
+                } else {
+                    console.log(a.validationError);
+                }
+
+
+/*
                 var comprovanteCriado = _.bind(function (atividade) {
                     return _.bind(function (comprovante) {
                         atividade.addComprovante(comprovante);
@@ -155,14 +193,11 @@ define([
                         comprovanteCollection.create(c, { success: comprovanteCriado(atividade) });
                     });
                 };
-
+*/
                 if (!_.isEmpty(atividade.err)) {
                     _.each(atividade.err, function (errMsg) {
                         this.alert(errMsg, { type: "err" });
                     }, this);
-                } else {
-                    atividade = _.omit(atividade, "err", "comprovantes");
-                    atividadeCollection.create(atividade, { success: criarComprovantes });
                 }
             },
 
