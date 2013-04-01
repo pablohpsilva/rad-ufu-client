@@ -86,9 +86,9 @@ define([
             },
 
             removeAtual: function (ev) {
-                console.log("removendo do atual:", this.options.atuais);
                 var id = this.$(ev.target).data("id");
                 var el = this.$(ev.target);
+                console.log("removendo do atual:", el.data("id"));
                 this.toDestroy.push(this.collection.get(el.data("id")));
                 this.options.atuais = _.without(this.options.atuais, el.data("id"));
                 el.parent("li").remove();
