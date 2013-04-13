@@ -58,9 +58,9 @@
     var require = {
       config: {
         "app": {
-          loggedUser: <?php echo($user_json); ?>,
+          loggedUser: <?php echo($user_json);  ?>,
           categorias: <?php echo($categorias); ?>,
-          tipos:      <?php echo($tipos); ?>,
+          tipos:      <?php echo($tipos);      ?>,
           atividades: <?php echo($atividades); ?>
         }
       }
