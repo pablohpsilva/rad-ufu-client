@@ -115,7 +115,7 @@ define([
                         });
 
                     } else {
-                        console.log(this.model.validationError);
+                        console.log("Erro de validação na atividade: ", this.model.validationError);
                     }
 
 
