@@ -154,7 +154,7 @@ define([
 
                 a.urlRoot = atividadeCollection.url;
                 var atividadeValida = a.save();
-                if (atividadeValida) {
+                if (atividadeValida && _.isEmpty(atividade.err)) {
 
                     atividadeValida
                       .then(function (data) {
@@ -176,7 +176,7 @@ define([
                         console.log("cadastroAtividadeFrame > ", arguments);
                     });
                 } else {
-                    console.log(a.validationError);
+                    console.log("Erro na validação da atividade: ", a.validationError);
                 }
 
 
