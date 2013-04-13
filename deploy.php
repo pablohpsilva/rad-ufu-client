@@ -3,18 +3,20 @@
 
   use RADUFU\Service\CategoriaService,
       RADUFU\Service\AtividadeService,
-      RADUFU\Service\ProfessorService,
       RADUFU\Service\TipoService;
 
   $atividadeService = new AtividadeService();
   $categoriaService = new CategoriaService();
-  $professorService = new ProfessorService();
   $tipoService      = new TipoService();
 
-  $user = $professorService->get(1);
-
   session_start();
-  $_SESSION["user"] = $user;
+  if (isset($_SESSION["user"]))
+    $user = $_SESSION["user"];
+  else {
+    header("Location: login.php");
+    exit();
+  }
+
 
   $user_json  = json_encode($user);
   $atividades = json_encode($atividadeService->searchAll($user->getId()));
