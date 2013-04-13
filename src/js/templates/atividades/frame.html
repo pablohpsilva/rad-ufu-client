@@ -3,7 +3,7 @@
   <li class="active">Atividades</li>
 </ul>
 
-<div class="row">
+<div class="row-fluid toolbar">
   <div class="btn-group pull-right">
     <a href="#/atividades/cadastrar"
       title="Nova atividade" rel="tooltip" data-placement="top" class="btn">
@@ -12,8 +12,12 @@
   </div>
 </div>
 
-<ul id="categorias-block" class="nav nav-tabs"></ul>
-
-<span id="err"></span>
-
-<table id="tabela-block" class="table table-hover"></table>
+<div class="row-fluid">
+    <div class="span2">
+        <ul id="categorias-block" class="nav nav-tabs nav-stacked"></ul>
+    </div>
+    <div class="span10">
+        <span id="err"></span>
+        <table id="tabela-block" class="table table-hover"></table>
+    </div>
+</div>
