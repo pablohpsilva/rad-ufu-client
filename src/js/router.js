@@ -65,7 +65,7 @@ define([
                 });
 
                 this.on("route:defaultAction", function(actions){
-                    if (!actions) this.navigate("#/inicio");
+                    if (!actions) this.navigate("#/atividades");
                         console.log('No route:', actions);
                 });
 
