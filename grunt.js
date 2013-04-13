@@ -118,6 +118,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', 'preparar o projeto para deploy', function () {
     grunt.task.run([
       'clean:build',
+      'setup',
       'requirejs:build',
       'min:requirejs',
       'less:compress',
