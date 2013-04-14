@@ -148,6 +148,36 @@ define([
                     $(".datepicker").remove();
                     done();
                 });
+
+                describe('Validação', function () {
+                    beforeEach(function (done) {
+                        $("#quantidade").val(2);
+                        $("#dataInicio").val("01/03/2013");
+                        $("#dataFim").val("02/03/2013");
+                        this.cadastroView.subViews.tipos.subViews
+                            .comprovantes.selecionados["foo"] = "foo";
+                        this.dadosCadastro = this.cadastroView.preparaDados();
+
+                        AtividadeCollection.url    = "localhost/rad-ufu/api/atividade";
+                        ComprovanteCollection.url  = "localhost/rad-ufu/api/coprovante";
+
+                        this.comprovanteSaveSpy = sinon.spy(Comprovante.prototype, "save");
+                        this.atividadeSaveSpy   = sinon.spy(Atividade.prototype, "save");
+                        done();
+                    });
+                    afterEach(function (done) {
+                        this.comprovanteSaveSpy.restore();
+                        this.atividadeSaveSpy.restore();
+                        done();
+                    });
+                    it("Não deve enviar nenhuma requisição se houver algum erro de validação", function (done) {
+                        this.cadastroView.$el.find("#cadastrar").click();
+                        this.comprovanteSaveSpy.should.not.have.been.called;
+                        this.atividadeSaveSpy.should.not.have.been.called;
+                        done();
+                    });
+                });
+
                 describe("Descrição", function () {
                     beforeEach(function (done) {
                         $("#quantidade").val(2);

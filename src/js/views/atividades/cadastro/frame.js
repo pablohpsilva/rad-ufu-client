@@ -153,30 +153,34 @@ define([
                 });
 
                 a.urlRoot = atividadeCollection.url;
-                var atividadeValida = a.save();
-                if (atividadeValida && _.isEmpty(atividade.err)) {
+                var atividadeValida;
 
-                    atividadeValida
-                      .then(function (data) {
+                if (_.isEmpty(atividade.err)) {
 
-                        _.each(comprovantes, function (c) { c.set("atividade", data.id); });
-                        return $.when.apply(this, _.map(comprovantes, function (c) { return c.save(); }));
+                    atividadeValida = a.save();
+                    if (atividadeValida) {
+                        atividadeValida
+                          .then(function (data) {
 
-                    }).then(function () {
+                            _.each(comprovantes, function (c) { c.set("atividade", data.id); });
+                            return $.when.apply(this, _.map(comprovantes, function (c) { return c.save(); }));
 
-                        comprovanteCollection.add(comprovantes);
-                        atividadeCollection.add(a);
-                        _.each(comprovantes, function (c) { a.addComprovante(c); });
-                        alert("Atividade Cadastrada com sucesso", { type: "success" });
+                        }).then(function () {
 
-                    }, function (jqXHR, textStatus, errorThrown) {
+                            comprovanteCollection.add(comprovantes);
+                            atividadeCollection.add(a);
+                            _.each(comprovantes, function (c) { a.addComprovante(c); });
+                            alert("Atividade Cadastrada com sucesso", { type: "success" });
 
-                        a.destroy();
-                        _.each(comprovantes, function (c) { c.destroy(); });
-                        console.log("cadastroAtividadeFrame > ", arguments);
-                    });
-                } else {
-                    console.log("Erro na validação da atividade: ", a.validationError);
+                        }, function (jqXHR, textStatus, errorThrown) {
+
+                            a.destroy();
+                            _.each(comprovantes, function (c) { c.destroy(); });
+                            console.log("cadastroAtividadeFrame > ", arguments);
+                        });
+                    } else {
+                        console.log("Erro na validação da atividade: ", a.validationError);
+                    }
                 }
 
 
